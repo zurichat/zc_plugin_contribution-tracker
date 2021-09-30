@@ -5530,6 +5530,13 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+lru-cache@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
+  integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
+  dependencies:
+    yallist "^4.0.0"
+
 magic-string@^0.25.7:
   version "0.25.7"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.25.7.tgz#3f497d6fd34c669c6798dcb821f2ef31f5445051"
@@ -7510,6 +7517,13 @@ semver@^6.0.0, semver@^6.1.0, semver@^6.1.1, semver@^6.1.2, semver@^6.3.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
+semver@^7.3.5:
+  version "7.3.5"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.5.tgz#0b621c879348d8998e4b0e4be94b3f12e6018ef7"
+  integrity sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==
+  dependencies:
+    lru-cache "^6.0.0"
+
 send@0.17.1:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/send/-/send-0.17.1.tgz#c1d8b059f7900f7466dd4938bdc44e11ddb376c8"
@@ -7646,6 +7660,11 @@ simple-swizzle@^0.2.2:
   integrity sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=
   dependencies:
     is-arrayish "^0.3.1"
+
+single-spa-vue@^2.1.0:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/single-spa-vue/-/single-spa-vue-2.5.1.tgz#4d7045116eae87449269bf1c9f8362ff304d2847"
+  integrity sha512-Vw0xPs7F9vJd7ZN9gSvkipYfStAOUmke2oeheecK6hpBhLhDCx9uU2GcXC/pL6KuLDom+pZOAZxTg6UdI7Toew==
 
 slash@^1.0.0:
   version "1.0.0"
@@ -7878,6 +7897,11 @@ stackframe@^1.1.1:
   resolved "https://registry.yarnpkg.com/stackframe/-/stackframe-1.2.0.tgz#52429492d63c62eb989804c11552e3d22e779303"
   integrity sha512-GrdeshiRmS1YLMYgzF16olf2jJ/IzxXY9lhKOskuVziubpTYcYqyOwYeJKzQkwy7uN0fYSsbsC4RQaXf9LCrYA==
 
+standalone-single-spa-webpack-plugin@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/standalone-single-spa-webpack-plugin/-/standalone-single-spa-webpack-plugin-3.0.0.tgz#629267e4597b938f1f8c177108a909d4e51a9f50"
+  integrity sha512-qj/iVNXMEWlwMnQbhZC7QqzifoWyps+zlIgbXS6/jvUMZVxD2U4psudPvWsjYw5Q9+HjM0WYdlgl69g9vEyw8w==
+
 static-extend@^0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/static-extend/-/static-extend-0.1.2.tgz#60809c39cbff55337226fd5e0b520f341f1fb5c6"
@@ -8085,6 +8109,11 @@ svgo@^1.0.0:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+systemjs-webpack-interop@^2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/systemjs-webpack-interop/-/systemjs-webpack-interop-2.3.7.tgz#b8ed2a81c371bab3160ac4801776ef61cf8c7959"
+  integrity sha512-9wmhkleKWVjcGfHpc1/YvfADnvzpYMdr2/AM2e7FpMczPYEdluwM3AMXxHGzPUNbWfnSaerrmzqP4nDsTDvBxA==
 
 table@^5.2.3:
   version "5.4.6"
@@ -8608,6 +8637,15 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+
+vue-cli-plugin-single-spa@~3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/vue-cli-plugin-single-spa/-/vue-cli-plugin-single-spa-3.1.2.tgz#a26bb78ea21bd70abdc9d676745c8641d59336bd"
+  integrity sha512-SvFye3vtR7MNSQmk/Zl48g6lkwtZtdU7yPG/TerzZ5c1J3m/qBfL/ISVJYOw6jKUWo4AV5bYBAzAOLDXlfFE7A==
+  dependencies:
+    semver "^7.3.5"
+    standalone-single-spa-webpack-plugin "^3.0.0"
+    systemjs-webpack-interop "^2.3.7"
 
 vue-eslint-parser@^7.10.0:
   version "7.11.0"
