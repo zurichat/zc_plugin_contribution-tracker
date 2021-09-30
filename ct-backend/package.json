@@ -1,0 +1,14 @@
+{
+  "name": "ct-backend",
+  "version": "0.0.1",
+  "description": "a contribution tracker plugin for zuri.chat",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index"
+  },
+  "author": "team contribution tracker (vue & nodejs)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
