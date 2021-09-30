@@ -2,28 +2,50 @@
 
 ## Project setup
 
+Fork The Repo And Clone Your Fork
+
+```bash
+cd zc_plugin_contribution-tracker
 ```
-yarn install
+```bash
+git remote add upstream https://github.com/zurichat/zc_plugin_contribution-tracker
 ```
 
-### Compiles and hot-reloads for development
-
-```
-yarn serve
+```bash
+git pull upstream develop
 ```
 
-### Compiles and minifies for production
+# To view changes on your local
 
 ```
-yarn build
+yarn serve:standalone
 ```
 
-### Lints and fixes files
-
+# For every styling include the prefix
 ```
-yarn lint
+ct
+e.g class="ct-bg-blue-100 ct-px-2".
 ```
 
+# When You Make Changes 
+
+```bash
+git add .
+```
+
+```bash
+git commit -m "commit message"
+```
+```bash
+git pull upstream develop
+```
+Make Sure there is no conflict, 
+Make sure you push to develop branch -- Create a develop branch in your local
+
+```bash
+git push origin develop
+```
+Then Create Your Pull Request
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
