@@ -1,2 +1,29 @@
-# zc_plugin_contribution-tracker
-A plugin that allows you track peoples contribution to open source projects, and highlight most pressing issues
+# contribution_tracker_plugin
+
+## Project setup
+
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+
+```
+yarn build
+```
+
+### Lints and fixes files
+
+```
+yarn lint
+```
+
+### Customize configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).
