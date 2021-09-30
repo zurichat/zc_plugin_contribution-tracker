@@ -12,7 +12,7 @@ git remote add upstream https://github.com/zurichat/zc_plugin_contribution-track
 ```
 
 ```bash
-git pull upstream develop
+git pull upstream dev
 ```
 
 # To view changes on your local
@@ -37,13 +37,13 @@ git add .
 git commit -m "commit message"
 ```
 ```bash
-git pull upstream develop
+git pull upstream dev
 ```
 Make Sure there is no conflict, 
-Make sure you push to develop branch -- Create a develop branch in your local
+Make sure you push to dev branch -- Create a dev branch in your local
 
 ```bash
-git push origin develop
+git push origin dev
 ```
 Then Create Your Pull Request
 ### Customize configuration
