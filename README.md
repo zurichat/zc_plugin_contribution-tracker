@@ -40,7 +40,7 @@ git commit -m "commit message"
 git pull upstream dev
 ```
 Make Sure there is no conflict, 
-Make sure you push to dev branch -- Create a dev branch in your local
+Make sure you push to develop branch -- Create a develop branch in your local
 
 ```bash
 git push origin dev
