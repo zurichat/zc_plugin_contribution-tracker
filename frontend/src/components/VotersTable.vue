@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: 'VotersTable',
   data(){
     return {
       voters:[
