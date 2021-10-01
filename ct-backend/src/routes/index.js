@@ -1,13 +1,7 @@
-const indexRouter = require("express").Router();
-const InfoCtrl = require("../controllers/info.controller");
-const { userAuth } = require("../middlewares/auth.middleware");
+import express from 'express';
+const PluginInformationController = require("../controllers/plugin-info.controller");
+const indexRouter = express.Router();
 
-//info endpoints
-indexRouter.get("/info", InfoCtrl.getPluginInfo );
+indexRouter.get('/', PluginInformationController.getPluginInfo );
 
-//side-bar endpoints
-indexRouter.get("/sidebar", InfoCtrl.getSideBarInfo);
-
-
-// Export module
-module.exports = indexRouter;
+export default indexRouter;
