@@ -5,7 +5,19 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        primary:'#00B87C'
+        brand: {
+          green: {
+            dark: '#00B87C',
+            light: '#E1FDF4'
+          },
+          black: '#1D1C1D',
+          gray: {
+            light: {
+              1: '#616161',
+              2: '#EFEFEF'
+            }
+          }
+        },
       },
       Width: {
         '4.5': '18px',
