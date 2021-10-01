@@ -2,20 +2,25 @@
 const axios = require("axios");
 
 // Custom Modules
-const { DATABASE_CONFIG } = require("../config");
+const { DATABASE } = require("../config");
 const CustomError = require("../utils/custom-error");
 
-class ZuriDatabase {
-  constructor(collection_name, plugin_id, organization_id) {
+class DatabaseConnection {
+  // First, we set the collection to work with when starting the DB connection
+  constructor(collection_name, organisation_id) {
+    // Set Write Endpoint
+    this.DB_WRITE_URL = DATABASE.ZC_CORE_DB_WRITE;
 
-    this.DB_WRITE_URL = DATABASE_CONFIG.DB_WRITE_URL;
-    this.DB_READ_URL = DATABASE_CONFIG.DB_READ_URL;
-    this.DB_DELETE_URL = DATABASE_CONFIG.DELETE_URL;
+    // Set Read Endpoint
+    this.DB_READ_URL = DATABASE.ZC_CORE_DB_READ;
+
+    this.DB_DELETE_URL = DATABASE.DELETE_URL;
 
     // Set the default values for the DB operations
     this.DB_DEFAULTS_CONFIG = {
-      plugin_id: plugin_id,
-      organization_id: organization_id,
+      plugin_id: DATABASE.PLUGIN_ID,
+      organization_id: organisation_id,
+      // Set the name of the collection to use
       collection_name: collection_name,
       bulk_write: false,
       object_id: "",
@@ -78,6 +83,13 @@ class ZuriDatabase {
       // Return the response
       return response.data;
     } catch (error) {
+      if (
+        error.response.data.status == 404 &&
+        error.response.data.message == "collection not found"
+      ) {
+        return { data: [] };
+      }
+
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [READ ONE BY PARAMETER]: ${error}`,
         "500"
@@ -93,9 +105,20 @@ class ZuriDatabase {
         `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.organization_id}`
       );
 
+      if (response.data.data == null) {
+        return { data: [] };
+      }
+
       // Return the response
       return response.data;
     } catch (error) {
+      if (
+        error.response.data.status == 404 &&
+        error.response.data.message == "collection not found"
+      ) {
+        return { data: [] };
+      }
+
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [READ ALL]: ${error}`,
         "500"
@@ -151,4 +174,4 @@ class ZuriDatabase {
   }
 }
 
-module.exports = ZuriDatabase;
+module.exports = DatabaseConnection;
