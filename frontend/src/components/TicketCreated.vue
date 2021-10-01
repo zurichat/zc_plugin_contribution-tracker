@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for='ticket in tickets' :key="ticket.contributor" class="ct-flex ct-justify-between ct-items-center ct-px-3 ct-py-3 ct-border-b ct-border-brand-gray-light-2">
+        <div v-for='(ticket, index) in tickets' @click="selectTicket(index)" :key="index" class="ct-flex ct-justify-between ct-items-center ct-px-3 ct-py-3 ct-border-b ct-border-brand-gray-light-2">
             <div>
                 <div class="ct-font-bold">{{ ticket.name }}</div>
                 <div class="ct-text-brand-gray-light-1 ct-text-sm">{{ ticket.contributor }}</div>
@@ -15,23 +15,43 @@
 
 <script>
 export default {
-    data() {
+    computed: {
+        tickets() {
+            return this.$store.state.tickets;
+        }
+    },
+    /*data() {
         return {
             tickets: [
                 {
                     name: 'CreateTeamListView1',
-                    contributor: '#001 added by John Doe'
+                    contributor: '#001 added by John Doe',
+                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae tempore quis sunt corrupti. Perspiciatis, consectetur officiis! Perferendis molestiae dolorem sequi vitae aspernatur fugit commodi.',
+                    commit: 'http://zurichats/api/v1/deals',
+                    test: 'http://zurichats/api/v1/deals'
                 },
                 {
                     name: 'CreateTeamListView2',
-                    contributor: '#001 added by Jane Doe'
+                    contributor: '#001 added by Jane Doe',
+                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae tempore quis sunt corrupti. Perspiciatis, consectetur officiis! Perferendis molestiae dolorem sequi vitae aspernatur fugit commodi.',
+                    commit: 'http://zurichats/api/v1/deals',
+                    test: 'http://zurichats/api/v1/deals'
                 },
                 {
                     name: 'CreateTeamListView3',
-                    contributor: '#001 added by Sarah Doe'
+                    contributor: '#001 added by Sarah Doe',
+                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae tempore quis sunt corrupti. Perspiciatis, consectetur officiis! Perferendis molestiae dolorem sequi vitae aspernatur fugit commodi.',
+                    commit: 'http://zurichats/api/v1/deals',
+                    test: 'http://zurichats/api/v1/deals'
                 }
-            ]
+            ],
         }
+    },*/
+    methods: {
+       selectTicket: function(index) {
+           this.$store.commit('selectTicket', index);
+           this.$store.commit('openDescription');
+       }
     }
 }
 </script>
