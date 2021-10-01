@@ -25,17 +25,10 @@ import OngoingVoting from '@/components/OngoingVoting.vue'
 import TicketList from '@/components/TicketList'
 import TicketCreated from '@/components/TicketCreated'
 import Archived from '@/components/Archived'
-<<<<<<< HEAD
-
-export default {
-  name: 'Home',
-  components: { ComponentHeader, AddNewTicket, OngoingVoting, TicketList, TicketCreated, Archived }
-=======
 import Description from '@/components/DescriptionSection'
 
 export default {
   name: 'Home',
   components: { ComponentHeader, AddNewTicket, OngoingVoting, TicketList, TicketCreated, Archived, Description }
->>>>>>> 18020f1700d7affd8669d32558751af1ce96baa0
 }
 </script>
