@@ -1,7 +1,7 @@
 import express from 'express';
-const PluginInformationController = require("../controllers/plugin-info.controller");
+import pluginInfoController from '../controllers/info.controller'
 const indexRouter = express.Router();
 
-indexRouter.get('/', PluginInformationController.getPluginInfo );
+indexRouter.get('/', pluginInfoController.getPluginInfo);
 
 export default indexRouter;

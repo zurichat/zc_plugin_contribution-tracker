@@ -1,4 +1,8 @@
+/* eslint-disable */
+import ZuriDatabase from '../zuricore/db'
 import Response from '../utils/response'
+
+const Ticket = new ZuriDatabase('Tickets',)
 
 const ticketController = {
 	create: async (req, res, next) => {
@@ -7,22 +11,22 @@ const ticketController = {
 		} = req.body
 
 		try {
-			const savedRecord = await ticket.create({
-
+			const savedRecord = await Ticket.create({
+				//payload goes in here
 			})
 			return Response.send(
 				res,
 				201,
 				savedRecord,
-				'Deadline created successfully'
+				'Ticket created successfully'
 			)
 		} catch (error) {
 			return next(error)
 		}
 	},
-	getAll: async (req, res, next) => {
+	fetchAll: async (req, res, next) => {
 		try {
-			let data = await ticket.findAll()
+			let data = await Ticket.fetchAll()
 
 			return Response.send(
 				res,
@@ -35,13 +39,13 @@ const ticketController = {
 			return next(err)
 		}
 	},
-	getById: async (req, res, next) => {
+	fetchOne: async (req, res, next) => {
 		try {
-			const data = await ticket.findById(req.params.id)
+			const data = await Ticket.fetchOne()
 		} catch (err) {
 			return next(err)
 		}
 	},
 }
 
-export default ticketController
+export default ticketController;

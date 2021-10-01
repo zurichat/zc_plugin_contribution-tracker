@@ -1,16 +1,31 @@
-/**
- * Returns response object
- * @param {string} message Response message
- * @param {*} data Data to be returned
- * @param {boolean} success Status of the request
- */
+import StatusCodes from 'http-status-codes'
 
-function response(message, data, success) {
-  return {
-    message: formatMesaage(message),
-    data: data || null,
-    success: success == null ? true : success,
-  };
+/**
+ * Response Wrapper class.
+ *
+ * @export
+ * @class Response
+ */
+export default class Response {
+  /**
+   * construct the response object and send the response
+   *
+   * @static
+   * @param {Object} res The response object
+   * @param {number} [code=STATUS.OK] The HTTP status code
+   * @param {Object | null} [data={}] The actual data to send.
+   * @param {string|Array} [message=] A descriptive message to send with the response.
+   * @param {string} [status=OK] Set to OK for success response and ERROR for error responses
+   * @memberOf Response
+   * @returns {Object} response returned to client
+   */
+  static send(res, code = StatusCodes.OK, data, message, success = true) {
+    res.status(code).json({
+      success: success == null ? true : success,
+      message: formatMesaage(message),
+      data: data || null,
+    })
+  }
 }
 
 function formatMesaage(str) {
@@ -21,4 +36,4 @@ function formatMesaage(str) {
 }
 
 // Export Module
-module.exports = response;
+module.exports = Response;
