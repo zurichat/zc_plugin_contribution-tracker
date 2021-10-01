@@ -19,7 +19,7 @@
             </div> 
             <div>
                 <label class="ct-px-2 ct-mt-2 ct-py-1 ct-rounded-xl ct-items-center ct-inline-flex ct-bg-gray-200">
-                    <input type="checkbox" class="ct-bg-green-600 ct-rounded-md ct-h-3 ct-w-3 " checked><span class="ct-text-black ct-ml-1 ct-text-sm">3</span>
+                    <input type="checkbox" class="ct-text-green-600 ct-rounded-md ct-h-3 ct-w-3 " checked><span class="ct-text-black ct-ml-1 ct-text-sm">3</span>
                 </label>
             </div>
         </div>
