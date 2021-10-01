@@ -10,7 +10,7 @@ adminRouter.get("/voters", AdminController.getVoters );
 adminRouter.post("/voters", AdminController.addVoter );
 
 //remove voter
-adminRouter.delete("/voter/:id", AdminController.removeVoter);
+// adminRouter.delete("/voters", AdminController.removeVoter);
 
 
 // Export module
