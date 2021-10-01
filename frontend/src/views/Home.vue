@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <div class="ct-bg-green-300 ct-text-center">This is the contribution tracker app plugin</div>
-  </div>
+  <ongoing-voting> </ongoing-voting>
 </template>
 
 <script>
+import OngoingVoting from '../components/OngoingVoting.vue'
+
 
 export default {
+  components: { OngoingVoting },
   name: 'Home',
 }
 </script>
