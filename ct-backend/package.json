@@ -4,11 +4,25 @@
   "description": "a contribution tracker plugin for zuri.chat",
   "main": "index.js",
   "scripts": {
-    "dev": "node index"
+    "prestart": "babel ./src --out-dir build",
+    "start": "node ./build/bin/www",
+    "dev": "nodemon --exec babel-node ./src/bin/www"
   },
   "author": "team contribution tracker (vue & nodejs)",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.13"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/register": "^7.15.3",
+    "@babel/runtime": "^7.15.4"
   }
 }
