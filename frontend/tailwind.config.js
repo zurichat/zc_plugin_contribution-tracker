@@ -11,6 +11,7 @@ module.exports = {
             light: '#E1FDF4'
           },
           black: '#1D1C1D',
+          backdrop:'rgba(64, 79, 74, 0.5)',
           gray: {
             light: {
               1: '#616161',
