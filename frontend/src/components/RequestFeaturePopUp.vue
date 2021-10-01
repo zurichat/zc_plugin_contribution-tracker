@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="ct-absolute ct-bottom-4 ct-right-4">
-            <button @click="submit()" class="ct-bg-brand-green-dark ct-text-white hover:ct-bg-brand-grey-light-2 ct-w-40 ct-h-12 ct-p-2">Request Feature</button>
+            <button @click="submit()" class="ct-bg-brand-green-dark ct-text-white hover:ct-bg-brand-gray-light-2 ct-w-40 ct-h-12 ct-p-2">Request Feature</button>
         </div>
     </div>
   </div>
