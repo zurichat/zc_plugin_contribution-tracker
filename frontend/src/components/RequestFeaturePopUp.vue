@@ -1,5 +1,5 @@
 <template>
-  <div v-if="clicked" class="ct-fixed ct-w-screen ct-h-screen ct-backdrop-opacity-50 ct-bg-backdrop ct-z-50">
+  <div v-if="clicked" class="ct-fixed ct-w-screen ct-h-screen ct-backdrop-opacity-50 ct-bg-brand-backdrop ct-z-50">
     <div class="ct-relative ct-container ct-mx-auto ct-my-20 ct-w-1/3 ct-h-4/6 ct-bg-white ct-h-100 ct-p-5 ct-border ct-border-gray-300 ct-shadow-md ct-z-50 ct-text-black">
         <div class="ct-flex ct-z-20 ct-w-100 ct-justify-between">
         <h4 class="ct-text-xl ct-text-black ct-font-bold">Request Feature</h4>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="ct-absolute ct-bottom-4 ct-right-4">
-            <button @click="submit()" class="ct-bg-primary ct-text-white ct-w-40 ct-h-12 ct-p-2">Request Feature</button>
+            <button @click="submit()" class="ct-bg-brand-green-dark ct-text-white hover:ct-bg-brand-grey-light-2 ct-w-40 ct-h-12 ct-p-2">Request Feature</button>
         </div>
     </div>
   </div>

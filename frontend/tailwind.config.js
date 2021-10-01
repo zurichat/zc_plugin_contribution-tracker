@@ -5,15 +5,23 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        primary:'#00B87C',
-        backdrop:'rgba(64, 79, 74, 0.5)'
+        brand: {
+          green: {
+            dark: '#00B87C',
+            light: '#E1FDF4'
+          },
+          black: '#1D1C1D',
+          backdrop:'rgba(64, 79, 74, 0.5)',
+          gray: {
+            light: {
+              1: '#616161',
+              2: '#EFEFEF'
+            }
+          }
+        },
       },
-      Width: {
-        '4.5': '18px',
-        '25': '98px'
-      },
-      Height: {
-        '4.5': '18px'
+      fontFamily: {
+        'sans': ['Lato', 'sans-serif']
       }
     },
   },
