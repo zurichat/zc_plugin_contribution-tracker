@@ -67,10 +67,18 @@ class AdminController {
 
   async removeVoter (req, res, next) {
     try {
-      
-      // Just return the payload
+      const voter = await Voter.findByIdAndRemove(req.params.id)
+      if(!voter) {
+        Response.send(
+          res, 
+          404,
+          voter,
+          "Voter Not Found"
+        )
+      }
     } catch (error) {
       next(error);
+      console.log(error)
     }
   }
 }
