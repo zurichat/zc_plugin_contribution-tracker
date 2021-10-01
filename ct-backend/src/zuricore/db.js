@@ -2,20 +2,19 @@
 const axios = require("axios");
 
 // Custom Modules
-const { DATABASE_CONFIG } = require("../config");
+const { DATABASE_CONFIG, PLUGIN_ID } = require("../config");
 const CustomError = require("../utils/custom-error");
 
 class ZuriDatabase {
-  constructor(collection_name, plugin_id, organization_id) {
+  constructor(collection_name) {
 
-    this.DB_WRITE_URL = DATABASE_CONFIG.DB_WRITE_URL;
-    this.DB_READ_URL = DATABASE_CONFIG.DB_READ_URL;
+    this.DB_WRITE_URL = DATABASE_CONFIG.WRITE_URL;
+    this.DB_READ_URL = DATABASE_CONFIG.READ_URL;
     this.DB_DELETE_URL = DATABASE_CONFIG.DELETE_URL;
 
     // Set the default values for the DB operations
     this.DB_DEFAULTS_CONFIG = {
-      plugin_id: plugin_id,
-      organization_id: organization_id,
+      plugin_id: PLUGIN_ID,
       collection_name: collection_name,
       bulk_write: false,
       object_id: "",
@@ -25,9 +24,10 @@ class ZuriDatabase {
   }
 
   // Create
-  async create(payload) {
+  async create(payload, organization_id) {
     // Set the payload
     this.DB_DEFAULTS_CONFIG.payload = payload;
+    this.DB_DEFAULTS_CONFIG.organization_id = organization_id
 
     try {
       // Make the request
@@ -41,14 +41,17 @@ class ZuriDatabase {
     } catch (error) {
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [CREATE]: ${error}`,
-        "500"
+        "500",
+        error.response.data
       );
     }
   }
 
   // Fetch a single object from the DB
-  async fetchOne(object_id) {
+  async fetchOne(object_id, organization_id) {
     try {
+
+      this.DB_DEFAULTS_CONFIG.organization_id = organization_id
       // Make the request
       const response = await axios.get(
         `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.organization_id}?_id=${object_id}`
@@ -59,14 +62,17 @@ class ZuriDatabase {
     } catch (error) {
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [READ ONE]: ${error}`,
-        "500"
+        "500",
+        error.response.data
       );
     }
   }
 
   // Fetch a object by Parameter
-  async fetchByParameter(object) {
+  async fetchByParameter(object, organization_id) {
     try {
+
+      this.DB_DEFAULTS_CONFIG.organization_id = organization_id
       // Convert the object to a query string
       const query_string = new URLSearchParams(object).toString();
 
@@ -80,14 +86,17 @@ class ZuriDatabase {
     } catch (error) {
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [READ ONE BY PARAMETER]: ${error}`,
-        "500"
+        "500",
+        error.response.data
       );
     }
   }
 
   // Fetches all objects from the DB
-  async fetchAll() {
+  async fetchAll(organization_id) {
     try {
+
+      this.DB_DEFAULTS_CONFIG.organization_id = organization_id
       // Make the request
       const response = await axios.get(
         `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.organization_id}`
@@ -98,17 +107,20 @@ class ZuriDatabase {
     } catch (error) {
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [READ ALL]: ${error}`,
-        "500"
+        "500",
+        error.response.data
       );
     }
   }
 
   // Update
-  async update(object_id, payload) {
+  async update(object_id, payload, organization_id) {
     // Set the payload
     this.DB_DEFAULTS_CONFIG.payload = payload;
     // Set the ID of the object to be updated
     this.DB_DEFAULTS_CONFIG.object_id = object_id;
+
+    this.DB_DEFAULTS_CONFIG.organization_id = organization_id
     try {
       // Make the request
       const response = await axios.put(
@@ -121,17 +133,19 @@ class ZuriDatabase {
     } catch (error) {
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [UPDATE]: ${error}`,
-        "500"
+        "500",
+        error.response.data
       );
     }
   }
 
   // Delete - Not Implemented in Zuri Core API yet
-  async delete(object_id, payload) {
+  async delete(object_id, payload, organization_id) {
     // Set the payload
     this.DB_DEFAULTS_CONFIG.payload = payload;
     // Set the ID of the object to be deleted
     this.DB_DEFAULTS_CONFIG.object_id = object_id;
+    this.DB_DEFAULTS_CONFIG.organization_id = organization_id
 
     try {
       // Make the request
