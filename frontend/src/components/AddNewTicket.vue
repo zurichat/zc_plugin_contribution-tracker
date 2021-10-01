@@ -1,7 +1,7 @@
 <template>
-<div class="ct-flex ct-flex-row-reverse ct-px-4 ct-py-4">
-    <button type="submit" class=" newTicket ct-text-white">Add New Ticket</button>
-</div>
+  <div class="ct-inline-block ct-rounded-sm ct-px-4 ct-py-3 ct-bg-brand-green-dark ">
+    <button type="submit" class="ct-text-white">Add New Ticket</button>
+  </div>
 </template>
 
 <script>
@@ -11,12 +11,4 @@ export default {
 </script>
 
 <style scoped>
-
-button{
-padding: 12px 18px;
-background-color: #00B87C;
-border-radius: 3px;
-}
-
-
 </style>
