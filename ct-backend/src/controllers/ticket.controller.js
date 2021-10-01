@@ -1,3 +1,4 @@
+/* eslint-disable */
 import ZuriDatabase from '../zuricore/db'
 import Response from '../utils/response'
 
