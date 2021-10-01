@@ -1,11 +1,11 @@
 // Custom Modules
-const response = require("../utils/response");
-const CustomError = require("../utils/custom-error");
-const { DATABASE } = require("../config/index");
+import Response from '../utils/response'
+import CustomError from "../utils/custom-error"
+import { DATABASE } from "../config/index"
 
 
-class InformationController {
-  async getPluginInfo(req, res) {
+const pluginInfoController = {
+  getPluginInfo: async (req, res) => {
     try {
       let result = {
         plugin_id: "6156c5e6d56dd3c4d8a962b5",
@@ -24,7 +24,12 @@ class InformationController {
         homepage_url: "https://ct.zuri.chat/",
         install_url: "https://ct.zuri.chat/",
       };
-      res.status(200).send(response("Plugin Information Retrieved", result));
+      return Response.send(
+        res,
+        200,
+        result,
+        "Plugin Information Retrieved"
+      )
     } catch (error) {
       throw new CustomError(
         `Could not fetch plugin information: ${error}`,
@@ -32,8 +37,7 @@ class InformationController {
       );
     }
   }
-
 }
 
-// Export Module
-module.exports = new InformationController();
+
+export default pluginInfoController;
