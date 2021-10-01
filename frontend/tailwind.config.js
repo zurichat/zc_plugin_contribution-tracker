@@ -19,12 +19,8 @@ module.exports = {
           }
         },
       },
-      Width: {
-        '4.5': '18px',
-        '25': '98px'
-      },
-      Height: {
-        '4.5': '18px'
+      fontFamily: {
+        'sans': ['Lato', 'sans-serif']
       }
     },
   },
