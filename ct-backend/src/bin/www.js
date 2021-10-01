@@ -64,6 +64,7 @@ const onListening = () => {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
+  console.log(`Server started listening on http://127.0.0.1:${addr.port}`);
 };
 /**
  * Listen on provided port, on all network interfaces.
