@@ -1,13 +1,7 @@
 import express from 'express';
-
+const PluginInformationController = require("../controllers/plugin-info.controller");
 const indexRouter = express.Router();
 
-indexRouter.get('/', function(req, res, next) {
-  return res.status(200).json({ 
-  	name: "contribution tracker plugin",
-    stack: "VueJs, Tailwind & NodeJs",
-    teaam_lead: "@Phosah",
-  });
-});
+indexRouter.get('/', PluginInformationController.getPluginInfo );
 
 export default indexRouter;
