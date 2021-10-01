@@ -1,5 +1,15 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <Comments />
   </div>
 </template>
+
+<script>
+import Comments from '@/components/Comments'
+
+export default {
+  components: {
+    Comments
+  }
+}
+</script>
