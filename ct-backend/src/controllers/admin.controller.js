@@ -13,13 +13,14 @@ const AdminController = {
   async addVoter(req, res, next) {
     try {
 
-      const { first_name, last_name, email, voting_weight } = req.body;
+      const { first_name, last_name, email, user_name, voting_weight } = req.body;
       const { org_id } = req.query;
 
       const voter = await voterSchema.validateAsync({
         first_name,
         last_name,
         email,
+        user_name,
         voting_weight,
       }).catch((e) => {
         Response.send(
@@ -53,7 +54,8 @@ const AdminController = {
       const { org_id, voter_id } = req.query;
 
       const voter = {
-        voting_weight: voting_weight
+        voting_weight: voting_weight,
+        updated_at: Date.now()
       };
 
       // Save the voter to the database
@@ -94,25 +96,29 @@ const AdminController = {
   },
 
   //get a single voter
-  async getVoter (req, res, next) {
+  async getVoter(req, res, next) {
     try {
       const { org_id } = req.query;
       const { email } = req.query;
 
-      const voter = await Voter.findOne({email: email}, org_id);
+      const voter = await Voter.findOne({ email: email }, org_id);
       Response.send(
-        res, 
-        200, 
+        res,
+        200,
         voter,
         "Voter retrived succcessfully"
       )
-    } catch(error) {
+    } catch (error) {
       next(error);
     }
   },
 
   //remove a voter
+<<<<<<< HEAD
   async removeVoter (req, res, next) {
+=======
+  async removeVoter(req, res, next) {
+>>>>>>> 8e335fe76c22b23413729e25db19f0842fe94c83
     try {
       const { org_id } = req.query;
       const { email } = req.query;
