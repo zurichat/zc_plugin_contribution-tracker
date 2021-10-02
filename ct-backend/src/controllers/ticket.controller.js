@@ -57,7 +57,17 @@ const ticketController = {
 	},
 	fetchOne: async (req, res, next) => {
 		try {
-			const data = await Ticket.fetchOne()
+      const { org_id } = req.query;
+      const { ticket_id } = req.query;
+			const data = await Ticket.fetchOne({ ticket: ticket_id}, org_id)
+
+      return Response.send(
+        res, 
+        200,
+        data,
+        'Ticket retrived successfully',
+        true
+      )
 		} catch (err) {
 			return next(err)
 		}

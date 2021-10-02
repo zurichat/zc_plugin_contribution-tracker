@@ -4,6 +4,8 @@ const ticketRouter = express.Router();
 
 //get all tickets
 ticketRouter.get('/', ticketController.fetchAll)
+//get a single ticket
+ticketRouter.get('/:ticket_id', ticketController.fetchOne)
 //create ticket
 ticketRouter.post('/', ticketController.create)
 // update status
