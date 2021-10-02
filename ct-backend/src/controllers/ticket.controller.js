@@ -7,38 +7,31 @@ const Ticket = new ZuriDatabase('ct_tickets');
 
 const ticketController = {
 	create: async (req, res, next) => {
-		const {
-			title,
-			owner_id,
-			description,
-			commit_url,
-			test_url,
-		} = req.body
-		const { org_id } = req.query
 		try {
-			const newTicket = {
-				title,
-				owner_id,
-				description,
-				commit_url,
-				test_url,
-				status: "requested",
-			}
+			
+    } catch (err) {
+      return next(err);
+    }
+  },
+  
+  //get a single ticket
+  fetchOne: async (req, res, next) => {
+    const { id } = req.body;
+    const { org } = req.query;
 
-			await ticket_schema.validateAsync(newTicket);
-
-			const savedRecord = await Ticket.create(
-				newTicket, org_id)
-			return Response.send(
-				res,
-				201,
-				savedRecord,
-				'Ticket created successfully'
-			)
-		} catch (error) {
-			return next(error)
-		}
-	},
+    try {
+      const data = await Ticket.fetchOne(id, org)
+      return Response.send(
+        res,
+        200,
+        data,
+        'Ticket retrived successfully'
+      )
+    } catch (err) {
+      return next(err)
+    }
+  },
+  
 	fetchAll: async (req, res, next) => {
 		try {
 			const { org_id } = req.query
@@ -63,12 +56,11 @@ const ticketController = {
 		}
 	},
 	doUpvote: async (req, res, next) => {
-		// get id and payload from the frontend, id is the id of the current ticket, the payload will be an object containing the  vote weight user that's voting + the current value of the ticket's upvotes of the  like: payload:{total_upvotes: voter.voter_weight + ticket.total_upvotes}
+		try {
+     // get id and payload from the frontend, id is the id of the current ticket, the payload will be an object containing the  vote weight user that's voting + the current value of the ticket's upvotes of the  like: payload:{total_upvotes: voter.voter_weight + ticket.total_upvotes}
 		const { id, payload } = req.body;
 		// get org id from the query
 		const { org } = req.query;
-
-		try {
 			// update ticket
 			const data = await Ticket.update(id, payload, org);
 			// return data

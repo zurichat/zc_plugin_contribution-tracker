@@ -6,6 +6,9 @@ import { userAuth } from "../middlewares/auth.middleware"
 // retrieve voters
 adminRouter.get("/voters", AdminController.getVoters);
 
+//get single voter
+adminRouter.get('/voter/:id', AdminController.getVoter)
+
 // add voter
 adminRouter.post("/voters", AdminController.addVoter);
 
@@ -18,3 +21,4 @@ adminRouter.delete("/voters", AdminController.removeVoter);
 
 // Export module
 export default adminRouter
+
