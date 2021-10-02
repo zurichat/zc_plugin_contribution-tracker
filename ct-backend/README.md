@@ -37,19 +37,13 @@ Take note, all api endpoints in this plugin required you authenticated.
 ## EndPoints
 >Admin Endpoints
 
-| Method 	|  	| Endpoint 	| Body 	| Content Type 	|Description|
-|---	|---	|---	|---	|---	|
-| `GET` 	|  	| `api/v1/admin/voters` 	| `null` 	| `application/json` 	||
-| `GET` 	|  	| `api/admin/` 	|  	|  `application/json`	||
-| `POST` 	|  	|  `api/v1/admin/voters`	|  `{"email": String, "firstname": String, "lastname: String" "voting_weight": Number, }`|  `application/json`	|`All the fields in the body are required`|
-| `PATCH` 	|  	| `api/v1/admin/voters` 	|`{"email": String, "firstname": String}, "lastname": String, "voting_weight": Number}`  	| `application/json` 	|`Updates the voter with the id`|
-| `DELETE` 	|  	| `api/v1/admin/voters/` 	|  `null`	| `application/json` 	|||
+
 
 | Method | Endpoint   | Body | Parameter | Query | Content Type       | Description |
 | ------ | ---------- | ---- | --------- | ----- | ------------------ | ----------- |
-| `GET`  | `api/v1/admin/voters`` | null | null      | null   | `application/json` |             |
-| `POST`  | `api/v1/admin/voters`` | `{"email": String, "firstname": String, "lastname: String" "voting_weight": Number, }` | null      | null   | `application/json` |             |
-| `GET`  | `api/v1/admin/voters`` | null | null      | null   | `application/json` |             |
-| `GET`  | `api/v1/admin/voters`` | null | null      | null   | `application/json` |             |
-| `GET`  | `api/v1/admin/voters`` | null | null      | null   | `application/json` |             |
+| `GET`  | `api/v1/admin/voters` | null | null      | `org_id`   | `application/json` | `Get all voters in an organization`        |
+| `POST`  | `api/v1/admin/voters` | `{"email": String, "firstname": String, "lastname: String" "voting_weight": Number, }` | null      | null   | `application/json` | `All the fields in the body are required`          |
+| `PATCH`  | `api/v1/admin/voters` | `{"email": String, "firstname": String}, "lastname": String, "voting_weight": Number}` | null      | `voter_id`   | `application/json` |`Updates the voter with the id`            |
+| `Delete`  | `api/v1/admin/voters` | null | null      | `org_id` `voter_id`   | `application/json` |             |
+
 
