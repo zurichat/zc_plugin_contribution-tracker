@@ -1,11 +1,11 @@
 <template>
-    <div class="ct-modal ct-opacity-0 ct-pointer-events-none ct-fixed ct-z-50 ct-top-0 ct-left-0 ct-flex ct-items-center ct-justify-center">
+    <div class="ct-modal ct-fixed ct-z-50 ct-top-0 ct-left-0 ct-flex ct-items-center ct-justify-center" :class="{'ct-opacity-0': this.$store.state.addUserModalActive,'ct-pointer-events-none': this.$store.state.addUserModalActive, 'ct-modal-active': this.$store.state.addUserModalActive}">
         <div class="ct-modal-overlay ct-absolute ct-w-screen ct-h-screen ct-bg-gray-800 ct-opacity-50"></div>
         <div class="ct-card ct-bg-white ct-flex ct-flex-col ct-p-4 ct-z-50 ct-rounded ct-shadow-lg z-50">
             <div class=" ct-px-2 ct-flex ct-flex-row ct-justify-between ct-align-items ct-mt-2">
                <p class="ct-flex ct-justify-start ct-text-2xl ct-font-bold">Add User</p>
-               <div class="ct-cursor-pointer ct-flex ct-justify-end" @click="closeModal">
-                   <img src="../assets/close.png" alt="" class="ct-w-4 ct-h-4"/>
+               <div class="ct-cursor-pointer ct-flex" @click="modalControl">
+                   <img src="@/assets/closeicon.svg" alt="" class="ct-w-4 ct-h-4 ct-mt-2"/>
                </div>
             </div>
             <form class="ct-w-full ct-px-2 ct-pt-10 ct-flex ct-flex-col" @submit.prevent="AddUser()">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="ct-cursor-pointer ct-flex ct-justify-end ct-mt-4">
-                    <button type="submit" class="ct-w-36 ct-bg-green-500 ct-p-3 ct-px-4 hover:ct-bg-green-400 ct-rounded ct-text-white">Add User</button>
+                    <button type="submit" class="ct-w-36  ct-bg-green-500 ct-p-3 ct-px-4 hover:ct-bg-green-400 ct-rounded ct-text-white">Add User</button>
                 </div>
             </form>
         </div>
@@ -34,19 +34,13 @@
         name: 'AddNewUser',
 
         methods: {
-            closeModal() {
-                 this.toggleModal()
-            },
-            toggleModal() {
-                const body = document.querySelector('body');
-                const modal = document.querySelector('.ct-modal');
-                modal.classList.toggle('ct-opacity-0');
-                modal.classList.toggle('ct-pointer-events-none');
-                body.classList.toggle('ct-modal-active')
-            },
-            AddUser() {
 
+            modalControl(){
+                this.$store.commit('toggleUserModal');
             }
+        },
+        computed:{
+
         }
     }
 </script>
