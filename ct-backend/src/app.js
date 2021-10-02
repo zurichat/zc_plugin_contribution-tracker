@@ -26,9 +26,9 @@ app.use(
   })
 )
 
-app.use('/v1', indexRouter)
-app.use('/v1/admin', adminRouter)
-app.use('/v1/ticket', ticketRouter)
+app.use('/api/v1', indexRouter)
+app.use('/api/v1/admin', adminRouter)
+app.use('/api/v1/ticket', ticketRouter)
 
 app.use(handleErrors)
 
