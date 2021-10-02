@@ -1,6 +1,8 @@
 <template>
-    <div class="ct-w-96" v-if="description">
-        <div class="ct-bg-brand-green-dark ct-text-white ct-p-4 ct-flex ct-items-center ct-justify-between">
+    <div class="container mx-auto ct-h-screen ct-w-96 ct-bg-brand-gray-light-4 ct-pl-2" v-if="description">
+        <!-- small gray separation -->
+        <div class="ct-bg-white">
+            <div class="ct-bg-brand-green-dark ct-text-white ct-p-3 ct-flex ct-items-center ct-justify-between">
             <div class="ct-flex">
                 <h4 class="ct-mr-2 ct-font-bold">Description</h4>
                 <h6 class="ct-font-light">#Contribution-Tracker</h6>
@@ -25,25 +27,27 @@
                     <p>3 votes</p>
                 </div>
             </div>
-            <div class="ct-mt-5">
+            <div class="ct-mt-5 ct-text-justify">
                 <h4 class="ct-font-semibold">Description</h4>
                 <p class="ct-mt-3">{{ selectedTicket.description }}</p>
             </div>
             <div class="ct-mt-8">
                 <div>
-                    <span>Commit Link: </span>
-                    <span class="ct-text-brand-green-dark"><a :href="selectedTicket.commit" target="_blank">{{ selectedTicket.commit }}</a></span>
+                    <p class="ct-text-left">Commit Link: </p>
+                    <p class="ct-text-brand-green-dark ct-text-justify"><a :href="selectedTicket.commit" target="_blank">{{ selectedTicket.commit }}</a></p>
                 </div>
-                <div class="ct-mt-4">
-                    <span>Test Link: </span>
-                    <span class="ct-text-green-500"><a :href="selectedTicket.test" target="_blank">{{ selectedTicket.test }}</a></span>
+                <div class="ct-mt-4 testdiv">
+                    <p>Test Link: </p>
+                    <a class="ct-text-green-500 test" :href="selectedTicket.test" target="_blank">{{ selectedTicket.test }}</a>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </template>
 
 <script>
+
 export default {
     computed: {
         selectedTicket() {
