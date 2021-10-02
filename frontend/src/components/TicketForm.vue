@@ -3,7 +3,7 @@
         <div class="ct-modal-overlay ct-absolute ct-w-screen ct-h-screen ct-bg-gray-800 ct-opacity-50"></div>
         <div class="ct-form1 ct-bg-white ct-flex ct-flex-col ct-p-4 ct-z-50 ct-rounded ct-shadow-lg z-50">
             <div class=" " style="display:flex; justify-content:space-between">
-               <h1 class=" hello1  ">Add new Ticket</h1>
+               <h1 class=" hello1  ">Add New Ticket</h1>
                <div class="ct-cursor-pointer " @click="modalControl">
                     <button class=" hello2 ct-mr-3 ct-mt-2">&#x2715;</button>
                </div>
@@ -26,7 +26,6 @@
                 <p class="tet4 ct-text-sm ct-font-bold">Text Link</p>
                 <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3" >
             </div>
-                    
                 </div>
                 <div class="ct-cursor-pointer ct-flex ct-justify-end ct-mt-4">
                     <button type="submit" class="ct-w-36  ct-bg-green-500 ct-p-3 ct-px-4 hover:ct-bg-green-400 ct-rounded ct-text-white">Add New Ticket</button>
