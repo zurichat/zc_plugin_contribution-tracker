@@ -1,8 +1,8 @@
 <template>
-  <div v-if="clicked" class="ct-fixed ct-w-screen ct-h-screen ct-backdrop-opacity-50 ct-bg-brand-backdrop ct-z-50">
+  <div v-if="clicked" class="ct-fixed ct-w-screen ct-h-screen ct-backdrop-opacity-50 ct-inset-0 ct-bg-brand-backdrop ct-z-50">
     <div class="ct-relative ct-container ct-mx-auto ct-my-20 ct-w-1/3 ct-h-4/6 ct-bg-white ct-h-100 ct-p-5 ct-border ct-border-gray-300 ct-shadow-md ct-z-50 ct-text-black">
         <div class="ct-flex ct-z-20 ct-w-100 ct-justify-between">
-        <h4 class="ct-text-xl ct-text-black ct-font-bold">Request Feature</h4>
+        <h4 class="ct-text-xl ct-text-black ct-font-bold" >Request Feature</h4>
         <button @click="clicked = false" class="ct-text-2xl ct-font-light"> x
         </button>
         </div>
