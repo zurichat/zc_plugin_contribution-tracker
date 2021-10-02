@@ -39,10 +39,6 @@
 </template>
 <script>
 // using axios to post the data from the form to the url
-import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-Vue.use(VueAxios, axios)
 // script code for the onclick function to close the add new task form
     export default {
         name: 'FormTicket',
@@ -59,10 +55,9 @@ Vue.use(VueAxios, axios)
         },
         methods:{
             AddTicket(e){
-                this.axios.post("", this.postTicket)
+                this.post("http://localhost:8081/v1/api/tickets", this.postTicket)
                 .then((result)=>{
                     console.warn(result)
-
                 })
                 e.preventDefault();
             }
