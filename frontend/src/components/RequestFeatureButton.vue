@@ -50,6 +50,7 @@ export default {
                 requestName: this.input1,
                 votingTime: this.input2
               }
+                 this.showError = false
             this.clicked = false;
           }else{
               this.showError = true
