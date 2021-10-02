@@ -4,10 +4,11 @@
       <div class="ct-mb-8">
         <ComponentHeader />
       </div>
-      <div class="ct-flex ct-justify-end ct-mb-10 ct-mr-3">
+      <div class="ct-flex ct-justify-end ct-mb-8 ct-mr-4">
         <AddUser />
       </div>
-        <OngoingVoting />
+        <ContributionNavbar />
+        <AdminNav />
         <VotersTable />        
     </div>
   </div>
@@ -16,11 +17,18 @@
 <script>
 import ComponentHeader from '@/components/ComponentHeader'
 import AddUser from '@/components/AddUser'
-import OngoingVoting from '@/components/OngoingVoting.vue'
+import ContributionNavbar from '@/components/ContributionNavbar.vue'
+import AdminNav from '@/components/AdminNav.vue'
 import VotersTable from '@/components/VotersTable.vue'
 
 export default {
-  name: 'Home',
-  components: { ComponentHeader, AddUser, OngoingVoting, VotersTable }
+    name: 'Home',
+    components: { 
+        ComponentHeader, 
+        AddUser, 
+        ContributionNavbar, 
+        AdminNav, 
+        VotersTable 
+    }
 }
 </script>
