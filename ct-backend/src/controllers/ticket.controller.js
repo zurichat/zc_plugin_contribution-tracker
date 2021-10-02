@@ -1,7 +1,8 @@
+/* eslint-disable */
 import ZuriDatabase from '../zuricore/db'
 import Response from '../utils/response'
 
-const Ticket = new ZuriDatabase('Tickets',)
+const Ticket = new ZuriDatabase('Tickets')
 
 const ticketController = {
 	create: async (req, res, next) => {
@@ -25,7 +26,9 @@ const ticketController = {
 	},
 	fetchAll: async (req, res, next) => {
 		try {
-			let data = await Ticket.fetchAll()
+
+			const { org } = req.query;
+			let data = await Ticket.fetchAll(org)
 
 			return Response.send(
 				res,

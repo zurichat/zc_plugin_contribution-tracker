@@ -1,19 +1,19 @@
 <template>
   <div>
-    <p class="ct-p-4 ct-font-bold">CreateTeamListView1</p>
-    <table class="ct-table-fixed voters-table">
+    <p class="ct-p-3 ct-font-bold ct-text-brand-black">CreateTeamListView1</p>
+    <table class="ct-table-fixed ct-w-full ct-text-center ct-text-brand-black">
       <thead>
-        <tr class="ct-bg-green-100">
-          <th class="ct-w-1/3 ct-p-3.5 ct-font-normal">Voters</th>
-          <th class="ct-w-1/3 ct-p-3.5 ct-font-normal">Voting Weight</th>
-          <th class="ct-w-1/3 ct-p-3.5 ct-font-normal">Calculated Voting Weight(%)</th>
+        <tr class="ct-bg-brand-green-light ct-font-medium">
+          <th class="ct-p-3">Voters</th>
+          <th class="ct-p-3">Voting Weight</th>
+          <th class="ct-p-3">Calculated Voting Weight(%)</th>
         </tr>
       </thead>
       <tbody v-for="(voter, i) in voters" :key="i">
-        <tr class="ct-border-b">
+        <tr class="ct-border-b ct-font-medium">
           <td class="voters-td ct-p-3">{{voter.name}}</td>
           <td class="voters-td ct-p-3">0{{voter.voting_weight}}</td>
-          <td class="voters-td ct-p-3 ct-text-gray-400">{{((voter.voting_weight/sumVotingWeights())*100).toFixed(0)}}%</td>
+          <td class="voters-td ct-p-3 ct-text-brand-gray-light-3">{{((voter.voting_weight/sumVotingWeights())*100).toFixed(0)}}%</td>
         </tr>
       </tbody>
     </table>
@@ -53,14 +53,4 @@ export default {
 </script>
 
 <style scoped>
-  .voters-td {
-    text-align:center
-  }
-  .voters-table{
-    font-family: Lato;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-    line-height: 18px;
-  }
 </style>
