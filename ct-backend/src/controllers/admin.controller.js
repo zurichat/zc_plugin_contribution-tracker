@@ -84,7 +84,12 @@ const AdminController = {
         "Voters retrieved successfully"
       )
     } catch (error) {
-      next(error);
+      Response.send(
+        res,
+        422,
+        error,
+        error.message
+      )
     }
   },
 

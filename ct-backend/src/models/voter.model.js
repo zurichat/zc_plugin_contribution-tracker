@@ -3,7 +3,7 @@ const Joi = require("joi");
 
 // Voter Schema
 const voter_schema = Joi.object({
- 
+
   //voter email   
   email: Joi.string().required(),
 
@@ -21,8 +21,8 @@ const voter_schema = Joi.object({
   // updated at
   updated_at: Joi.date().allow(null),
 
-  
-  
+
+
 });
 
 module.exports = voter_schema;

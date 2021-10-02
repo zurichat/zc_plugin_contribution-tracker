@@ -4,9 +4,9 @@
     Written By: Bajomo Kehinde, 1st October 2021
 * */
 import CustomError from "../utils/custom-error"
-import { PLUGIN_ID } from "../config";
-const sidebarController = {
+import { PLUGIN_ID } from "../config"
 
+const sidebarController = {
   async getSideBarInfo(req, res) {
     try {
       const { user, org_id } = req.query;

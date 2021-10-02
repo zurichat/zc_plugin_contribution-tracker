@@ -22,11 +22,13 @@ const ticket_schema = Joi.object({
   status: Joi.string().trim().default('requested').valid('requested', 'completed', 'archived').allow(null).label('status'), // requested/created = 0,  completed = 1, archived = 2
 
   //vote count
-  upvote: Joi.number().default(0).label('upvote').allow(null),
-  downvote: Joi.number().default(0).label('downvote').allow(null),
+  total_upvotes: Joi.number().default(0).label('total_upvotes').allow(null),
+  total_downvotes: Joi.number().default(0).label('total_downvotes').allow(null),
+
   //time created
   created_at: Joi.date().default(Date.now).allow(null).label('created_at'),
   updated_at: Joi.date().allow(null).label('updated_at'),
 });
 
 export default ticket_schema
+

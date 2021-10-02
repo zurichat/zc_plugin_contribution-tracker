@@ -1,4 +1,4 @@
-export default class CustomError extends Error {
+class CustomError extends Error {
   /**
    * Create custom error
    *
@@ -12,3 +12,6 @@ export default class CustomError extends Error {
     this.trace = trace;
   }
 }
+
+// Export Module
+module.exports = CustomError;
