@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapActions } from 'vuex'
     export default {
         name: 'AddNewUser',
         data() {
@@ -42,20 +42,21 @@ import axios from 'axios';
           }
         },
         methods: {
+            ...mapActions([
+                'addUser'
+            ]),
             modalControl(){
                 this.$store.commit('toggleUserModal');
             },
             async AddUser() {
-                let config = {
-                    headers: {
-                    'Content-Type': 'application/json'
-                    }
-                }
                 try {
                     let user_name = this.data.username
                     let voting_weight = this.data.votingweight
-                    let response = await axios.post('http://127.0.0.1:4400/v1/admin/voters', {user_name, voting_weight}, config);
-                    console.log(response)
+                    const payload = {
+                        user_name,
+                        voting_weight
+                    }
+                    this.addUser(payload)
                 } catch (err) {
                     console.log(err)
                 }
