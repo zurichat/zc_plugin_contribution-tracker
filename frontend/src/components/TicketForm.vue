@@ -2,7 +2,7 @@
     <div class="ct-modal ct-fixed ct-z-50 ct-top-0 ct-left-0 ct-flex ct-items-center ct-justify-center" :class="{'ct-opacity-0': this.$store.state.addUserModalActive,'ct-pointer-events-none': this.$store.state.addUserModalActive, 'ct-modal-active': this.$store.state.addUserModalActive}">
         <div class="ct-modal-overlay ct-absolute ct-w-screen ct-h-screen ct-bg-gray-800 ct-opacity-50"></div>
         <div class="ct-form1 ct-bg-white ct-flex ct-flex-col ct-p-4 ct-z-50 ct-rounded ct-shadow-lg z-50">
-            <div class="tet2">
+            <div class="tet3">
                <h1 class=" hello1  ">Add New Ticket</h1>
                <div class="ct-cursor-pointer " @click="modalControl">
                     <button class=" hello2 ct-mr-3 ct-mt-2">&#x2715;</button>
@@ -66,7 +66,7 @@
 .hello2{
 font-size: 20px;
 }
-.tet2{
+.tet3{
     display: flex;
     justify-content: space-between;
 }
