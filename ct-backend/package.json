@@ -9,7 +9,7 @@
     "server": "node ./build/bin/www",
     "dev": "nodemon --exec babel-node ./src/bin/www",
     "prod": "yarn build && yarn server",
-    "transpile":"babel ./src --out-dir build",
+    "transpile": "babel ./src --out-dir build",
     "lint": "eslint src/",
     "clean": "rimraf build"
   },
@@ -19,6 +19,7 @@
     "axios": "^0.22.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "http-status-codes": "^2.1.4",
     "joi": "^17.4.2",
