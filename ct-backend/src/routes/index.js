@@ -11,6 +11,6 @@ indexRouter.put("/tickets/upvote", ticketController.doUpvote);
 //downvote
 indexRouter.put("/tickets/downvote", ticketController.doDownvote);
 // update test url
-indexRouter.put("/tickets/downvote", ticketController.doDownvote);
+indexRouter.put("/tickets/downvote", ticketController.updateTestUrl);
 
 export default indexRouter;
