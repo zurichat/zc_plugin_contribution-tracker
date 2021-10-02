@@ -9,13 +9,8 @@
         <AddUser />
       </div>
         <ContributionNavbar />
-<<<<<<< HEAD
-        <AdminNav />
-        <VotersTable />
-=======
         <AdminTab />
-        <VotersTable />        
->>>>>>> 33668c3e1e77b2c234371ab5c3ac062435a356c8
+        <VotersTable />
     </div>
   </div>
 </template>
@@ -30,24 +25,14 @@ import AddNewUser from '@/components/AddNewUser.vue';
 
 export default {
     name: 'Home',
-<<<<<<< HEAD
     components: {
         ComponentHeader,
         AddUser,
         ContributionNavbar,
-        AdminNav,
-        VotersTable
-    }
-=======
-    components: { 
-        ComponentHeader, 
-        AddUser, 
-        ContributionNavbar, 
-        AdminTab, 
+        AdminTab,
         VotersTable,
         AddNewUser,
     },
-    
->>>>>>> 33668c3e1e77b2c234371ab5c3ac062435a356c8
+
 }
 </script>

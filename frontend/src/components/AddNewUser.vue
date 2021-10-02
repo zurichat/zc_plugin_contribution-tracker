@@ -12,13 +12,13 @@
                 <div class="ct-mb-20">
                     <div class="ct-flex ct-flex-col ct-mb-4">
                         <label class="ct-font-bold ct-mb-2" for="username">Username</label>
-                        <input type="text" name="username" class="ct-shadow ct-appearance-none ct-w-full ct-bg-white ct-text-gray-700 ct-border ct-border-gray-500 ct-rounded ct-py-3 ct-px-4 ct-mb-3 ct-focus:outline-none ct-focus:bg-white" id="username">
+                        <input type="text" name="username" class="ct-shadow ct-appearance-none ct-w-full ct-bg-white ct-text-gray-700 ct-border ct-border-gray-500 ct-rounded ct-py-3 ct-px-4 ct-mb-3 ct-focus:outline-none ct-focus:bg-white" id="username" v-model="data.username">
                     </div>
                     <div class="ct-flex ct-flex-col">
                         <div class="ct-mb-2">
                             <label class="ct-font-bold" for="voting">Voting Weight </label><span>(between 1 & 10)</span>
                         </div>
-                        <input type="text" name="voting" class="ct-shadow ct-appearance-none ct-w-full ct-bg-white ct-text-gray-700 ct-border ct-border-gray-500 ct-rounded ct-py-3 ct-px-4 ct-mb-3 ct-focus:outline-none ct-focus:bg-white" id="voting">
+                        <input type="text" name="votingweight" class="ct-shadow ct-appearance-none ct-w-full ct-bg-white ct-text-gray-700 ct-border ct-border-gray-500 ct-rounded ct-py-3 ct-px-4 ct-mb-3 ct-focus:outline-none ct-focus:bg-white" id="votingweight" v-model="data.votingweight">
                     </div>
                 </div>
                 <div class="ct-cursor-pointer ct-flex ct-justify-end ct-mt-4">
@@ -30,12 +30,36 @@
 </template>
 
 <script>
+import axios from 'axios';
     export default {
         name: 'AddNewUser',
+        data() {
+          return {
+            data: {
+              username: '',
+              votingweight: ''
+            }
+          }
+        },
         methods: {
             modalControl(){
                 this.$store.commit('toggleUserModal');
             },
+            async AddUser() {
+                let config = {
+                    headers: {
+                    'Content-Type': 'application/json'
+                    }
+                }
+                try {
+                    let user_name = this.data.username
+                    let voting_weight = this.data.votingweight
+                    let response = await axios.post('http://127.0.0.1:4400/v1/admin/voters', {user_name, voting_weight}, config);
+                    console.log(response)
+                } catch (err) {
+                    console.log(err)
+                }
+            }
         },
         computed:{
         },
