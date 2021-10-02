@@ -1,5 +1,5 @@
 <template>
-  <div class="ct-flex">
+  <div class="ct-flex ct-w-100 ct-h-screen ct-gap-2">
     <div class="ct-flex-grow">
       <div class="ct-mb-8">
         <ComponentHeader />
@@ -8,9 +8,13 @@
         <RequestFeatureButton />
       </div>
         <ContributionNavbar />
-        <RequestedFeatures />      
+        <RequestedFeatures @click="toggleSidebar" />      
+    </div>
+    <div :class="toggleSidebarState? 'ct-hidden' : 'ct-w-1/3' ">
+      <TicketDescriptionSidebar/>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -18,9 +22,22 @@ import ComponentHeader from '@/components/ComponentHeader'
 import RequestedFeatures from '@/components/RequestedFeatures'
 import RequestFeatureButton from '@/components/RequestFeatureButton'
 import ContributionNavbar from '@/components/ContributionNavbar.vue'
+import TicketDescriptionSidebar from '../components/TicketDescriptionSidebar.vue'
+import { provide, ref } from '@vue/runtime-core'
 
 export default {
   name: 'RequestFeature',
-  components: { ComponentHeader, RequestedFeatures, RequestFeatureButton, ContributionNavbar }
+  components: { ComponentHeader, RequestedFeatures, RequestFeatureButton, ContributionNavbar, TicketDescriptionSidebar },
+  setup(){
+    const toggleSidebarState = ref(false);
+    const toggleSidebar = () => {
+      toggleSidebarState.value = !toggleSidebarState.value;
+    };
+    provide('toggleSidebar', toggleSidebar)
+    return {
+      toggleSidebar,
+      toggleSidebarState,
+    }
+  }
 }
 </script>

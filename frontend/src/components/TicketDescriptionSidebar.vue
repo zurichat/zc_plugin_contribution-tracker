@@ -1,25 +1,9 @@
 <template>
   <div>
-    <!-- TRY TO TEST IN THE ABOUT PAGE  -->
-    <div class="ct-flex ct-w-100 ct-h-screen ct-bg-red-500">
-      <!-- BUTTON TO TOGGLE SIDEBAR -->
-      <button class="ct-bg-blue-600 ct-p-3 ct-text-white ct-fixed ct-left-1 ct-top-1 ct-ring-4" @click="toggleSidebar">Toggle</button>
-      <!-- CAN REMOVE BUTTON AFTER TESTING  -->
-      <!-- DUMMY MAIN PAGE TO TEST -->
-      <div class="ct-bg-gray-600 ct-p-2" :class="toggleSidebarState? 'ct-w-full' : 'ct-w-3/4' "></div>
+      <!-- <div class="ct-bg-gray-600 ct-p-2" :class="toggleSidebarState? 'ct-w-full' : 'ct-w-3/4' "></div> -->
       <!-- SIDEBAR -->
-      <div class="sidebar ct-overflow-y-scroll ct-bg-white" :class="toggleSidebarState? 'ct-w-0' : 'ct-w-1/4' ">
-        <div
-          class="
-            toolbar
-            ct-bg-brand-green-dark
-            ct-h-12
-            ct-flex
-            ct-justify-between
-            ct-items-center
-            ct-px-4
-          "
-        >
+      <div class="sidebar ct-relative ct-bg-white ct-w-full ct-h-full">
+        <div class="toolbar ct-bg-brand-green-dark ct-h-12 ct-flex ct-justify-between ct-items-center ct-px-4 " >
           <div class="toolbar-title ct-flex ct-items-center">
             <p class="ct-font-semibold ct-text-xl ct-text-white ct-pr-2">
               Description
@@ -44,7 +28,7 @@
             <hr class="ct-w-8/12" />
           </span>
           <!-- MESSAGE BODY -->
-          <div class="message-body ct-mb-2">
+          <div class="message-body ct-mb-2 ct-overflow-y-scroll ct-h-86">
             <div
               class="message ct-flex ct-w-full ct-mb-3"
               v-for="(message, i) in messages"
@@ -199,13 +183,13 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 </template>
 <script>
-import { computed, reactive, ref } from "vue";
+import { computed, inject, reactive } from "vue";
 export default {
   name: "TicketDescriptionComment",
+  props: [],
   setup() {
     const messages = reactive([
       {
@@ -221,27 +205,32 @@ export default {
         userImage: "user2",
       },
       {
+        userName: "Mary Jane",
+        message:
+          "I can do it. I have fixed something similar for my team and i did it in a very short time frame. If given the opportunity, I promise not to dissapoint. Let me at it!",
+        userImage: "user2",
+      },
+      {
         userName: "Deyrin Cutting",
         message:
           "I can do it. I have fixed something similar for my team and i did it in a very short time frame. If given the opportunity, I promise not to dissapoint. Let me at it!",
         userImage: "user3",
       },
     ]);
-    const toggleSidebarState = ref(false);
-    const toggleSidebar = () => {
-      toggleSidebarState.value = !toggleSidebarState.value;
-    };
     const messageCount = computed(() => {
       return messages.length
     })
+    const toggleSidebar = inject('toggleSidebar')
     return {
       messages,
-      toggleSidebar,
-      toggleSidebarState,
       messageCount,
+      toggleSidebar
     };
   },
 };
 </script>
 <style scoped>
+.ct-h-86{
+  height: 22rem;
+}
 </style>
