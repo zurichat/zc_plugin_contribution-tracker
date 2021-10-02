@@ -1,14 +1,14 @@
 <template>
     <div>
-        <div class="ct-p-4 ct-text-black  ">
-            <button class="ct-p-4 ct-px-6 hover:ct-bg-green-200 ct-rounded ct-text-white">Add New</button>
+        <div class="ct-text-black  ">
+            <button class="ct-py-3 ct-px-4 hover:ct-bg-green-200 ct-rounded ct-text-white">Request Feature</button>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "AddNew",
+    name: "RequesFeatureButton",
     data(){
         return{
 

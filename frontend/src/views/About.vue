@@ -1,15 +1,22 @@
 <template>
   <div class="about">
-    <Comments />
+
+
+
+    <h1>This is an about page</h1>
+    <!-- <Description /> -->
+    <AdminTab />
+
   </div>
 </template>
 
-<script>
-import Comments from '@/components/Comments'
 
+
+<script>
+import AdminTab from '@/components/AdminTab'
+// import Description from '@/components/DescriptionSection'
 export default {
-  components: {
-    Comments
-  }
+  components: {AdminTab, }
 }
 </script>
+
