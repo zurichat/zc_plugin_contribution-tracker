@@ -49,7 +49,7 @@ class AdminController {
     }
   }
 
-
+  //get all voters
   async getVoters (req, res, next) {
     try {
       const { org } = req.query;
@@ -65,10 +65,32 @@ class AdminController {
     }
   }
 
+  //get a single voter
+  async getVoter (req, res, next) {
+    try {
+      const voter = await Voter.findById(req.params.id)
+      Response.send(
+        res, 
+        200, 
+        voter
+      )
+    } catch(error) {
+      next(error);
+    }
+  }
+
+  //remove a voter
   async removeVoter (req, res, next) {
     try {
-      
-      // Just return the payload
+      const voter = await Voter.findByIdAndRemove(req.params.id)
+      if (!voter) {
+        Response.send(
+          res,
+          404,
+          voter,
+          "Voter Not Found"
+        )
+      }
     } catch (error) {
       next(error);
     }
