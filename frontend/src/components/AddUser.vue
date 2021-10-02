@@ -9,8 +9,8 @@ export default {
   methods: {
         toggleModal() {
             this.$store.commit('toggleUserModal');
-        }
-    }
+        },
+    },
 }
 </script>
 <style scoped>

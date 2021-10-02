@@ -32,16 +32,13 @@
 <script>
     export default {
         name: 'AddNewUser',
-
         methods: {
-
             modalControl(){
                 this.$store.commit('toggleUserModal');
-            }
+            },
         },
         computed:{
-
-        }
+        },
     }
 </script>
 

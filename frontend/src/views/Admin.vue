@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import ComponentHeader from '@/components/ComponentHeader'
-import AddUser from '@/components/AddUser'
-import ContributionNavbar from '@/components/ContributionNavbar.vue'
-import AdminTab from '@/components/AdminTab.vue'
-import VotersTable from '@/components/VotersTable.vue'
-import AddNewUser from '@/components/AddNewUser.vue'
+import ComponentHeader from '@/components/ComponentHeader';
+import AddUser from '@/components/AddUser';
+import ContributionNavbar from '@/components/ContributionNavbar.vue';
+import AdminTab from '@/components/AdminTab.vue';
+import VotersTable from '@/components/VotersTable.vue';
+import AddNewUser from '@/components/AddNewUser.vue';
 
 export default {
     name: 'Home',
@@ -31,7 +31,7 @@ export default {
         ContributionNavbar, 
         AdminTab, 
         VotersTable,
-        AddNewUser
+        AddNewUser,
     },
     
 }
