@@ -11,7 +11,7 @@ module.exports = {
   },
 
   // Get Our PluginID from ENV or use the test_id
-  PLUGIN_ID: process.env.PLUGIN_ID || "6156a9f75552d612abe12459",
+  PLUGIN_ID: process.env.PLUGIN_ID || "6156c5e6d56dd3c4d8a962b5",
   // Get Our PluginID from ENV or use the test_id
   ORGANISATION_ID: process.env.ORGANISATION_ID || "614679ee1a5607b13c00bcb7",
 
