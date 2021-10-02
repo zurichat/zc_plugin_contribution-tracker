@@ -1,54 +1,34 @@
 // Package Modules
-const Joi = require("joi");
+import Joi from 'joi'
 
-// Game Schema
+// Ticket Schema
 const ticket_schema = Joi.object({
   // ticket title
-  name: Joi.string().required(),
+  title: Joi.string().trim().required().label('title'),
 
-  // Game Owner
-  owner: Joi.object({
-    user_id: Joi.string().required(),
-    user_name: Joi.string().required(),
-    image_url: Joi.string(),
-  }).required(),
+  // Ticket Owner
+  owner_id: Joi.string().trim().required().label('owner_id'),
 
   //ticket description
-  description: Joi.string().required(),
+  description: Joi.string().trim().required().label('description'),
 
   //commit url
-  commit_url: Joi.string().required(),
+  commit_url: Joi.string().trim().uri().label('commit_url'),
 
   //test url
-  test_url: Joi.string().required(),
+  test_url: Joi.string().trim().uri().label('test_url'),
 
   // ticket status
-  status: Joi.number().required(), // requested/created = 0, running/ongoing = 1, completed = 2
+  status: Joi.string().trim().default('requested').valid('requested', 'completed', 'archived').allow(null).label('status'), // requested/created = 0,  completed = 1, archived = 2
+
+  //vote count
+  total_upvotes: Joi.number().default(0).label('total_upvotes').allow(null),
+  total_downvotes: Joi.number().default(0).label('total_downvotes').allow(null),
 
   //time created
-  created_at: Joi.date().default(Date.now).allow(null),
-
-  // messages
-  messages: Joi.array()
-    .items(
-      Joi.object({
-        user_name: Joi.string().required(),
-        text: Joi.string().required(),
-        image_url: Joi.string(),
-      })
-    )
-    .allow(null),
-
-  // game spectators
-  reactions: Joi.array()
-    .items(
-      Joi.object({
-        user_id: Joi.string().required(),
-        user_name: Joi.string().required(),
-        emoji: Joi.string(),
-      })
-    )
-    .allow(null),
+  created_at: Joi.date().default(Date.now).allow(null).label('created_at'),
+  updated_at: Joi.date().allow(null).label('updated_at'),
 });
 
-module.exports = ticket_schema;
+export default ticket_schema
+

@@ -12,20 +12,17 @@ module.exports = {
 
   // Get Our PluginID from ENV or use the test_id
   PLUGIN_ID: process.env.PLUGIN_ID || "6156a9f75552d612abe12459",
-    // Get Our PluginID from ENV or use the test_id
+  // Get Our PluginID from ENV or use the test_id
   ORGANISATION_ID: process.env.ORGANISATION_ID || "614679ee1a5607b13c00bcb7",
 
   // Fetch user zc_core endpoint
   USER_URL: "https://api.zuri.chat/users/",
 
-   // Cetrifugo Credentials
+  // Cetrifugo Credentials
   SOCKER_KEY:
     process.env.SOCKER_TOKEN || "",
   // process.env.SOCKER_TOKEN || "12a0bbf4-d29b-441d-8e31-bd4634dc8919",
   SOCKET_URL: process.env.SOCKET_URL || "https://realtime.zuri.chat/api",
   // SOCKET_URL: process.env.SOCKET_URL || "http://localhost:8000/api",
-
-  // Fetch user zc_core endpoint
-  USER_URL: "https://api.zuri.chat/users/",
 
 };
