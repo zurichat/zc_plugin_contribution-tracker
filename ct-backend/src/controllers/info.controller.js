@@ -1,8 +1,6 @@
 // Custom Modules
 import Response from '../utils/response'
 import CustomError from "../utils/custom-error"
-import { DATABASE } from "../config/index"
-
 
 const pluginInfoController = {
   getPluginInfo: async (req, res) => {

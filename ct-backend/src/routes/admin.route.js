@@ -1,13 +1,13 @@
 const adminRouter = require("express").Router();
-const AdminController = require("../controllers/admin.controller");
-const { userAuth } = require("../middlewares/auth.middleware");
+import AdminController from "../controllers/admin.controller"
+import { userAuth } from "../middlewares/auth.middleware"
 
 
 // retrieve voters
-adminRouter.get("/voters", AdminController.getVoters );
+adminRouter.get("/voters", AdminController.getVoters);
 
 // add voter
-adminRouter.post("/voters", AdminController.addVoter );
+adminRouter.post("/voters", AdminController.addVoter);
 
 //update voter
 adminRouter.patch("/voters", AdminController.updateVoter);
@@ -17,4 +17,4 @@ adminRouter.delete("/voters", AdminController.removeVoter);
 
 
 // Export module
-module.exports = adminRouter;
+export default adminRouter
