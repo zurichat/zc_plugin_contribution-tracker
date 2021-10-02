@@ -14,7 +14,7 @@
 <script>
 
 export default {
-     name: 'AdminNav',
+     name: 'AdminTab',
   data(){
     return {
     }

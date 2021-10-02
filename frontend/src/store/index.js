@@ -26,7 +26,8 @@ export default createStore({
       }
     ],
     selectedTicket: [],
-    description: false
+    description: false,
+    addUserModalActive: true,
   },
   mutations: {
     selectTicket: (state, index) => {
@@ -37,6 +38,9 @@ export default createStore({
     },
     closeDescription: state => {
       state.description = false
+    },
+    toggleUserModal: state => {
+      state.addUserModalActive =! state.addUserModalActive
     }
   },
   actions: {

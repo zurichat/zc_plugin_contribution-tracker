@@ -1,5 +1,6 @@
 <template>
   <div class="ct-flex">
+    <AddNewUser @click="toggleModal"/>
     <div class="ct-flex-grow">
       <div class="ct-mb-8">
         <ComponentHeader />
@@ -8,18 +9,19 @@
         <AddUser />
       </div>
         <ContributionNavbar />
-        <AdminNav />
+        <AdminTab />
         <VotersTable />        
     </div>
   </div>
 </template>
 
 <script>
-import ComponentHeader from '@/components/ComponentHeader'
-import AddUser from '@/components/AddUser'
-import ContributionNavbar from '@/components/ContributionNavbar.vue'
-import AdminNav from '@/components/AdminNav.vue'
-import VotersTable from '@/components/VotersTable.vue'
+import ComponentHeader from '@/components/ComponentHeader';
+import AddUser from '@/components/AddUser';
+import ContributionNavbar from '@/components/ContributionNavbar.vue';
+import AdminTab from '@/components/AdminTab.vue';
+import VotersTable from '@/components/VotersTable.vue';
+import AddNewUser from '@/components/AddNewUser.vue';
 
 export default {
     name: 'Home',
@@ -27,8 +29,10 @@ export default {
         ComponentHeader, 
         AddUser, 
         ContributionNavbar, 
-        AdminNav, 
-        VotersTable 
-    }
+        AdminTab, 
+        VotersTable,
+        AddNewUser,
+    },
+    
 }
 </script>
