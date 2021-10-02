@@ -2,7 +2,7 @@
 import ZuriDatabase from '../zuricore/db'
 import Response from '../utils/response'
 
-const Ticket = new ZuriDatabase('Tickets',)
+const Ticket = new ZuriDatabase('Tickets')
 
 const ticketController = {
   //create ticket
@@ -28,7 +28,9 @@ const ticketController = {
   //get all tickets
 	fetchAll: async (req, res, next) => {
 		try {
-			let data = await Ticket.fetchAll()
+
+			const { org } = req.query;
+			let data = await Ticket.fetchAll(org)
 
 			return Response.send(
 				res,
@@ -45,7 +47,9 @@ const ticketController = {
   //get a single ticket
 	fetchOne: async (req, res, next) => {
 		try {
-			const data = await Ticket.fetchOne(req.params.id)
+      const { org_id } = req.query;
+      const { ticket_id } = req.query;
+			const data = await Ticket.fetchOne({ticket: ticket_id}, org_id)
       return Response.send(
         res,
         200,

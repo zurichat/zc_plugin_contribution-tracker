@@ -12,8 +12,11 @@ adminRouter.get('/voter/:id', AdminController.getVoter)
 // add voter
 adminRouter.post("/voters", AdminController.addVoter );
 
+//update voter
+adminRouter.patch("/voters", AdminController.updateVoter);
+
 //remove voter
-adminRouter.delete("/voter/:id", AdminController.removeVoter);
+adminRouter.delete("/voters", AdminController.removeVoter);
 
 
 // Export module
