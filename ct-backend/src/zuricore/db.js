@@ -1,11 +1,11 @@
 // Package Modules
-const axios = require("axios");
+import axios from "axios"
 
 // Custom Modules
-const { DATABASE_CONFIG, PLUGIN_ID } = require("../config");
+import { DATABASE_CONFIG, PLUGIN_ID, ORGANISATION_ID } from "../config"
 const CustomError = require("../utils/custom-error");
 
-class ZuriDatabase {
+export default class ZuriDatabase {
   constructor(collection_name) {
 
     this.DB_WRITE_URL = DATABASE_CONFIG.WRITE_URL;
@@ -15,6 +15,7 @@ class ZuriDatabase {
     // Set the default values for the DB operations
     this.DB_DEFAULTS_CONFIG = {
       plugin_id: PLUGIN_ID,
+      organization_id: ORGANISATION_ID,
       collection_name: collection_name,
       bulk_write: false,
       object_id: "",
@@ -26,8 +27,8 @@ class ZuriDatabase {
   // Create
   async create(payload, organization_id) {
     // Set the payload
-    this.DB_DEFAULTS_CONFIG.payload = payload;
-    this.DB_DEFAULTS_CONFIG.organization_id = organization_id
+    this.DB_DEFAULTS_CONFIG.payload = payload
+    this.DB_DEFAULTS_CONFIG.organization_id = organization_id || ORGANISATION_ID
 
     try {
       // Make the request
@@ -139,11 +140,11 @@ class ZuriDatabase {
   }
 
   // Delete - Not Implemented in Zuri Core API yet
-  async delete(filter,  organization_id) {
+  async delete(filter, organization_id) {
     this.DB_DEFAULTS_CONFIG.organization_id = organization_id
     this.DB_DEFAULTS_CONFIG.bulk_delete = true
     this.DB_DEFAULTS_CONFIG.filter = filter
-    
+
     try {
       // Make the request
       const response = await axios.post(
@@ -163,4 +164,3 @@ class ZuriDatabase {
   }
 }
 
-module.exports = ZuriDatabase;

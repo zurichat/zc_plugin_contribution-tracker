@@ -1,27 +1,28 @@
 // Custom Modules
 import Response from '../utils/response'
-const CustomError = require("../utils/custom-error");
-const { DATABASE_CONFIG } = require("../config/index");
-const { PLUGIN_ID } = require("../config/index");
-const voterSchema = require("../models/voter.model");
-const ZuriDatabase = require("../zuricore/db");
+import CustomError from "../utils/custom-error"
+import { DATABASE_CONFIG } from "../config/index"
+import { PLUGIN_ID } from "../config/index"
+import voterSchema from "../models/voter.model"
+import ZuriDatabase from "../zuricore/db"
 
 const Voter = new ZuriDatabase("ct_voters");
 
-class AdminController {
+const AdminController = {
 
-  async addVoter (req, res, next) {
+  async addVoter(req, res, next) {
     try {
 
-      const { first_name, last_name,  email, voting_weight } = req.body;
+      const { first_name, last_name, email, user_name, voting_weight } = req.body;
       const { org_id } = req.query;
 
-      const voter  = await voterSchema.validateAsync({
+      const voter = await voterSchema.validateAsync({
         first_name,
         last_name,
         email,
+        user_name,
         voting_weight,
-      }).catch((e)=>{
+      }).catch((e) => {
         Response.send(
           res,
           422,
@@ -41,19 +42,20 @@ class AdminController {
         "Voter added successfully"
       )
     } catch (error) {
-       next(error)
+      next(error)
     }
-  }
+  },
 
 
-  async updateVoter (req, res, next) {
+  async updateVoter(req, res, next) {
     try {
 
       const { voting_weight } = req.body;
       const { org_id, voter_id } = req.query;
 
-      const voter  = {
-        voting_weight: voting_weight
+      const voter = {
+        voting_weight: voting_weight,
+        updated_at: Date.now()
       };
 
       // Save the voter to the database
@@ -67,13 +69,13 @@ class AdminController {
         "Voter added successfully"
       )
     } catch (error) {
-       next(error)
+      next(error)
     }
-  }
+  },
 
 
 
-  async getVoters (req, res, next) {
+  async getVoters(req, res, next) {
     try {
       const { org_id } = req.query;
       const voters = await Voter.fetchAll(org_id);
@@ -84,9 +86,14 @@ class AdminController {
         "Voters retrieved successfully"
       )
     } catch (error) {
-      next(error);
+      Response.send(
+        res,
+        422,
+        error,
+        error.message
+      )
     }
-  }
+  },
 
   //get a single voter
   async getVoter (req, res, next) {
@@ -107,11 +114,11 @@ class AdminController {
   }
 
   //remove a voter
-  async removeVoter (req, res, next) {
+  async removeVoter(req, res, next) {
     try {
       const { org_id } = req.query;
       const { email } = req.query;
-      const response = await Voter.delete({email: email}, org_id,);
+      const response = await Voter.delete({ email: email }, org_id,);
       Response.send(
         res,
         200,
@@ -121,8 +128,7 @@ class AdminController {
     } catch (error) {
       next(error);
     }
-  }
+  },
 }
 
-// Export Module
-module.exports = new AdminController();
+export default AdminController
