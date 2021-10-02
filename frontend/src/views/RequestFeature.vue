@@ -10,7 +10,7 @@
         <ContributionNavbar />
         <RequestedFeatures @click="toggleSidebar" />      
     </div>
-    <div :class="toggleSidebarState? 'ct-hidden' : 'ct-w-1/3' ">
+    <div :class="toggleSidebarState? 'ct-w-1/3' : 'ct-hidden' ">
       <TicketDescriptionSidebar/>
     </div>
   </div>
