@@ -4,25 +4,45 @@
   "description": "a contribution tracker plugin for zuri.chat",
   "main": "index.js",
   "scripts": {
-    "prestart": "babel ./src --out-dir build",
-    "start": "node ./build/bin/www",
-    "dev": "nodemon --exec babel-node ./src/bin/www"
+    "lint": "eslint src/",
+    "holoInstall": "yarn install && cd.. && cd frontend && yarn install",
+    "start:backend": "nodemon --exec babel-node ./src/bin/www",
+    "start:frontend": "cd .. && cd frontend && yarn serve",
+    "dev": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
+    "clean": "rimraf build",
+    "build": "cd .. && cd frontend && yarn build && cd .. && cd ct-backend && yarn clean && babel ./src --out-dir build",
+    "start": "node ./build/bin/www"
   },
   "author": "team contribution tracker (vue & nodejs)",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.22.0",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "http-status-codes": "^2.1.4",
+    "joi": "^17.4.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.13"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.7",
     "@babel/node": "^7.15.4",
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.6",
     "@babel/register": "^7.15.3",
-    "@babel/runtime": "^7.15.4"
+    "@babel/runtime": "^7.15.4",
+    "concurrently": "^6.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.13",
+    "rimraf": "^3.0.2"
   }
 }

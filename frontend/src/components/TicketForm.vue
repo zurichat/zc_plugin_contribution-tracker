@@ -1,4 +1,5 @@
 <template>
+
     <div class="ct-modal ct-fixed ct-z-50 ct-top-0 ct-left-0 ct-flex ct-items-center ct-justify-center" :class="{'ct-opacity-0': this.$store.state.addUserModalActive,'ct-pointer-events-none': this.$store.state.addUserModalActive, 'ct-modal-active': this.$store.state.addUserModalActive}">
         <div class="ct-modal-overlay ct-absolute ct-w-screen ct-h-screen ct-bg-gray-800 ct-opacity-50"></div>
         <div class="ct-form1 ct-bg-white ct-flex ct-flex-col ct-p-4 ct-z-50 ct-rounded ct-shadow-lg z-50">
@@ -25,6 +26,7 @@
             <div class="ct-mt-3 ct-ml-1">
                 <p class="tet4 ct-text-sm ct-font-bold">Text Link</p>
                 <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3" >
+
             </div>
                     
                 </div>
@@ -47,6 +49,7 @@
         },
     }
 </script>
+<<<<<<< HEAD
 <style scoped>
 .ct-modal {
   transition: opacity 0.25s ease;
@@ -80,4 +83,41 @@ body.ct-modal-active {
 .tet2:focus{
 border: 1px solid rgb(231, 222, 222);
 }
+=======
+
+<style>
+    .form1{
+        position: relative;
+        height: 419px;
+        width: 300px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 1px 1px 10px rgba(228, 225, 225, 0.5);
+    }
+    .tet1{
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 34px;
+    }
+    .tet2{
+        margin-left: 140px;
+    }
+    .tet2:focus{
+        border: 1px solid rgb(231, 222, 222);
+    }
+    .tet3{
+        border: 1px solid  rgb(231, 222, 222);
+        border-radius: 3px;
+    }
+    .tet4{
+        color: rgba(29, 28, 29, 1);
+        font-style: normal;
+    }
+    .tet5{
+        background: #00B87C;
+        border-radius: 3px;
+        margin-left: 100px;
+    }
+>>>>>>> 78bc4bc956bec8310bf2a15d7373fe03cc0f3a1b
 </style>

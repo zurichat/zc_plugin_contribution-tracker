@@ -1,13 +1,11 @@
-import express from 'express';
+import express from 'express'
+import pluginInfoController from '../controllers/info.controller'
+import sidebarController from '../controllers/sidebar.controller'
 
 const indexRouter = express.Router();
 
-indexRouter.get('/', function(req, res, next) {
-  return res.status(200).json({ 
-  	name: "contribution tracker plugin",
-    stack: "VueJs, Tailwind & NodeJs",
-    teaam_lead: "@Phosah",
-  });
-});
+indexRouter.get("/", pluginInfoController.getPluginInfo)
+
+indexRouter.get("/sidebar", sidebarController.getSideBarInfo)
 
 export default indexRouter;

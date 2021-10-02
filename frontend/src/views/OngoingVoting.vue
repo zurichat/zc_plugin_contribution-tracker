@@ -9,14 +9,12 @@
       </div>
       <ContributionNavbar />
       <TicketList />
-      <TicketCreated />
-      <Archived />
+      <!-- <TicketCreated />
+      <Archived /> -->
     </div>
     <div>
-      <Description />
+      <!-- <Description /> -->
     </div>
-      
-
   </div>
 </template>
 
@@ -25,12 +23,20 @@ import ComponentHeader from '@/components/ComponentHeader'
 import AddNewTicket from '@/components/AddNewTicket'
 import ContributionNavbar from '@/components/ContributionNavbar.vue'
 import TicketList from '@/components/TicketList'
-import TicketCreated from '@/components/TicketCreated'
-import Archived from '@/components/Archived'
-import Description from '@/components/DescriptionSection'
+// import TicketCreated from '@/components/TicketCreated'
+// import Archived from '@/components/Archived'
+// import Description from '@/components/DescriptionSection'
 
 export default {
-  name: 'Home',
-  components: { ComponentHeader, AddNewTicket, ContributionNavbar, TicketList, TicketCreated, Archived, Description }
+    name: 'OngoingVoting',
+    components: { 
+        ComponentHeader, 
+        AddNewTicket, 
+        ContributionNavbar, 
+        TicketList, 
+        // TicketCreated, 
+        // Archived, 
+        // Description 
+    }
 }
 </script>
