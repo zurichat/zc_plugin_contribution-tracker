@@ -7,6 +7,9 @@ const voter_schema = Joi.object({
   //voter email   
   email: Joi.string().required(),
 
+  //voter user_name   
+  user_name: Joi.string().required(),
+
   //voter first_name   
   first_name: Joi.string().allow(null),
 
