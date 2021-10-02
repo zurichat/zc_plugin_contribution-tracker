@@ -8,7 +8,7 @@
         <AddUser />
       </div>
         <ContributionNavbar />
-        <AdminNav />
+        <AdminTab />
         <VotersTable />        
     </div>
   </div>
@@ -18,7 +18,7 @@
 import ComponentHeader from '@/components/ComponentHeader'
 import AddUser from '@/components/AddUser'
 import ContributionNavbar from '@/components/ContributionNavbar.vue'
-import AdminNav from '@/components/AdminNav.vue'
+import AdminTab from '@/components/AdminTab.vue'
 import VotersTable from '@/components/VotersTable.vue'
 
 export default {
@@ -27,7 +27,7 @@ export default {
         ComponentHeader, 
         AddUser, 
         ContributionNavbar, 
-        AdminNav, 
+        AdminTab, 
         VotersTable 
     }
 }
