@@ -96,19 +96,19 @@ const AdminController = {
   },
 
   //get a single voter
-  async getVoter (req, res, next) {
+  async getVoter(req, res, next) {
     try {
       const { org_id } = req.query;
       const { email } = req.query;
 
-      const voter = await Voter.findOne({email: email}, org_id);
+      const voter = await Voter.findOne({ email: email }, org_id);
       Response.send(
-        res, 
-        200, 
+        res,
+        200,
         voter,
         "Voter retrived succcessfully"
       )
-    } catch(error) {
+    } catch (error) {
       next(error);
     }
   },
