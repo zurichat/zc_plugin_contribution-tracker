@@ -7,7 +7,7 @@
             <li class="ct-text-brand-gray-light-1"><router-link to="/admin">Admin</router-link></li>
           </ul>
        </tabs>
-    </div>   
+    </div>
 </template>
 
 <script>

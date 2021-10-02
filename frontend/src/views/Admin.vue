@@ -9,7 +9,7 @@
       </div>
         <ContributionNavbar />
         <AdminNav />
-        <VotersTable />        
+        <VotersTable />
     </div>
   </div>
 </template>
@@ -23,12 +23,12 @@ import VotersTable from '@/components/VotersTable.vue'
 
 export default {
     name: 'Home',
-    components: { 
-        ComponentHeader, 
-        AddUser, 
-        ContributionNavbar, 
-        AdminNav, 
-        VotersTable 
+    components: {
+        ComponentHeader,
+        AddUser,
+        ContributionNavbar,
+        AdminNav,
+        VotersTable
     }
 }
 </script>
