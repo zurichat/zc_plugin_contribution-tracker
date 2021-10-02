@@ -7,7 +7,7 @@
     "lint": "eslint src/",
     "holoInstall": "yarn install && cd.. && cd frontend && yarn install",
     "start:backend": "nodemon --exec babel-node ./src/bin/www",
-    "start:frontend": "cd .. && cd frontend && yarn serve",
+    "start:frontend": "cd .. && cd frontend && yarn serve:standalone",
     "dev": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
     "clean": "rimraf build",
     "build": "cd .. && cd frontend && yarn build && cd .. && cd ct-backend && yarn clean && babel ./src --out-dir build",
