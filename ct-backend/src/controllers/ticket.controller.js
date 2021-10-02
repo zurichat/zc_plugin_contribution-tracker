@@ -6,7 +6,6 @@ import ticket_schema from '../models/tickets.model'
 const Ticket = new ZuriDatabase('ct_tickets');
 
 const ticketController = {
-	
 	async addTicket(req, res, next) {
 
 		try {
@@ -36,6 +35,25 @@ const ticketController = {
 			return next(error)
 		}
 	},
+  
+  //get a single ticket
+  fetchOne: async (req, res, next) => {
+    const { id } = req.body;
+    const { org } = req.query;
+
+    try {
+      const data = await Ticket.fetchOne(id, org)
+      return Response.send(
+        res,
+        200,
+        data,
+        'Ticket retrived successfully'
+      )
+    } catch (err) {
+      return next(err)
+    }
+  },
+  
 	fetchAll: async (req, res, next) => {
 		try {
 			const { org_id } = req.query
@@ -60,12 +78,11 @@ const ticketController = {
 		}
 	},
 	doUpvote: async (req, res, next) => {
-		// get id and payload from the frontend, id is the id of the current ticket, the payload will be an object containing the  vote weight user that's voting + the current value of the ticket's upvotes of the  like: payload:{total_upvotes: voter.voter_weight + ticket.total_upvotes}
+		try {
+     // get id and payload from the frontend, id is the id of the current ticket, the payload will be an object containing the  vote weight user that's voting + the current value of the ticket's upvotes of the  like: payload:{total_upvotes: voter.voter_weight + ticket.total_upvotes}
 		const { id, payload } = req.body;
 		// get org id from the query
 		const { org } = req.query;
-
-		try {
 			// update ticket
 			const data = await Ticket.update(id, payload, org);
 			// return data
