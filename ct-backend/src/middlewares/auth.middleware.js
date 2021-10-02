@@ -1,14 +1,14 @@
-const axios = require("axios");
-const CustomError = require("../utils/custom-error");
-const { USER_URL } = require("../config/index");
+import { get } from "axios";
+import CustomError from "../utils/custom-error";
+import { USER_URL } from "../config/index";
 
 // GET req to zc_core to validate and fetch user details with the provided token
-exports.userAuth = async (req, res, next) => {
+export async function userAuth(req, res, next) {
   try {
     const { org, userId } = req.query;
     const token = req.query.token.split(" ")[1];
 
-    const response = await axios.get(`${USER_URL}${userId}`, {
+    const response = await get(`${USER_URL}${userId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -24,7 +24,7 @@ exports.userAuth = async (req, res, next) => {
   } catch (error) {
     throw new CustomError(`Can't verify user from db: ${error}`, 502);
   }
-};
+}
 
 
 // to be attached to all endpoints later on
