@@ -44,3 +44,12 @@ Take note, all api endpoints in this plugin required you authenticated.
 | `POST` 	|  	|  `api/v1/admin/voters`	|  `{"email": String, "firstname": String, "lastname: String" "voting_weight": Number, }`|  `application/json`	|`All the fields in the body are required`|
 | `PATCH` 	|  	| `api/v1/admin/voters` 	|`{"email": String, "firstname": String}, "lastname": String, "voting_weight": Number}`  	| `application/json` 	|`Updates the voter with the id`|
 | `DELETE` 	|  	| `api/v1/admin/voters/` 	|  `null`	| `application/json` 	|||
+
+| Method | Endpoint   | Body | Parameter | Query | Content Type       | Description |
+| ------ | ---------- | ---- | --------- | ----- | ------------------ | ----------- |
+| `GET`  | `api/v1/admin/voters`` | null | null      | null   | `application/json` |             |
+| `POST`  | `api/v1/admin/voters`` | `{"email": String, "firstname": String, "lastname: String" "voting_weight": Number, }` | null      | null   | `application/json` |             |
+| `GET`  | `api/v1/admin/voters`` | null | null      | null   | `application/json` |             |
+| `GET`  | `api/v1/admin/voters`` | null | null      | null   | `application/json` |             |
+| `GET`  | `api/v1/admin/voters`` | null | null      | null   | `application/json` |             |
+
