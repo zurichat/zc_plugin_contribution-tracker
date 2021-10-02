@@ -13,13 +13,14 @@ const AdminController = {
   async addVoter(req, res, next) {
     try {
 
-      const { first_name, last_name, email, voting_weight } = req.body;
+      const { first_name, last_name, email, user_name, voting_weight } = req.body;
       const { org_id } = req.query;
 
       const voter = await voterSchema.validateAsync({
         first_name,
         last_name,
         email,
+        user_name,
         voting_weight,
       }).catch((e) => {
         Response.send(
@@ -53,7 +54,8 @@ const AdminController = {
       const { org_id, voter_id } = req.query;
 
       const voter = {
-        voting_weight: voting_weight
+        voting_weight: voting_weight,
+        updated_at: Date.now()
       };
 
       // Save the voter to the database
