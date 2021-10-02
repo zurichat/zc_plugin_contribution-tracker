@@ -1,7 +1,9 @@
 import { createStore } from 'vuex'
+import ContributionServices from "@/services/config.js"
 
 export default createStore({
   state: {
+    users: [],
     tickets: [
       {
           name: 'CreateTeamListView1',
@@ -41,9 +43,27 @@ export default createStore({
     },
     toggleUserModal: state => {
       state.addUserModalActive =! state.addUserModalActive
-    }
+    },
+    setUsers(state, payload) { state.users = payload }
   },
   actions: {
+    async getAllUsers({commit}) {
+      await ContributionServices.getAllUsers().then(response => {
+        commit("setUsers", response.data)
+        console.log(response.data)
+      })
+    },
+    async getUser(id) {
+      await ContributionServices.getUser(id)
+    },
+    async addUser(id) {
+      await ContributionServices.addUser(id)
+    }
+  },
+  getters: {
+    users(state) {
+      return state.users
+    }
   },
   modules: {
   }

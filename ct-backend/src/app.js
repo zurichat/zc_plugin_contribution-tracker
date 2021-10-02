@@ -41,3 +41,7 @@ app.use('/v1/ticket', ticketRouter)
 app.use(handleErrors)
 
 export default app
+
+
+
+localhost:8080/v1

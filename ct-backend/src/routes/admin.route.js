@@ -23,4 +23,3 @@ adminRouter.delete("/voters", userOrg, AdminController.removeVoter);
 
 // Export module
 export default adminRouter
-
