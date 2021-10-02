@@ -114,11 +114,7 @@ const AdminController = {
   },
 
   //remove a voter
-<<<<<<< HEAD
-  async removeVoter (req, res, next) {
-=======
   async removeVoter(req, res, next) {
->>>>>>> 8e335fe76c22b23413729e25db19f0842fe94c83
     try {
       const { org_id } = req.query;
       const { email } = req.query;
