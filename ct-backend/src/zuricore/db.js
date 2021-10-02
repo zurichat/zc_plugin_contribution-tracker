@@ -41,8 +41,7 @@ class ZuriDatabase {
     } catch (error) {
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [CREATE]: ${error}`,
-        "500",
-        error.response.data
+        "500"
       );
     }
   }
@@ -140,17 +139,15 @@ class ZuriDatabase {
   }
 
   // Delete - Not Implemented in Zuri Core API yet
-  async delete(object_id, payload, organization_id) {
-    // Set the payload
-    this.DB_DEFAULTS_CONFIG.payload = payload;
-    // Set the ID of the object to be deleted
-    this.DB_DEFAULTS_CONFIG.object_id = object_id;
+  async delete(filter,  organization_id) {
     this.DB_DEFAULTS_CONFIG.organization_id = organization_id
-
+    this.DB_DEFAULTS_CONFIG.bulk_delete = true
+    this.DB_DEFAULTS_CONFIG.filter = filter
+    
     try {
       // Make the request
       const response = await axios.post(
-        this.DB_DELETE_URL,
+        'https://api.zuri.chat/data/delete',
         JSON.stringify(this.DB_DEFAULTS_CONFIG)
       );
 
@@ -159,7 +156,8 @@ class ZuriDatabase {
     } catch (error) {
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [DELETE]: ${error}`,
-        "500"
+        "500",
+        error
       );
     }
   }

@@ -13,13 +13,13 @@ class AdminController {
   async addVoter (req, res, next) {
     try {
 
-      const { first_name, last_name,  user_name, voting_weight } = req.body;
-      const { org } = req.query;
+      const { first_name, last_name,  email, voting_weight } = req.body;
+      const { org_id } = req.query;
 
       const voter  = await voterSchema.validateAsync({
         first_name,
         last_name,
-        user_name,
+        email,
         voting_weight,
       }).catch((e)=>{
         Response.send(
@@ -28,13 +28,10 @@ class AdminController {
           e,
           "validation failed"
         )
-
-         // res.status(422).send(response("validation failed", e));
       });
 
-
       // Save the voter to the database
-      const newVoterDBData = await Voter.create(voter, org);
+      const newVoterDBData = await Voter.create(voter, org_id);
 
 
       return Response.send(
@@ -45,15 +42,41 @@ class AdminController {
       )
     } catch (error) {
        next(error)
-       console.log(error)
     }
   }
 
 
+  async updateVoter (req, res, next) {
+    try {
+
+      const { voting_weight } = req.body;
+      const { org_id, voter_id } = req.query;
+
+      const voter  = {
+        voting_weight: voting_weight
+      };
+
+      // Save the voter to the database
+      const newVoterDBData = await Voter.update(voter_id, voter, org_id);
+
+
+      return Response.send(
+        res,
+        200,
+        newVoterDBData,
+        "Voter added successfully"
+      )
+    } catch (error) {
+       next(error)
+    }
+  }
+
+
+
   async getVoters (req, res, next) {
     try {
-      const { org } = req.query;
-      const voters = await Voter.fetchAll(org);
+      const { org_id } = req.query;
+      const voters = await Voter.fetchAll(org_id);
       Response.send(
         res,
         200,
@@ -67,8 +90,15 @@ class AdminController {
 
   async removeVoter (req, res, next) {
     try {
-      
-      // Just return the payload
+      const { org_id } = req.query;
+      const { email } = req.query;
+      const response = await Voter.delete({email: email}, org_id,);
+      Response.send(
+        res,
+        200,
+        response,
+        "Voter deleted successfully"
+      )
     } catch (error) {
       next(error);
     }
