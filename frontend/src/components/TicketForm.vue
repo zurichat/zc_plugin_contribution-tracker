@@ -34,6 +34,7 @@
         </div>
     </div>
 </template>
+
 <script>
     export default {
         name: 'FormTicket',
@@ -46,6 +47,7 @@
         },
     }
 </script>
+
 <style scoped>
 .ct-modal {
   transition: opacity 0.25s ease;
