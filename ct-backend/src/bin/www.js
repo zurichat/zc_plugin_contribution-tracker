@@ -46,11 +46,11 @@ const onError = error => {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      alert(`${bind} requires elevated privileges`);
+      console.log(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      alert(`${bind} is already in use`);
+      console.log(`${bind} is already in use`);
       process.exit(1);
       break;
     default:
@@ -65,7 +65,6 @@ const onListening = () => {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
-  console.log(`Server started listening on http://127.0.0.1:${addr.port}`);
 };
 /**
  * Listen on provided port, on all network interfaces.

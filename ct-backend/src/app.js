@@ -10,9 +10,9 @@ import handleErrors from './middlewares/errors.middleware'
 import ticketRouter from './routes/ticket.route'
 
 dotenv.config()
-const build = path.join('../ct-backend/frontend', 'build')
+const build = path.join('home', 'trackercontrib', 'contribution-tracker', 'frontend', 'build')
 console.log("build path :" + build);
-const publicPath = path.join('../ct-backend/frontend', 'public')
+const publicPath = path.join('home', 'trackercontrib', 'contribution-tracker', 'frontend', 'public')
 console.log("public path :" + publicPath)
 
 const app = express()
@@ -37,6 +37,10 @@ app.use('/api/v1', sidebarRouter)
 app.use('/v1', indexRouter)
 app.use('/v1/admin', adminRouter)
 app.use('/v1/ticket', ticketRouter)
+
+app.use((req, res, next) => {
+  res.sendFile(path.join(build, 'index.html'))
+})
 
 app.use(handleErrors)
 
