@@ -5,7 +5,7 @@ class ContributionServices {
         return http.get(`/voter/${id}`)
     }
     getUsers() {
-        return http.get("/voter")
+        return http.get("/voters")
     }
     getAllUsers() {
         return http.get("/users") // This simply serves as an example.
