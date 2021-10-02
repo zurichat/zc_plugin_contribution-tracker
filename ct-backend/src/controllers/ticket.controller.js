@@ -6,13 +6,35 @@ import ticket_schema from '../models/tickets.model'
 const Ticket = new ZuriDatabase('ct_tickets');
 
 const ticketController = {
-	create: async (req, res, next) => {
+	async addTicket(req, res, next) {
+
 		try {
-			
-    } catch (err) {
-      return next(err);
-    }
-  },
+            const { title, description, commit_url,test_url,user_id,total_upvotes,total_downvotes,created_at } = req.body;
+            const { org } = req.query;
+
+            const tickets  = await ticketSchema.validateAsync({
+                title,
+                description,
+                commit_url,
+               test_url,
+               user_id, 
+               total_upvotes:0,
+               total_downvotes:0,
+               created_at
+        
+              })
+
+            const saveTicket = await Ticket.create({tickets, org})
+			return Response.send(
+				res,
+				201,
+				saveTicket,
+				'Ticket created successfully'
+			)
+		} catch (error) {
+			return next(error)
+		}
+	},
   
   //get a single ticket
   fetchOne: async (req, res, next) => {

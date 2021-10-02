@@ -5,7 +5,7 @@ const ticketRouter = express.Router();
 //get all tickets
 ticketRouter.get('/', ticketController.fetchAll)
 //create ticket
-ticketRouter.post('/', ticketController.create)
+ticketRouter.post('/', ticketController.addTicket)
 // update status
 ticketRouter.put("/status", ticketController.updateStatus)
 // upvote
