@@ -4,14 +4,10 @@ const Joi = require("joi");
 // Game Schema
 const ticket_schema = Joi.object({
   // ticket title
-  name: Joi.string().required(),
+  title: Joi.string().required(),
 
   // Game Owner
-  owner: Joi.object({
-    user_id: Joi.string().required(),
-    user_name: Joi.string().required(),
-    image_url: Joi.string(),
-  }).required(),
+  user_id: Joi.string().required(),
 
   //ticket description
   description: Joi.string().required(),
@@ -22,11 +18,17 @@ const ticket_schema = Joi.object({
   //test url
   test_url: Joi.string().required(),
 
-  // ticket status
-  status: Joi.number().required(), // requested/created = 0, running/ongoing = 1, completed = 2
+  // total positive votes
+  total_upvotes: Joi.number().default(0),
+
+  //total downvotes
+  total_downvotes: Joi.number().default(0),
 
   //time created
   created_at: Joi.date().default(Date.now).allow(null),
+
+  // ticket status
+  status: Joi.number().default("Requested"), // Requested or Ongoing or Archived
 
   // messages
   messages: Joi.array()
