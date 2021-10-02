@@ -5,11 +5,10 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint src/",
-    "holoInstall": "yarn install && cd.. && cd frontend && yarn install",
+    "holoInstall": "yarn install && cd .. && cd frontend && yarn install",
     "start:backend": "nodemon --exec babel-node ./src/bin/www",
     "start:frontend": "cd .. && cd frontend && yarn serve:standalone",
-    "dev:frontend": "cd .. && cd frontend && yarn serve",
-    "dev": "concurrently \"yarn start:backend\" \"yarn dev:frontend\"",
+    "dev": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
     "clean": "rimraf build",
     "build": "cd .. && cd frontend && yarn build && cd .. && cd ct-backend && yarn clean && babel ./src --out-dir build",
     "start": "node ./build/bin/www"
