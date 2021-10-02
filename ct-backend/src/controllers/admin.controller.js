@@ -111,7 +111,7 @@ const AdminController = {
     } catch(error) {
       next(error);
     }
-  }
+  },
 
   //remove a voter
   async removeVoter(req, res, next) {
