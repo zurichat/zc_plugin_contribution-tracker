@@ -9,22 +9,22 @@ const ticketController = {
 	async addTicket(req, res, next) {
 
 		try {
-            const { title, description, commit_url,test_url,user_id,total_upvotes,total_downvotes,created_at } = req.body;
-            const { org } = req.query;
+			const { title, description, commit_url, test_url, created_at } = req.body;
+			const { org, user_id } = req.query;
 
-            const tickets  = await ticketSchema.validateAsync({
-                title,
-                description,
-                commit_url,
-               test_url,
-               user_id, 
-               total_upvotes:0,
-               total_downvotes:0,
-               created_at
-        
-              })
+			const tickets = await ticket_schema.validateAsync({
+				title,
+				description,
+				commit_url,
+				test_url,
+				owner_id: user_id,
+				total_upvotes: 0,
+				total_downvotes: 0,
+				created_at
 
-            const saveTicket = await Ticket.create({tickets, org})
+			})
+
+			const saveTicket = await Ticket.create({ tickets, org })
 			return Response.send(
 				res,
 				201,
@@ -35,25 +35,25 @@ const ticketController = {
 			return next(error)
 		}
 	},
-  
-  //get a single ticket
-  fetchOne: async (req, res, next) => {
-    const { id } = req.body;
-    const { org } = req.query;
 
-    try {
-      const data = await Ticket.fetchOne(id, org)
-      return Response.send(
-        res,
-        200,
-        data,
-        'Ticket retrived successfully'
-      )
-    } catch (err) {
-      return next(err)
-    }
-  },
-  
+	//get a single ticket
+	fetchOne: async (req, res, next) => {
+		const { id } = req.body;
+		const { org } = req.query;
+
+		try {
+			const data = await Ticket.fetchOne(id, org)
+			return Response.send(
+				res,
+				200,
+				data,
+				'Ticket retrived successfully'
+			)
+		} catch (err) {
+			return next(err)
+		}
+	},
+
 	fetchAll: async (req, res, next) => {
 		try {
 			const { org_id } = req.query
@@ -79,10 +79,10 @@ const ticketController = {
 	},
 	doUpvote: async (req, res, next) => {
 		try {
-     // get id and payload from the frontend, id is the id of the current ticket, the payload will be an object containing the  vote weight user that's voting + the current value of the ticket's upvotes of the  like: payload:{total_upvotes: voter.voter_weight + ticket.total_upvotes}
-		const { id, payload } = req.body;
-		// get org id from the query
-		const { org } = req.query;
+			// get id and payload from the frontend, id is the id of the current ticket, the payload will be an object containing the  vote weight user that's voting + the current value of the ticket's upvotes of the  like: payload:{total_upvotes: voter.voter_weight + ticket.total_upvotes}
+			const { id, payload } = req.body;
+			// get org id from the query
+			const { org } = req.query;
 			// update ticket
 			const data = await Ticket.update(id, payload, org);
 			// return data
