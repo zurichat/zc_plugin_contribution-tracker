@@ -53,3 +53,5 @@ app.get('/', function(req, res, next){
         }
     });
 });
+
+export default app
