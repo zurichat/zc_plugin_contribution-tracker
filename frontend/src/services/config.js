@@ -1,6 +1,9 @@
 import http from "../http-client";
 
 class ContributionServices {
+    getVoters() {
+        return http.get("/admin/voters/?org_id=614679ee1a5607b13c00bcb7")
+    }
     getUser(id) {
         return http.get(`/voter/${id}`)
     }
