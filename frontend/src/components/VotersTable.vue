@@ -11,12 +11,9 @@
       </thead>
       <tbody v-for="(voter, i) in voters" :key="i">
         <tr class="ct-border-b ct-font-medium">
-          <td class="voters-td ct-p-3">{{voter.first_name}} {{voter.last_name}}</td>
+          <td class="voters-td ct-p-3">{{voter.name}}</td>
           <td class="voters-td ct-p-3">0{{voter.voting_weight}}</td>
-          <td class="voters-td ct-p-3 ct-text-brand-gray-light-3">
-            <!-- Calculate the voting percent of each voter -->
-            {{((voter.voting_weight/sumVotingWeights())*100).toFixed(0)}}%
-          </td>
+          <td class="voters-td ct-p-3 ct-text-brand-gray-light-3">{{((voter.voting_weight/sumVotingWeights())*100).toFixed(0)}}%</td>
         </tr>
       </tbody>
     </table>
@@ -24,48 +21,35 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions} from "vuex"
-  export default {
-    name: 'VotersTable',
-    data(){
-      return {
-        voters:[
-          {
-            first_name:"John",
-            last_name:"Doe",
-            voting_weight:2
-          },
-          {
-            first_name:"Mary",
-            last_name:"Jane",
-            voting_weight:1
-          },
-          {
-            first_name:"Petec",
-            last_name:"0x0",
-            voting_weight:2
-          },
-        ]
-      }
-    },
-    methods:{
-      sumVotingWeights(){
-        // This method sums voting weights of all voters
-        const allWeights = this.voters.map(function (el) { return el.voting_weight; });
-        return allWeights.reduce(this.getSum, 0);
-      },
-      //
-      getSum(total, num){return total + num},
-
-      ...mapActions(["getVoters"])
-    },
-    computed: {
-        ...mapGetters(["voters"]),
-    },
-    mounted() {
-        this.getVoters()
+export default {
+  name: 'VotersTable',
+  data(){
+    return {
+      voters:[
+        {
+          name:"John Doe",
+          voting_weight:2
+        },
+        {
+          name:"Mary Jane",
+          voting_weight:1
+        },
+        {
+          name:"Mark E",
+          voting_weight:2
+        },
+      ]
     }
+  },
+  methods:{
+    sumVotingWeights(){
+      const allWeights = this.voters.map(function (el) { return el.voting_weight; });
+      return allWeights.reduce(this.getSum, 0);
+    },
+
+    getSum(total, num){return total + num;}
   }
+}
 </script>
 
 <style scoped>
