@@ -20,33 +20,6 @@ export default {
             return this.$store.state.tickets;
         }
     },
-    /*data() {
-        return {
-            tickets: [
-                {
-                    name: 'CreateTeamListView1',
-                    contributor: '#001 added by John Doe',
-                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae tempore quis sunt corrupti. Perspiciatis, consectetur officiis! Perferendis molestiae dolorem sequi vitae aspernatur fugit commodi.',
-                    commit: 'http://zurichats/api/v1/deals',
-                    test: 'http://zurichats/api/v1/deals'
-                },
-                {
-                    name: 'CreateTeamListView2',
-                    contributor: '#001 added by Jane Doe',
-                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae tempore quis sunt corrupti. Perspiciatis, consectetur officiis! Perferendis molestiae dolorem sequi vitae aspernatur fugit commodi.',
-                    commit: 'http://zurichats/api/v1/deals',
-                    test: 'http://zurichats/api/v1/deals'
-                },
-                {
-                    name: 'CreateTeamListView3',
-                    contributor: '#001 added by Sarah Doe',
-                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae tempore quis sunt corrupti. Perspiciatis, consectetur officiis! Perferendis molestiae dolorem sequi vitae aspernatur fugit commodi.',
-                    commit: 'http://zurichats/api/v1/deals',
-                    test: 'http://zurichats/api/v1/deals'
-                }
-            ],
-        }
-    },*/
     methods: {
        selectTicket: function(index) {
            this.$store.commit('selectTicket', index);
