@@ -2,6 +2,7 @@ module.exports = {
 
   // Database Credentials
   DATABASE_CONFIG: {
+    BASE_URL: 'https://api.zuri.chat',
     // Endpoint for the database write operations
     WRITE_URL: "https://api.zuri.chat/data/write",
     // Endpoint for the database read operations
@@ -13,7 +14,7 @@ module.exports = {
   // Get Our PluginID from ENV or use the test_id
   PLUGIN_ID: process.env.PLUGIN_ID || "6156c5e6d56dd3c4d8a962b5",
   // Get Our PluginID from ENV or use the test_id
-  ORGANISATION_ID: process.env.ORGANISATION_ID || "614679ee1a5607b13c00bcb7",
+  ORGANISATION_ID: "614679ee1a5607b13c00bcb7",
 
   // Fetch user zc_core endpoint
   USER_URL: "https://api.zuri.chat/users/",
