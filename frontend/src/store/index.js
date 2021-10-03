@@ -47,9 +47,18 @@ export default createStore({
     setUsers(state, payload) { state.users = payload },
     appendUser: (state, payload) => {
       console.log(payload)
-    }
+    },
+    setVoters(state, payload) {
+      state.voters = payload 
+   },
   },
   actions: {
+    async getVoters({commit}) {
+      await ContributionServices.getVoters().then(response => {
+        commit("setVoters", response.data.data.data)
+        console.log(response.data.data.data)
+      })
+    },
     async getAllUsers({commit}) {
       await ContributionServices.getAllUsers().then(response => {
         commit("setUsers", response.data)
@@ -67,8 +76,11 @@ export default createStore({
     }
   },
   getters: {
+    voters(state) {
+      return state.voters
+    },
     users(state) {
-      return state.users
+      return state.voters
     }
   },
   modules: {
