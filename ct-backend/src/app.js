@@ -53,10 +53,3 @@ app.get('/', function(req, res, next){
         }
     });
 });
-
-app.use(handleErrors)
-
-export default app
-
-
-
