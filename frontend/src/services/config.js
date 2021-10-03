@@ -11,7 +11,7 @@ class ContributionServices {
         return http.get("/users") // This simply serves as an example.
     }
     addUser(data) {
-        return http.post("/ticket", data)
+        return http.post("/voters", data)
     }
     getTicket() {
         return http.get("/ticket")
