@@ -4,7 +4,7 @@
       <div class="ct-mb-8">
         <ComponentHeader />
       </div>
-      <div class="ct-flex ct-justify-end ct-mb-10 ct-mr-3">
+      <div class="ct-flex ct-justify-end ct-mb-8 ct-mr-3">
         <RequestFeatureButton />
       </div>
         <ContributionNavbar />

@@ -10,7 +10,7 @@
       </div>
         <ContributionNavbar />
         <AdminTab />
-        <VotersTable />        
+        <VotersTable />
     </div>
   </div>
 </template>
@@ -25,14 +25,14 @@ import AddNewUser from '@/components/AddNewUser.vue';
 
 export default {
     name: 'Home',
-    components: { 
-        ComponentHeader, 
-        AddUser, 
-        ContributionNavbar, 
-        AdminTab, 
+    components: {
+        ComponentHeader,
+        AddUser,
+        ContributionNavbar,
+        AdminTab,
         VotersTable,
         AddNewUser,
     },
-    
+
 }
 </script>

@@ -44,7 +44,10 @@ export default createStore({
     toggleUserModal: state => {
       state.addUserModalActive =! state.addUserModalActive
     },
-    setUsers(state, payload) { state.users = payload }
+    setUsers(state, payload) { state.users = payload },
+    appendUser: (state, payload) => {
+      console.log(payload)
+    }
   },
   actions: {
     async getAllUsers({commit}) {
@@ -56,8 +59,11 @@ export default createStore({
     async getUser(id) {
       await ContributionServices.getUser(id)
     },
-    async addUser(id) {
-      await ContributionServices.addUser(id)
+    async addUser({ commit }, payload) {
+      commit('appendUser', payload)
+      await ContributionServices.addUser(payload).then(response => {
+        console.log(response.data)
+      })
     }
   },
   getters: {
