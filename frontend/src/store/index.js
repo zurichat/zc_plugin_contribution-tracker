@@ -7,7 +7,7 @@ export default createStore({
     tickets: [],
     selectedTicket: [],
     description: false,
-    addUserModalActive: false,
+    addUserModalActive: true,
   },
   mutations: {
     selectTicket: (state, index) => {
@@ -50,6 +50,7 @@ export default createStore({
       await ContributionServices.getTicket().then(response => {
         commit("getTicket", response.data)
       })
+    },
   },
   getters: {
     users(state) {
@@ -57,8 +58,8 @@ export default createStore({
     },
     tickets(state) {
       return state.tickets
-      }
-  }, 
+    }
+  },
   modules: {
   }
 })
