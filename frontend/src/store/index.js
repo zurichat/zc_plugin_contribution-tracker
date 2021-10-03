@@ -29,7 +29,7 @@ export default createStore({
     ],
     selectedTicket: [],
     description: false,
-    addUserModalActive: false,
+    addUserModalActive: true,
   },
   mutations: {
     selectTicket: (state, index) => {
@@ -75,6 +75,7 @@ export default createStore({
       await ContributionServices.getTicket().then(response => {
         commit("getTicket", response.data)
       })
+    },
   },
     async addTicket({ commit }, payload) {
       commit('addTicket', payload)
@@ -83,10 +84,13 @@ export default createStore({
       })
     },
   },
-  getters: {
+   getters: {
     users(state) {
       return state.users
-    }
+    },
+    tickets(state) {
+      return state.tickets
+    }                        
   },
   modules: {
   }
