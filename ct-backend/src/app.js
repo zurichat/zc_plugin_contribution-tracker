@@ -34,18 +34,24 @@ app.use(
 )
 
 app.use('/api/v1', sidebarRouter)
-app.use('/v1', indexRouter)
-app.use('/v1/admin', adminRouter)
-app.use('/v1/ticket', ticketRouter)
+app.use('/api/v1', indexRouter)
+app.use('/api/v1/admin', adminRouter)
+app.use('/api/v1/tickets', ticketRouter)
 
-app.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'dist', 'index.html'))
-})
 
-app.use(handleErrors)
+app.get('/', function(req, res, next){
+    var options = {
+       root: path.join(__dirname, '../../frontend/dist')
+    };
+     
+    var fileName = 'index.html';
+    res.sendFile(fileName, options, function (err) {
+        if (err) {
+            next(err);
+        } else {
+            console.log('Sent:', fileName);
+        }
+    });
+});
 
 export default app
-
-
-
-localhost:8080/v1

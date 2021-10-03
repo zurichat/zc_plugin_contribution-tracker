@@ -8,5 +8,10 @@
     "src/"
   ],
   "verbose": true,
-  "ignore": ["*.test.js", "*.spec.js"]
+  "ignore": ["*.test.js", "*.spec.js"],
+  "events": {
+    "restart": "kill-port 4400",
+    "crash": "kill-port 4400"
+  },
+  "delay": "1500"
 }
