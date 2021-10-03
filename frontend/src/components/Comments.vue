@@ -15,7 +15,7 @@
               <div class="ct-text-sm">4</div>
           </div>
             <div class="ct-flex ct-items-center ct-h-5 ct-px-2 ct-bg-brand-gray-light-2 ct-space-x-1 ct-rounded-xl">
-                <div><img class="ct-w-3" src="../assets/tick.png" alt="Up vote"></div>
+                <div><img class="ct-w-3" src="../assets/reject.png" alt="Down vote"></div>
                 <div class="ct-text-sm">4</div>
             </div>
         </div>
