@@ -2,10 +2,10 @@
     <div class="container mx-auto ct-h-screen ct-w-96 ct-bg-brand-gray-light-4 ct-pl-2" v-if="description">
         <!-- small gray separation -->
         <div class="ct-bg-white">
-            <div class="ct-bg-brand-green-dark ct-text-white ct-p-3 ct-flex ct-items-center ct-justify-between">
-            <div class="ct-flex">
-                <h4 class="ct-mr-2 ct-font-bold">Description</h4>
-                <h6 class="ct-font-light">#Contribution-Tracker</h6>
+            <div class="ct-bg-brand-green-dark ct-text-white ct-p-2 ct-flex ct-items-center ct-justify-between">
+            <div class="ct-flex ct-items-center ct-space-x-2">
+                <h4 class="ct-font-bold ct-text-lg ct-leading-8">Description</h4>
+                <h6 class="ct-font-light ct-text-xs">#Contribution-Tracker</h6>
             </div>
             <div @click="closeDescription">
                 <svg xmlns="http://www.w3.org/2000/svg" class="ct-w-5 ct-cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">

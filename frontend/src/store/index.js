@@ -29,7 +29,7 @@ export default createStore({
     ],
     selectedTicket: [],
     description: false,
-    addUserModalActive: true,
+    addUserModalActive: false,
   },
   mutations: {
     selectTicket: (state, index) => {

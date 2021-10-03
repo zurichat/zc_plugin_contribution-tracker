@@ -4,12 +4,11 @@
       <!-- SIDEBAR -->
       <div class="sidebar ct-relative ct-bg-white ct-w-full ct-h-full">
         <div class="toolbar ct-bg-brand-green-dark ct-h-12 ct-flex ct-justify-between ct-items-center ct-px-4 " >
-          <div class="toolbar-title ct-flex ct-items-center">
-            <p class="ct-font-semibold ct-text-xl ct-text-white ct-pr-2">
-              Description
-            </p>
-            <p class="ct-text-xs ct-text-gray-200">#Contribution-tracker</p>
+          <div class="toolbar-title ct-flex ct-items-center ct-space-x-2 ct-text-white">
+            <h4 class="ct-font-bold ct-text-lg ct-leading-8">Description</h4>
+            <h6 class="ct-font-light ct-text-xs">#Contribution-Tracker</h6>
           </div>
+
           <span class="close ct-cursor-pointer ct-w-5" @click="toggleSidebar">
             <img src="@/assets/close.svg" alt="close icon" class="ct-w-full" />
           </span>
