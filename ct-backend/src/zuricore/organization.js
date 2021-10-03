@@ -16,10 +16,10 @@ export default class ZuriOrganization {
     try {
       // Make the request
       const response = await axios.get(
-        `${this.BASE_API_ENDPOINT}'/${organization_id}` );
+        `${this.BASE_API_ENDPOINT}/${organization_id}/members` );
 
       // Return the response
-      return response.data;
+      return response.data.data;
     } catch (error) {
       throw new CustomError(
         `Unable to Connect to Zuri: ${error}`,
