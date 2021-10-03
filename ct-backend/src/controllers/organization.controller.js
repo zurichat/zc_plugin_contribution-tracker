@@ -10,7 +10,7 @@ const OrganizationController = {
   async getMembers(req, res, next) {
     try {
 
-      const { org_id } = req.query;
+      const { org_id } = req.params;
       const members = await Organization.getAllMembers(org_id);
       return Response.send(
         res,

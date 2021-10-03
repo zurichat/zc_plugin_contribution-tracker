@@ -5,7 +5,7 @@ import { userOrg } from "../middlewares/check_org.middleware"
 
 
 // retrieve org members from zuri core
-organizationRouter.get("/members", userOrg, OrganizationController.getMembers);
+organizationRouter.get("/:org_id/members", OrganizationController.getMembers);
 
 
 // Export module
