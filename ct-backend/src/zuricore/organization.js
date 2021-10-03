@@ -21,7 +21,6 @@ export default class ZuriOrganization {
       // Return the response
       return response.data;
     } catch (error) {
-      console.log(error.status)
       throw new CustomError(
         `Unable to Connect to Zuri: ${error}`,
         error.response.status,
