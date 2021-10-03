@@ -12,9 +12,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </div>
-        </div>
-
-        
+        </div>       
         <div class="ct-px-4 ct-py-7">
             <div>
                 <div class="ct-flex ct-text-base">
@@ -31,10 +29,12 @@
                 <h4 class="ct-font-semibold">Description</h4>
                 <p class="ct-mt-3">{{ selectedTicket.description }}</p>
             </div>
-            <div class="ct-mt-8">
+            <div class="ct-flex ct-flex-col ct-mt-8">
                 <div>
                     <p class="ct-text-left">Commit Link: </p>
-                    <p class="ct-text-brand-green-dark ct-text-justify"><a :href="selectedTicket.commit" target="_blank">{{ selectedTicket.commit }}</a></p>
+                    <div class="ct-text-brand-green-dark ct-text-justify ct-overflow-scroll">
+                        <a :href="selectedTicket.commit" target="_blank">{{ selectedTicket.commit }}</a>
+                    </div>
                 </div>
                 <div class="ct-mt-4 testdiv">
                     <p>Test Link: </p>
