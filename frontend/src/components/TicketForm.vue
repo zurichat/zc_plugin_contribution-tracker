@@ -49,41 +49,6 @@
         },
     }
 </script>
-<<<<<<< HEAD
-<style scoped>
-.ct-modal {
-  transition: opacity 0.25s ease;
-  width: 100vw;
-  height: 100vh;
-}
-.ct-form1 {
-  width: 420px;
-  height: 470px;
-}
-.hello1{
-    min-width: fit-content;
-    padding: 0px ;
-    font-size: 25px;
-    font-weight: bold;
-    }
-.hello2{
-font-size: 20px;
-}
-.tet3{
-    display: flex;
-    justify-content: space-between;
-}
-body.ct-modal-active {
-  overflow-x: hidden;
-  overflow-y: visible !important;
-}
-.text1{
-    margin-top: -30px;
-}
-.tet2:focus{
-border: 1px solid rgb(231, 222, 222);
-}
-=======
 
 <style>
     .form1{
@@ -119,5 +84,4 @@ border: 1px solid rgb(231, 222, 222);
         border-radius: 3px;
         margin-left: 100px;
     }
->>>>>>> 78bc4bc956bec8310bf2a15d7373fe03cc0f3a1b
 </style>
