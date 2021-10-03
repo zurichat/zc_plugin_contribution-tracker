@@ -22,7 +22,6 @@ export default {
         },
         ...mapGetters(["tickets"])
     },
-    
     methods: {
         ...mapActions(["getTicket"]),
 
