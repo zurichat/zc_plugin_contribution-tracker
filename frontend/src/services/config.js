@@ -11,10 +11,14 @@ class ContributionServices {
         return http.get("/users") // This simply serves as an example.
     }
     addUser(data) {
-        return http.post("/voters", data)
+        return http.post("/ticket", data)
     }
     getTicket() {
         return http.get("/ticket")
+    }
+    addTicket(data) {
+        console.log(data)
+        return http.post("/ticket", data)
     }
 
     // Request feature endpoint not yet available
