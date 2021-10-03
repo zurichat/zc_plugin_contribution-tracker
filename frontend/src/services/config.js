@@ -13,6 +13,9 @@ class ContributionServices {
     addUser(data) {
         return http.post("/voters", data)
     }
+    getTicket() {
+        return http.get("/ticket")
+    }
 
     // Request feature endpoint not yet available
 
