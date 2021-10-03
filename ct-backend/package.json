@@ -10,7 +10,7 @@
     "start:frontend": "cd .. && cd frontend && yarn serve:standalone",
     "dev": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
     "clean": "rimraf build",
-    "build": "cd .. && cd frontend && yarn build",
+    "build": "cd .. && cd frontend && yarn build && cd .. && cd ct-backend && yarn clean && babel ./src --out-dir build",
     "start": "node ./build/bin/www"
   },
   "author": "team contribution tracker (vue & nodejs)",
