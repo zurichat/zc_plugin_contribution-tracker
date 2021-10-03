@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.22.0",
+    "centrifuge": "^2.8.2",
     "core-js": "^3.6.5",
     "single-spa-vue": "^2.1.0",
     "vue": "^3.0.0",

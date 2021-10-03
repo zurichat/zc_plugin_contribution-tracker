@@ -27,7 +27,7 @@ const ticket_schema = Joi.object({
 
   //time created
   created_at: Joi.date().default(Date.now).label('created_at'),
-  updated_at: Joi.date().label('updated_at'),
+  updated_at: Joi.date().allow(null).label('updated_at'),
 });
 
 export default ticket_schema

@@ -14,44 +14,24 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from "vuex"
 export default {
     computed: {
         tickets() {
             return this.$store.state.tickets;
-        }
+        },
+        ...mapGetters(["tickets"])
     },
-    /*data() {
-        return {
-            tickets: [
-                {
-                    name: 'CreateTeamListView1',
-                    contributor: '#001 added by John Doe',
-                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae tempore quis sunt corrupti. Perspiciatis, consectetur officiis! Perferendis molestiae dolorem sequi vitae aspernatur fugit commodi.',
-                    commit: 'http://zurichats/api/v1/deals',
-                    test: 'http://zurichats/api/v1/deals'
-                },
-                {
-                    name: 'CreateTeamListView2',
-                    contributor: '#001 added by Jane Doe',
-                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae tempore quis sunt corrupti. Perspiciatis, consectetur officiis! Perferendis molestiae dolorem sequi vitae aspernatur fugit commodi.',
-                    commit: 'http://zurichats/api/v1/deals',
-                    test: 'http://zurichats/api/v1/deals'
-                },
-                {
-                    name: 'CreateTeamListView3',
-                    contributor: '#001 added by Sarah Doe',
-                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae tempore quis sunt corrupti. Perspiciatis, consectetur officiis! Perferendis molestiae dolorem sequi vitae aspernatur fugit commodi.',
-                    commit: 'http://zurichats/api/v1/deals',
-                    test: 'http://zurichats/api/v1/deals'
-                }
-            ],
-        }
-    },*/
     methods: {
+        ...mapActions(["getTicket"]),
+
        selectTicket: function(index) {
            this.$store.commit('selectTicket', index);
            this.$store.commit('openDescription');
        }
+    },
+    mounted() {
+        this.getTicket()
     }
 }
 </script>
