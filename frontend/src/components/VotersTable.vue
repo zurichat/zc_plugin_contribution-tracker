@@ -9,7 +9,7 @@
           <th class="ct-p-3">Calculated Voting Weight(%)</th>
         </tr>
       </thead>
-      <tbody v-for="(voter, i) in voters" :key="i">
+      <tbody v-for="(voter, i) in all_voters" :key="i">
         <tr class="ct-border-b ct-font-medium">
           <td class="voters-td ct-p-3">{{voter.first_name}} {{voter.last_name}}</td>
           <td class="voters-td ct-p-3">0{{voter.voting_weight}}</td>
@@ -29,23 +29,23 @@
     name: 'VotersTable',
     data(){
       return {
-        // voters:[
-        //   {
-        //     first_name:"John",
-        //     last_name:"Doe",
-        //     voting_weight:2
-        //   },
-        //   {
-        //     first_name:"Mary",
-        //     last_name:"Jane",
-        //     voting_weight:1
-        //   },
-        //   {
-        //     first_name:"Petec",
-        //     last_name:"0x0",
-        //     voting_weight:2
-        //   },
-        // ]
+        all_voters:[
+          {
+            first_name:"John",
+            last_name:"Doe",
+            voting_weight:2
+          },
+          {
+            first_name:"Mary",
+            last_name:"Jane",
+            voting_weight:1
+          },
+          {
+            first_name:"Petec",
+            last_name:"0x0",
+            voting_weight:2
+          },
+        ]
       }
     },
     methods:{
@@ -57,6 +57,13 @@
       //
       getSum(total, num){return total + num},
 
+      updateDummyData(){
+        if(this.voters != null){
+          console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",this.voters)
+          this.all_voters = this.voters
+        }
+      },
+
       ...mapActions(["getVoters"])
     },
     computed: {
@@ -64,7 +71,8 @@
     },
     mounted() {
         this.getVoters()
-    }
+        this.updateDummyData()
+    },
   }
 </script>
 
