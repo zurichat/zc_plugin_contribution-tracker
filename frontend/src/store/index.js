@@ -51,6 +51,12 @@ export default createStore({
         commit("getTicket", response.data)
       })
     },
+    async addTicket({ commit }, payload) {
+      commit('addTicket', payload)
+      await ContributionServices.addUser(payload).then(response => {
+        console.log(response.data)
+      })
+    },
   },
   getters: {
     users(state) {
