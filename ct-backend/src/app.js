@@ -8,6 +8,7 @@ import adminRouter from './routes/admin.route'
 import sidebarRouter from './routes/sidebar.route'
 import handleErrors from './middlewares/errors.middleware'
 import ticketRouter from './routes/ticket.route'
+import featureRouter from './routes/feature.route'
 import organizationRouter from './routes/organization.route'
 
 dotenv.config()
@@ -39,8 +40,8 @@ app.use('/api/v1', sidebarRouter)
 app.use('/api/v1', indexRouter)
 app.use('/api/v1/admin', adminRouter)
 app.use('/api/v1/tickets', ticketRouter)
+app.use('/api/v1/feature', featureRouter)
 app.use('/api/v1/organizations', organizationRouter)
-
 
 //serve dist/index.html
 app.get('/', (req, res) => {
