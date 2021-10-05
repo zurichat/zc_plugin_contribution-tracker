@@ -6,12 +6,12 @@ import { DATABASE_CONFIG, PLUGIN_ID, ORGANISATION_ID } from "../config"
 const CustomError = require("../utils/custom-error");
 
 export default class ZuriOrganization {
-  constructor(collection_name) {
+  constructor() {
 
-    this.BASE_API_ENDPOINT = 'https://api.zuri.chat/organizations';    
+    this.BASE_API_ENDPOINT = 'https://api.zuri.chat/organizations'
   }
 
-  // Create
+  // Get 
   async getAllMembers(organization_id) {
     try {
       // Make the request
@@ -29,26 +29,30 @@ export default class ZuriOrganization {
     }
   }
 
-  // Fetch a single object from the DB
-  async getMember(object_id, organization_id) {
+  // Get 
+  async getMember(organization_id, member_id, token) {
     try {
-
-      this.DB_DEFAULTS_CONFIG.ORGANISATION_ID = organization_id || ORGANISATION_ID
       // Make the request
       const response = await axios.get(
-        `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.ORGANISATION_ID}?_id=${object_id}`
-      );
+           `${this.BASE_API_ENDPOINT}/${organization_id}/members/${member_id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            }
+          }
+        )
 
       // Return the response
-      return response.data;
+      return response.data.data;
     } catch (error) {
       throw new CustomError(
-        `Unable to Connect to Zuri Core DB [READ ONE]: ${error}`,
-        "500",
-        error.response.data
+        `Unable to Connect to Zuri: ${error}`,
+        error.response.status,
+        error
       );
     }
   }
+
 
 }
 
