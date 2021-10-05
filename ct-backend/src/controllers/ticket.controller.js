@@ -89,9 +89,9 @@ const ticketController = {
 	},
 	updateTicket: async (req, res, next) => {
 		// get id and payload from the frontend, id is the id of the current ticket, the payload will be an object containing the column that should be updated and the value like: for upvote: payload:{total_downvotes: voter.voter_weight + ticket.total_downvotes}, payload:{status: the selected status: Requested or Ongoing or Archived}, payload:{test_url: the new input url}, payload:{total_upvotes: voter.voter_weight + ticket.total_upvotes}
-		const { _id, payload } = req.body;
+		const { payload } = req.body;
 		// get org id from the query
-		const { org_id } = req.query;
+		const { org_id, ticket_id: _id } = req.query;
 	
 		try {
 		  // update ticket
