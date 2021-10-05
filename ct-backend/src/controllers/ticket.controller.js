@@ -87,68 +87,21 @@ const ticketController = {
 			return next(err)
 		}
 	},
-	doUpvote: async (req, res, next) => {
-		try {
-			// get id and payload from the frontend, id is the id of the current ticket, the payload will be an object containing the  vote weight user that's voting + the current value of the ticket's upvotes of the  like: payload:{total_upvotes: voter.voter_weight + ticket.total_upvotes}
-			const { id, payload } = req.body;
-			// get org id from the query
-			const { org_id } = req.query;
-			// update ticket
-			const data = await Ticket.update(id, payload, org_id);
-			// return data
-			return Response.send(res, 200, data, "Upvote successful");
-		} catch (err) {
-			return next(err);
-		}
-	},
-	doDownvote: async (req, res, next) => {
-		// get id and payload from the frontend, id is the id of the current ticket, the payload will be an object containing the  vote weight of user that's voting + the current value of the ticket's downvotes like: payload:{total_downvotes: voter.voter_weight + ticket.total_downvotes}
-		const { id, payload } = req.body;
+	updateTicket: async (req, res, next) => {
+		// get id and payload from the frontend, id is the id of the current ticket, the payload will be an object containing the column that should be updated and the value like: for upvote: payload:{total_downvotes: voter.voter_weight + ticket.total_downvotes}, payload:{status: the selected status: Requested or Ongoing or Archived}, payload:{test_url: the new input url}, payload:{total_upvotes: voter.voter_weight + ticket.total_upvotes}
+		const { _id, payload } = req.body;
 		// get org id from the query
 		const { org_id } = req.query;
-
+	
 		try {
-			// update ticket
-			const data = await Ticket.update(id, payload, org_id);
-			// return data
-			return Response.send(res, 200, data, "Downvote successful");
+		  // update ticket
+		  const data = await Ticket.update(_id, payload, org_id);
+		  // return data
+		  return Response.send(res, 200, data, "Update successful");
 		} catch (err) {
-			return next(err);
+		  return next(err);
 		}
-	},
-	updateStatus: async (req, res, next) => {
-		// get id and payload from the frontend, id is the id of the current ticket, the payload will be like: payload:{status: the selected status: Requested or Ongoing or Archived}
-		const { id, payload } = req.body;
-		// get org id from the query
-		const { org_id } = req.query;
-		try {
-			// update ticket
-			const data = await Ticket.update(id, payload, org_id);
-			// return data
-			return Response.send(res, 200, data, "Ticket archived  successfully");
-		} catch (err) {
-			return next(err);
-		}
-	},
-	updateTestUrl: async (req, res, next) => {
-		// get id and payload from the frontend, id is the id of the current ticket, the payload will be like: payload:{test_url: the new input url}
-		const { id, payload } = req.body;
-		// get org id from the query
-		const { org_id } = req.query;
-		try {
-			// update ticket
-			const data = await Ticket.update(id, payload, org_id);
-			// return data
-			return Response.send(
-				res,
-				200,
-				data,
-				"Ticket test url updated  successfully"
-			);
-		} catch (err) {
-			return next(err);
-		}
-	},
+	  },
 }
 
 export default ticketController;

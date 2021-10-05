@@ -8,13 +8,7 @@ ticketRouter.get('/', ticketController.fetchAll)
 ticketRouter.get('/:ticket_id', ticketController.fetchOne)
 //create ticket
 ticketRouter.post('/', ticketController.create)
-// update status
-ticketRouter.put("/status", ticketController.updateStatus)
-// upvote
-ticketRouter.put("/upvote", ticketController.doUpvote)
-//downvote
-ticketRouter.put("/downvote", ticketController.doDownvote)
-// update test url
-ticketRouter.put("/downvote", ticketController.updateTestUrl)
+// update ticket
+ticketRouter.put("/", ticketController.updateTicket)
 
 export default ticketRouter;
