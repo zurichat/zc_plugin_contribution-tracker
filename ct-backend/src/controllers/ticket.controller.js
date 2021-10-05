@@ -6,8 +6,7 @@ import ticket_schema from '../models/tickets.model'
 const Ticket = new ZuriDatabase('ct_tickets');
 
 const ticketController = {
-	async create(req, res, next) {
-
+	create: async (req, res, next) => {
 		try {
 			const { title, description, commit_url, test_url, created_at } = req.body;
 			const { org_id, user_id } = req.query;
@@ -23,8 +22,7 @@ const ticketController = {
 				created_at
 
 			})
-			console.log(tickets);
-			const saveTicket = await Ticket.create({ tickets, org_id })
+			const saveTicket = await Ticket.create(tickets, org_id )
 			return Response.send(
 				res,
 				201,
