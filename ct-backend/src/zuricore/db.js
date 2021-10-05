@@ -50,8 +50,8 @@ export default class ZuriDatabase {
   // Fetch a single object from the DB
   async fetchOne(object_id, organization_id) {
     try {
-
       this.DB_DEFAULTS_CONFIG.organization_id = organization_id || ORGANISATION_ID
+
       // Make the request
       const response = await axios.get(
         `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.ORGANISATION_ID}?_id=${object_id}`
@@ -71,7 +71,6 @@ export default class ZuriDatabase {
   // Fetch a object by Parameter
   async fetchByParameter(object, organization_id) {
     try {
-
       this.DB_DEFAULTS_CONFIG.organization_id = organization_id || ORGANISATION_ID
       // Convert the object to a query string
       const query_string = new URLSearchParams(object).toString();
@@ -95,7 +94,6 @@ export default class ZuriDatabase {
   // Fetches all objects from the DB
   async fetchAll(organization_id) {
     try {
-
       this.DB_DEFAULTS_CONFIG.organization_id = organization_id || ORGANISATION_ID
       // Make the request
       const response = await axios.get(
@@ -119,7 +117,6 @@ export default class ZuriDatabase {
     this.DB_DEFAULTS_CONFIG.payload = payload;
     // Set the ID of the object to be updated
     this.DB_DEFAULTS_CONFIG.object_id = object_id;
-
     this.DB_DEFAULTS_CONFIG.organization_id = organization_id || ORGANISATION_ID
     try {
       // Make the request
