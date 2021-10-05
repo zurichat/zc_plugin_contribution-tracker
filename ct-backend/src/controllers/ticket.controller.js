@@ -23,7 +23,7 @@ const ticketController = {
 				created_at
 
 			})
-
+			console.log(tickets);
 			const saveTicket = await Ticket.create({ tickets, org_id })
 			return Response.send(
 				res,
