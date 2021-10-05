@@ -4,7 +4,7 @@ import axios from "axios"
 // Custom Modules
 import { DATABASE_CONFIG, PLUGIN_ID, ORGANISATION_ID } from "../config"
 const CustomError = require("../utils/custom-error");
-
+console.log();
 export default class ZuriDatabase {
   constructor(collection_name) {
 
@@ -15,7 +15,7 @@ export default class ZuriDatabase {
     // Set the default values for the DB operations
     this.DB_DEFAULTS_CONFIG = {
       plugin_id: PLUGIN_ID,
-      organization_id: ORGANISATION_ID,
+      ORGANISATION_ID,
       collection_name: collection_name,
       bulk_write: false,
       object_id: "",
@@ -50,11 +50,11 @@ export default class ZuriDatabase {
   // Fetch a single object from the DB
   async fetchOne(object_id, organization_id) {
     try {
+      this.DB_DEFAULTS_CONFIG.organization_id = organization_id || ORGANISATION_ID
 
-      this.DB_DEFAULTS_CONFIG.organization_id = organization_id
       // Make the request
       const response = await axios.get(
-        `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.organization_id}?_id=${object_id}`
+        `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.ORGANISATION_ID}?_id=${object_id}`
       );
 
       // Return the response
@@ -71,14 +71,13 @@ export default class ZuriDatabase {
   // Fetch a object by Parameter
   async fetchByParameter(object, organization_id) {
     try {
-
-      this.DB_DEFAULTS_CONFIG.organization_id = organization_id
+      this.DB_DEFAULTS_CONFIG.organization_id = organization_id || ORGANISATION_ID
       // Convert the object to a query string
       const query_string = new URLSearchParams(object).toString();
 
       // Make the request
       const response = await axios.get(
-        `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.organization_id}?${query_string}`
+        `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.ORGANISATION_ID}?${query_string}`
       );
 
       // Return the response
@@ -95,15 +94,14 @@ export default class ZuriDatabase {
   // Fetches all objects from the DB
   async fetchAll(organization_id) {
     try {
-
-      this.DB_DEFAULTS_CONFIG.organization_id = organization_id
+      this.DB_DEFAULTS_CONFIG.organization_id = organization_id || ORGANISATION_ID
       // Make the request
       const response = await axios.get(
-        `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.organization_id}`
+        `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.ORGANISATION_ID}`
       );
 
       // Return the response
-      return response.data;
+      return response.data.data;
     } catch (error) {
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [READ ALL]: ${error}`,
@@ -119,8 +117,7 @@ export default class ZuriDatabase {
     this.DB_DEFAULTS_CONFIG.payload = payload;
     // Set the ID of the object to be updated
     this.DB_DEFAULTS_CONFIG.object_id = object_id;
-
-    this.DB_DEFAULTS_CONFIG.organization_id = organization_id
+    this.DB_DEFAULTS_CONFIG.organization_id = organization_id || ORGANISATION_ID
     try {
       // Make the request
       const response = await axios.put(
@@ -141,7 +138,7 @@ export default class ZuriDatabase {
 
   // Delete - Not Implemented in Zuri Core API yet
   async delete(filter, organization_id) {
-    this.DB_DEFAULTS_CONFIG.organization_id = organization_id
+    this.DB_DEFAULTS_CONFIG.organization_id = organization_id || ORGANISATION_ID
     this.DB_DEFAULTS_CONFIG.bulk_delete = true
     this.DB_DEFAULTS_CONFIG.filter = filter
 
