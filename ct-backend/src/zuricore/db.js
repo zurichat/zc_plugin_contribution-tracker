@@ -101,7 +101,7 @@ export default class ZuriDatabase {
       );
 
       // Return the response
-      return response.data;
+      return response.data.data;
     } catch (error) {
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [READ ALL]: ${error}`,
