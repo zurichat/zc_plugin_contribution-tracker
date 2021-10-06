@@ -8,6 +8,11 @@ import adminRouter from './routes/admin.route'
 import sidebarRouter from './routes/sidebar.route'
 import handleErrors from './middlewares/errors.middleware'
 import ticketRouter from './routes/ticket.route'
+import featureRouter from './routes/feature.route'
+import commentRouter from './routes/comment.route'
+import organizationRouter from './routes/organization.route'
+import { userOrg } from "./middlewares/check_org.middleware"
+import isAuthenticated from "./middlewares/isAuthenticated.middleware"
 
 dotenv.config()
 const build = path.join('var', 'www', 'contribution-tracker', 'frontend', 'dist')
@@ -37,7 +42,10 @@ app.use(
 app.use('/api/v1', sidebarRouter)
 app.use('/api/v1', indexRouter)
 app.use('/api/v1/admin', adminRouter)
-app.use('/api/v1/ticket', ticketRouter)
+app.use('/api/v1/tickets', ticketRouter)
+app.use('/api/v1/feature', featureRouter)
+app.use('/api/v1/comments', userOrg, commentRouter)
+app.use('/api/v1/organizations', organizationRouter)
 
 //serve dist/index.html
 app.get('/', (req, res) => {
