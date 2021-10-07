@@ -2,145 +2,165 @@
 import axios from "axios"
 
 // Custom Modules
-import catchAsync from "../utils/catchAsync"
-import CustomError from "../utils/custom-error"
-import env from "../config/enviroment/index"
+import { DATABASE_CONFIG, PLUGIN_ID, ORGANISATION_ID } from "../config"
+const CustomError = require("../utils/custom-error");
 
-const { getBaseUrl } = env
-const { base_url, read_url, write_url, delete_url, plugin_id } = getBaseUrl()
-// eslint-disable no-underscore-dangle
-// eslint-disable class-methods-use-this
+export default class ZuriDatabase {
+  constructor(collection_name) {
 
-/** *
- * create
- * findAll
- * findById
- * findByParameter
- * updateById
- * delete
- */
+    this.DB_WRITE_URL = DATABASE_CONFIG.WRITE_URL;
+    this.DB_READ_URL = DATABASE_CONFIG.READ_URL;
+    this.DB_DELETE_URL = DATABASE_CONFIG.DELETE_URL;
 
-export default class ZuriDb {
-  constructor(entity) {
-    this.entity = entity
+    // Set the default values for the DB operations
+    this.DB_DEFAULTS_CONFIG = {
+      plugin_id: PLUGIN_ID,
+      organization_id: ORGANISATION_ID,
+      collection_name: collection_name,
+      bulk_write: false,
+      object_id: "",
+      filter: {},
+      payload: {},
+    };
   }
 
-  create = catchAsync(async (payload, org_id) => {
+  // Create
+  async create(payload, organization_id) {
+    // Set the payload
+    this.DB_DEFAULTS_CONFIG.payload = payload
+    this.DB_DEFAULTS_CONFIG.organization_id = organization_id || ORGANISATION_ID
+
     try {
-      const res = await axios({
-        url: write_url,
-        method: 'post',
-        data: {
-          plugin_id: plugin_id,
-          organization_id: org_id,
-          collection_name: this.entity,
-          bulk_write: Array.isArray(payload), // returns true if data is an array
-          payload,
-        },
-      })
-      // Response
-      return res.data.data
+      // Make the request
+      const response = await axios.post(
+        this.DB_WRITE_URL,
+        JSON.stringify(this.DB_DEFAULTS_CONFIG)
+      );
+
+      // Return the response
+      return response.data;
     } catch (error) {
       throw new CustomError(
         `Unable to Connect to Zuri Core DB [CREATE]: ${error}`,
         "500"
-      )
+      );
     }
-  })
+  }
 
-  findAll = catchAsync(async (org_id) => {
-    const url = `${read_url}/${plugin_id}/${this.entity}/${org_id}`
+  // Fetch a single object from the DB
+  async fetchOne(object_id, organization_id) {
     try {
-      const res = await axios({
-        url,
-        method: 'get',
-      })
-      return res.data.data;
-    } catch (err) {
-      err.response.data
-    }
-  })
 
-  findById = catchAsync(async (object_id, org_id) => {
-    const url = `${read_url}/${plugin_id}/${this.entity}/${org_id}?_id=${object_id}`
-    try {
-      const res = await axios({
-        url,
-        method: 'get',
-      })
-      return res.data.data ? res.data.data : null
-    } catch (error) {
-      throw new Error(
-        'Server Internal error, we will figure it out, try again later'
-      )
-    }
-  })
+      this.DB_DEFAULTS_CONFIG.organization_id = organization_id
+      // Make the request
+      const response = await axios.get(
+        `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.organization_id}?_id=${object_id}`
+      );
 
-  findByParameter = catchAsync(async (object, org_id) => {
-    const queryString = new URLSearchParams(object).toString()
-    const url = `${read_url}/${plugin_id}/${this.entity}/${org_id}?${queryString}`
-    try {
-      const res = await axios({
-        url,
-        method: 'get',
-      })
-      return res.data.data
+      // Return the response
+      return response.data;
     } catch (error) {
       throw new CustomError(
-        `Unable to Connect to Zuri Core DB [READ ONE BY PARAMETER]`,
+        `Unable to Connect to Zuri Core DB [READ ONE]: ${error}`,
         "500",
         error.response.data
       );
     }
-  })
+  }
 
-  update = catchAsync(async (object_id, payload, org_id) => {
+  // Fetch a object by Parameter
+  async fetchByParameter(object, organization_id) {
     try {
-      const res = await axios({
-        method: 'put',
-        url: write_url,
-        data: {
-          plugin_id,
-          organization_id: org_id,
-          collection_name: this.entity,
-          object_id,
-          payload,
-        },
-      })
-      console.log(res);
-      return res.data.data
+
+      this.DB_DEFAULTS_CONFIG.organization_id = organization_id
+      // Convert the object to a query string
+      const query_string = new URLSearchParams(object).toString();
+
+      // Make the request
+      const response = await axios.get(
+        `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.organization_id}?${query_string}`
+      );
+
+      // Return the response
+      return response.data;
     } catch (error) {
       throw new CustomError(
-        `Unable to Connect to Zuri Core DB [UPDATE]`,
+        `Unable to Connect to Zuri Core DB [READ ONE BY PARAMETER]: ${error}`,
+        "500",
+        error.response.data
+      );
+    }
+  }
+
+  // Fetches all objects from the DB
+  async fetchAll(organization_id) {
+    try {
+
+      this.DB_DEFAULTS_CONFIG.organization_id = organization_id
+      // Make the request
+      const response = await axios.get(
+        `${this.DB_READ_URL}/${this.DB_DEFAULTS_CONFIG.plugin_id}/${this.DB_DEFAULTS_CONFIG.collection_name}/${this.DB_DEFAULTS_CONFIG.organization_id}`
+      );
+
+      // Return the response
+      return response.data;
+    } catch (error) {
+      throw new CustomError(
+        `Unable to Connect to Zuri Core DB [READ ALL]: ${error}`,
+        "500",
+        error.response.data
+      );
+    }
+  }
+
+  // Update
+  async update(object_id, payload, organization_id) {
+    // Set the payload
+    this.DB_DEFAULTS_CONFIG.payload = payload;
+    // Set the ID of the object to be updated
+    this.DB_DEFAULTS_CONFIG.object_id = object_id;
+
+    this.DB_DEFAULTS_CONFIG.organization_id = organization_id
+    try {
+      // Make the request
+      const response = await axios.put(
+        this.DB_WRITE_URL,
+        JSON.stringify(this.DB_DEFAULTS_CONFIG)
+      );
+
+      // Return the response
+      return response.data;
+    } catch (error) {
+      throw new CustomError(
+        `Unable to Connect to Zuri Core DB [UPDATE]: ${error}`,
+        "500",
+        error.response.data
+      );
+    }
+  }
+
+  // Delete - Not Implemented in Zuri Core API yet
+  async delete(filter, organization_id) {
+    this.DB_DEFAULTS_CONFIG.organization_id = organization_id
+    this.DB_DEFAULTS_CONFIG.bulk_delete = true
+    this.DB_DEFAULTS_CONFIG.filter = filter
+
+    try {
+      // Make the request
+      const response = await axios.post(
+        'https://api.zuri.chat/data/delete',
+        JSON.stringify(this.DB_DEFAULTS_CONFIG)
+      );
+
+      // Return the response
+      return response.data;
+    } catch (error) {
+      throw new CustomError(
+        `Unable to Connect to Zuri Core DB [DELETE]: ${error}`,
         "500",
         error
       );
     }
-  })
-
-  // delete = catchAsync(async (filter, org_id) => {
-  //   try {
-  //     // Make the request
-  //     const res = await axios({
-  //       method: 'delete',
-  //       url: delete_url,
-  //       data: {
-  //         plugin_id,
-  //         organization_id: org_id,
-  //         collection_name: this.entity,
-  //         bulk_delete: true,
-  //         filter,
-  //       },
-  //     });
-
-  //     //Return the response
-  //     return res.data.data
-  //   } catch (error) {
-  //     throw new CustomError(
-  //       `Unable to Connect to Zuri Core DB [DELETE]: ${error}`,
-  //       "500",
-  //       error
-  //     );
-  //   }
-  // })
+  }
 }
+

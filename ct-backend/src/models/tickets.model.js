@@ -17,7 +17,9 @@ const ticket_schema = Joi.object({
 
   //test url
   test_url: Joi.string().trim().uri().label('test_url'),
-  status: Joi.string().trim().default('ongoing').valid('ongoing', 'archived').label('status'), // requested/created = 0,  completed = 1, archived = 2
+
+  // ticket status
+  status: Joi.string().trim().default('requested').valid('requested', 'completed', 'archived').label('status'), // requested/created = 0,  completed = 1, archived = 2
 
   //vote count
   total_upvotes: Joi.number().default(0).label('total_upvotes'),
@@ -25,7 +27,7 @@ const ticket_schema = Joi.object({
 
   //time created
   created_at: Joi.date().default(Date.now).label('created_at'),
-  updated_at: Joi.date().allow(null).label('updated_at'),
+  updated_at: Joi.date().label('updated_at'),
 });
 
 export default ticket_schema

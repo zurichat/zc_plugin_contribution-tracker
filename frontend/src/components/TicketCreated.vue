@@ -14,24 +14,17 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from "vuex"
 export default {
     computed: {
         tickets() {
             return this.$store.state.tickets;
-        },
-        ...mapGetters(["tickets"])
+        }
     },
     methods: {
-        ...mapActions(["getTicket"]),
-
        selectTicket: function(index) {
            this.$store.commit('selectTicket', index);
            this.$store.commit('openDescription');
        }
-    },
-    mounted() {
-        this.getTicket()
     }
 }
 </script>

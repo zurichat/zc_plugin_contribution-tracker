@@ -10,7 +10,6 @@
       </div>
         <ContributionNavbar />
         <AdminTab />
-        <p class="ct-p-3 ct-font-bold ct-text-brand-black">CreateTeamListView1</p>
         <VotersTable />
     </div>
   </div>

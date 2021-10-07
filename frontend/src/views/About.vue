@@ -1,11 +1,17 @@
 <template>
   <div class="about">
+
+
+
     <h1>This is an about page</h1>
     <!-- <Description /> -->
     <AdminTab />
     <GetUsers />
+
   </div>
 </template>
+
+
 
 <script>
 import AdminTab from '@/components/AdminTab'
