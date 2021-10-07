@@ -1,5 +1,5 @@
-import { createStore } from 'vuex'
-import ContributionServices from "@/services/config.js"
+import { createStore } from 'vuex';
+import ContributionServices from "@/services/config.js";
 
 export default createStore({
   state: {
