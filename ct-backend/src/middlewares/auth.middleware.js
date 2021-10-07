@@ -1,6 +1,10 @@
 import { get } from "axios";
 import CustomError from "../utils/custom-error";
-import { USER_URL } from "../config/index";
+import env from "../config/enviroment";
+
+const { getBaseUrl } = env
+
+const { user_url } = getBaseUrl()
 
 // GET req to zc_core to validate and fetch user details with the provided token
 export async function userAuth(req, res, next) {
@@ -8,7 +12,7 @@ export async function userAuth(req, res, next) {
     const { org, userId } = req.query;
     const token = req.query.token.split(" ")[1];
 
-    const response = await get(`${USER_URL}${userId}`, {
+    const response = await get(`${user_url}${userId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

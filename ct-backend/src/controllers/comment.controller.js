@@ -1,11 +1,11 @@
 /* eslint-disable */
-import ZuriDatabase from '../zuricore/db'
+import ZuriDb from '../zuricore';
 import Response from '../utils/response'
 import comment_schema from '../models/comment.model'
 import CustomError from '../utils/custom-error';
 
-const Comment = new ZuriDatabase('ct_comments');
-const Voter = new ZuriDatabase("ct_voters");
+const Comment = new ZuriDb('ct_comments');
+const Voter = new ZuriDb("ct_voters");
 
 const commentController = {
   create: async (req, res, next) => {
@@ -40,12 +40,12 @@ const commentController = {
       return next(error)
     }
   },
-  fetchOne: async (req, res, next) => {
+  findById: async (req, res, next) => {
     const { id } = req.params;
     const { org_id } = req.query;
 
     try {
-      const data = await Comment.fetchOne(id, org_id)
+      const data = await Comment.findById(id, org_id)
       return Response.send(
         res,
         200,
@@ -56,10 +56,10 @@ const commentController = {
       return next(err)
     }
   },
-  fetchAll: async (req, res, next) => {
+  findAll: async (req, res, next) => {
     try {
       const { org_id } = req.query
-      let data = await Comment.fetchAll(org_id)
+      let data = await Comment.findAll(org_id)
 
       return Response.send(
         res,
@@ -86,9 +86,9 @@ const commentController = {
 
       // validate the voter
       // if (!req.user.ct_voter) throw new CustomError('This is not a valid voter', 401); 
-      const voterResponse = await Voter.fetchOne(voter_id, org_id);
+      const voterResponse = await Voter.findByParameter(voter_id, org_id);
       const voter = voterResponse.data;
-      if(!voter) return Response.send(
+      if (!voter) return Response.send(
         res,
         422,
         {},
@@ -97,10 +97,10 @@ const commentController = {
       )
 
       // retrieve the comment
-      const commentResponse = await Comment.fetchOne(id, org_id);
+      const commentResponse = await Comment.findById(id, org_id);
       const savedComment = commentResponse.data;
       if (!savedComment) throw new CustomError('Comment not found.', 404);
-      
+
       // add only if the user has voted before
       if (!savedComment.up_votes.some(vote => vote.user_name == voter.user_name)) {
         savedComment.updated_at = Date.now();
@@ -138,9 +138,9 @@ const commentController = {
 
       // validate the voter
       // if (!req.user.ct_voter) throw new CustomError('This is not a valid voter', 401); 
-      const voterResponse = await Voter.fetchOne(voter_id, org_id);
+      const voterResponse = await Voter.findById(voter_id, org_id);
       const voter = voterResponse.data;
-      if(!voter) return Response.send(
+      if (!voter) return Response.send(
         res,
         422,
         {},
@@ -149,10 +149,10 @@ const commentController = {
       )
 
       // retrieve the comment
-      const commentResponse = await Comment.fetchOne(id, org_id);
+      const commentResponse = await Comment.findById(id, org_id);
       const savedComment = commentResponse.data;
       if (!savedComment) throw new CustomError('Comment not found.', 404);
-      
+
       // add only if the user has voted before
       if (!savedComment.down_votes.some(vote => vote.user_name == voter.user_name)) {
         savedComment.updated_at = Date.now();

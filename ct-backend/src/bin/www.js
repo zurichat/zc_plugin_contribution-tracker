@@ -4,8 +4,13 @@
  */
 import debug from 'debug';
 import http from 'http';
-/* eslint-disable */
 import app from '../app';
+import env from '../config/enviroment/index';
+/* eslint-disable */
+
+const { getBaseUrl } = env
+
+const { api_url } = getBaseUrl()
 /**
  * Normalize a port into a number, string, or false.
  */
@@ -25,7 +30,7 @@ const normalizePort = val => {
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.PORT || '4400');
+const port = normalizePort(env.PORT);
 app.set('port', port);
 
 /**
@@ -65,7 +70,7 @@ const onListening = () => {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on ${bind}`)
-  console.log(`Server started listening on http://127.0.0.1:${addr.port}`)
+  console.log(`Server up and running at ${addr.port}`)
 };
 /**
  * Listen on provided port, on all network interfaces.
