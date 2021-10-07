@@ -27,7 +27,7 @@ const routes = [
     component: OngoingVoting
   },
   {
-    path: '/request-work',
+    path: '/admin/request-work',
     name: 'RequestWork',
     component: RequestWork
   },
