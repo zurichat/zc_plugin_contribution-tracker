@@ -1,15 +1,16 @@
 // Custom Modules
 import Response from '../utils/response'
 import CustomError from "../utils/custom-error"
-import catchAsync from '../utils/catchAsync'
+import { DATABASE_CONFIG } from "../config/index"
+import { PLUGIN_ID } from "../config/index"
 import voterSchema from "../models/voter.model"
-import ZuriDb from '../zuricore/db'
+import ZuriDatabase from "../zuricore/db"
 
-const Voter = new ZuriDb("ct_voters");
+const Voter = new ZuriDatabase("ct_voters");
 
 const AdminController = {
 
-  addVoter: catchAsync(async (req, res, next) => {
+  async addVoter(req, res, next) {
     try {
 
       const { first_name, last_name, email, user_name, voting_weight } = req.body;
@@ -43,17 +44,17 @@ const AdminController = {
     } catch (error) {
       next(error)
     }
-  }),
+  },
 
 
-  updateVoter: catchAsync(async (req, res, next) => {
+  async updateVoter(req, res, next) {
     try {
 
       const { voting_weight } = req.body;
       const { org_id, voter_id } = req.query;
 
       const voter = {
-        voting_weight,
+        voting_weight: voting_weight,
         updated_at: Date.now()
       };
 
@@ -70,17 +71,14 @@ const AdminController = {
     } catch (error) {
       next(error)
     }
-  }),
+  },
 
 
 
-  getVoters: catchAsync(async (req, res, next) => {
+  async getVoters(req, res, next) {
     try {
       const { org_id } = req.query;
-      const voters = await Voter.findAll(org_id);
-      if (!voters) {
-        return Response.send(res, 404, voters, 'voters not found', false)
-      }
+      const voters = await Voter.fetchAll(org_id);
       Response.send(
         res,
         200,
@@ -95,30 +93,28 @@ const AdminController = {
         error.message
       )
     }
-  }),
+  },
 
   //get a single voter
-  getVoter: catchAsync(async (req, res, next) => {
+  async getVoter(req, res, next) {
     try {
-      const { email, org_id } = req.query;
+      const { org_id } = req.query;
+      const { email } = req.query;
 
-      const voter = await Voter.findByParameter({ email }, org_id);
-      if (!voter) {
-        return Response.send(res, 404, voter, 'voter not found', false)
-      }
+      const voter = await Voter.findOne({ email: email }, org_id);
       Response.send(
         res,
         200,
         voter,
-        "Voter retrieved succcessfully"
+        "Voter retrived succcessfully"
       )
     } catch (error) {
       next(error);
     }
-  }),
+  },
 
   //remove a voter
-  removeVoter: catchAsync(async (req, res, next) => {
+  async removeVoter(req, res, next) {
     try {
       const { org_id } = req.query;
       const { email } = req.query;
@@ -132,7 +128,7 @@ const AdminController = {
     } catch (error) {
       next(error);
     }
-  }),
+  },
 }
 
 export default AdminController
