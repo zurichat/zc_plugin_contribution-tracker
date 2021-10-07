@@ -1,5 +1,5 @@
  module.exports = {
-     outputDir: '../public',
+     outputDir: 'public',
      chainWebpack: config => {
          config.externals([
              /.*camljs.*/i,
