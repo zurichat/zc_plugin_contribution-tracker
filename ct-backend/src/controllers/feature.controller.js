@@ -1,5 +1,5 @@
 /* eslint-disable */
-import ZuriDb from '../zuricore';
+import ZuriDb from '../zuricore/db';
 import Response from '../utils/response'
 import feature_schema from '../models/features.model'
 

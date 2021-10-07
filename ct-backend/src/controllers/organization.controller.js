@@ -2,7 +2,7 @@
 import Response from '../utils/response'
 import CustomError from "../utils/custom-error"
 import ZuriOrganization from "../zuricore/organization"
-import ZuriDb from '../zuricore';
+import ZuriDb from '../zuricore/db';
 
 
 const Organization = new ZuriOrganization();

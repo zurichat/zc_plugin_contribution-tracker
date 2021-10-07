@@ -1,5 +1,5 @@
 /* eslint-disable */
-import ZuriDb from '../zuricore';
+import ZuriDb from '../zuricore/db';
 import Response from '../utils/response'
 import comment_schema from '../models/comment.model'
 import CustomError from '../utils/custom-error';

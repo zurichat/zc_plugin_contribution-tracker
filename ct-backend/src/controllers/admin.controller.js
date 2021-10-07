@@ -3,7 +3,7 @@ import Response from '../utils/response'
 import CustomError from "../utils/custom-error"
 import catchAsync from '../utils/catchAsync'
 import voterSchema from "../models/voter.model"
-import ZuriDb from '../zuricore'
+import ZuriDb from '../zuricore/db'
 
 const Voter = new ZuriDb("ct_voters");
 

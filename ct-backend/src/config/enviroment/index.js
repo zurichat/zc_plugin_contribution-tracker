@@ -16,6 +16,7 @@ const env = {
     production: process.env.NODE_ENV === 'production',
   },
   PLUGIN_ID: '',
+  ORG_ID: '',
   SOCKET_URL: '',
   SOCKER_KEY: '',
   getBaseUrl() {

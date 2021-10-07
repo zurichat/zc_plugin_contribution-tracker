@@ -1,5 +1,5 @@
 /* eslint-disable */
-import ZuriDb from '../zuricore';
+import ZuriDb from '../zuricore/db';
 import Response from '../utils/response'
 import ticket_schema from '../models/tickets.model'
 import catchAsync from '../utils/catchAsync'

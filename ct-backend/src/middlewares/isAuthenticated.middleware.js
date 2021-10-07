@@ -1,7 +1,7 @@
 import axios from 'axios';
 import CustomError from "../utils/custom-error";
 import env from '../config/enviroment';
-import ZuriDb from '../zuricore';
+import ZuriDb from '../zuricore/db';
 import ZuriOrganization from "../zuricore/organization"
 
 const { getBaseUrl } = env
