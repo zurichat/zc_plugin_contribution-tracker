@@ -2,9 +2,11 @@
 import axios from "axios"
 
 // Custom Modules
-import { DATABASE_CONFIG, PLUGIN_ID, ORGANISATION_ID } from "../config"
+import env from "../config/enviroment";
 const CustomError = require("../utils/custom-error");
 
+const { getBaseUrl } = env
+const { user_url } = getBaseUrl()
 export default class ZuriOrganization {
   constructor() {
 
@@ -16,7 +18,7 @@ export default class ZuriOrganization {
     try {
       // Make the request
       const response = await axios.get(
-        `${this.BASE_API_ENDPOINT}/${organization_id}/members` );
+        `${this.BASE_API_ENDPOINT}/${organization_id}/members`);
 
       // Return the response
       return response.data.data;
@@ -34,13 +36,13 @@ export default class ZuriOrganization {
     try {
       // Make the request
       const response = await axios.get(
-           `${this.BASE_API_ENDPOINT}/${organization_id}/members/${member_id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            }
+        `${this.BASE_API_ENDPOINT}/${organization_id}/members/${member_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
           }
-        )
+        }
+      )
 
       // Return the response
       return response.data.data;
