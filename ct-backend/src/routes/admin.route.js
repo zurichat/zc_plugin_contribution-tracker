@@ -9,7 +9,7 @@ import { userOrg } from "../middlewares/check_org.middleware"
 adminRouter.get("/voters", userOrg, AdminController.getVoters);
 
 //get single voter
-adminRouter.get('/voter', userOrg, AdminController.getVoter)
+adminRouter.get('/voter/:id', userOrg, AdminController.getVoter)
 
 // add voter
 adminRouter.post("/voters", userOrg, AdminController.addVoter);

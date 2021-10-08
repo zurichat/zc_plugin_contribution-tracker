@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <p class="ct-p-3 ct-font-bold ct-text-brand-black">CreateTeamListView1</p> -->
+    <p class="ct-p-3 ct-font-bold ct-text-brand-black">CreateTeamListView1</p>
     <table class="ct-table-fixed ct-w-full ct-text-center ct-text-brand-black">
       <thead>
         <tr class="ct-bg-brand-green-light ct-font-medium">

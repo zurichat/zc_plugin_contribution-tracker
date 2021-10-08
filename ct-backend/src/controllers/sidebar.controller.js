@@ -1,20 +1,20 @@
+/**
+    Copyright 2021, Zuri plugin reminder.
+    All rights reserved.
+    Written By: Bajomo Kehinde, 1st October 2021
+* */
 import CustomError from "../utils/custom-error"
-import catchAsync from "../utils/catchAsync";
-import env from "../config/enviroment";
-
-const { getBaseUrl } = env
-
-const { plugin_id } = getBaseUrl()
+import { PLUGIN_ID } from "../config"
 
 const sidebarController = {
-  getSideBarInfo: catchAsync(async (req, res) => {
+  async getSideBarInfo(req, res) {
     try {
       const { user, org_id } = req.query;
 
       const payload = {
         name: "Contribution Tracker",
-        description: "Track people's contributions to open source projects on Zuri Chat",
-        plugin_id,
+        description: "Track peoples contribution to open source projects",
+        plugin_id: PLUGIN_ID,
         organisation_id: org_id,
         user_id: user,
         group_name: "",
@@ -22,7 +22,7 @@ const sidebarController = {
         public_rooms: [
           {
             room_name: "Contribution Room",
-            room_image: "https://www.svgrepo.com/show/12072/image.svg",
+            room_image: "https://www.svgrepo.com/show/12072/chess-board.svg",
             room_url: "/ct",
           },
         ],
@@ -36,7 +36,7 @@ const sidebarController = {
         "500"
       );
     }
-  }),
+  },
 }
 
 export default sidebarController;

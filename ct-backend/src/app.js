@@ -8,16 +8,11 @@ import adminRouter from './routes/admin.route'
 import sidebarRouter from './routes/sidebar.route'
 import handleErrors from './middlewares/errors.middleware'
 import ticketRouter from './routes/ticket.route'
-import featureRouter from './routes/feature.route'
-import commentRouter from './routes/comment.route'
-import organizationRouter from './routes/organization.route'
-import { userOrg } from "./middlewares/check_org.middleware"
-import isAuthenticated from "./middlewares/isAuthenticated.middleware"
 
 dotenv.config()
-const build = path.join(__dirname, '../../frontend/dist')
+const build = path.join('home', 'trackercontrib', 'contribution-tracker', 'frontend', 'build')
 console.log("build path :" + build);
-const publicPath = path.join(__dirname, '../../frontend/public')
+const publicPath = path.join('home', 'trackercontrib', 'contribution-tracker', 'frontend', 'public')
 console.log("public path :" + publicPath)
 
 const app = express()
@@ -26,19 +21,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.static(build))
-app.use(express.static(publicPath))
+app.use('/public', express.static(publicPath))
+app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 
 if (process.env.NODE_ENV == 'develpoment') app.use(require('morgan')('dev'))
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE')
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-  )
-  next()
-})
 
 app.options('*', cors())
 
@@ -49,16 +35,13 @@ app.use(
 )
 
 app.use('/api/v1', sidebarRouter)
-app.use('/api/v1', indexRouter)
-app.use('/api/v1/admin', adminRouter)
-app.use('/api/v1/tickets', ticketRouter)
-app.use('/api/v1/feature', featureRouter)
-app.use('/api/v1/comments', userOrg, commentRouter)
-app.use('/api/v1/organizations', organizationRouter)
+app.use('/v1', indexRouter)
+app.use('/v1/admin', adminRouter)
+app.use('/v1/ticket', ticketRouter)
 
-//serve public/index.html
+//serve dist/index.html
 app.get('/', (req, res) => {
-  res.sendFile(publicPath);
+  res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
 });
 // app.get('/', async (req, res, next) => {
 //   let options = {
