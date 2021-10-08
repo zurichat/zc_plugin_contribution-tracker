@@ -7,7 +7,7 @@
 </template>
 <script>
 export default {
-  name: 'AddVoter',
+  name: 'addUser',
   methods: {
         toggleModal() {
             this.$store.commit('toggleUserModal');

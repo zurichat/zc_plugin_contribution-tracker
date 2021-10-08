@@ -6,7 +6,6 @@
       <AddUser />
       <ContributionNavbar />
       <AdminTab />
-      <p class="ct-p-3 ct-font-bold ct-text-brand-black">CreateTeamListView1</p>
       <VotersTable />
     </div>
   </div>
@@ -14,7 +13,7 @@
 
 <script>
 import ComponentHeader from '@/components/ComponentHeader';
-import AddUser from '@/components/AddVoter';
+import AddUser from '@/components/AddUser';
 import ContributionNavbar from '@/components/ContributionNavbar.vue';
 import AdminTab from '@/components/AdminTab.vue';
 import VotersTable from '@/components/VotersTable.vue';
@@ -32,3 +31,7 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+
+</style>

@@ -3,7 +3,7 @@
     <AddNewUser @click="toggleModal"/>
     <div class="ct-flex-grow">
       <ComponentHeader />
-      <AddVoter />
+      <addUser />
       <ContributionNavbar />
       <AdminTab />
       <div>
@@ -20,7 +20,7 @@
 
 <script>
 import ComponentHeader from '@/components/ComponentHeader';
-import AddVoter from '@/components/AddVoter';
+import AddUser from '@/components/AddUser';
 import ContributionNavbar from '@/components/ContributionNavbar.vue';
 import AdminTab from '@/components/AdminTab.vue';
 import VotersTable from '@/components/VotersTable.vue';
@@ -30,7 +30,7 @@ export default {
   name: 'Home',
   components: {
     ComponentHeader,
-    AddVoter,
+    AddUser,
     ContributionNavbar,
     AdminTab,
     VotersTable,
