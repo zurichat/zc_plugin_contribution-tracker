@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="ct-flex ct-justify-end ct-mb-8 ct-mr-3">
       <div class="ct-text-black  ">
         <button class="ct-py-3 ct-px-4 hover:ct-bg-green-200 ct-rounded ct-text-white ct-bg-brand-green-dark" @click="clicked = true">Request Feature</button>
         <div v-if="clicked" class="ct-fixed ct-w-screen ct-h-screen ct-backdrop-opacity-50 ct-inset-0 ct-bg-brand-backdrop ct-z-50">

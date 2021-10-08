@@ -5,7 +5,7 @@
         <router-link to="/admin" class="admin-link ct-text-brand-black ct-py-3 ct-px-4 ct-inline-block" href="#">Submitted Work</router-link>
       </li>
       <li class="ct-bg-white ct-h-12 ct-w-1/2">
-        <router-link to="admin/request-work" class="admin-link ct-text-brand-black ct-py-3 ct-px-4 ct-inline-block hover:border-gray-200 hover:bg-gray-200" href="#">Requested Work</router-link>
+        <router-link to="/request-work" class="admin-link ct-text-brand-black ct-py-3 ct-px-4 ct-inline-block hover:border-gray-200 hover:bg-gray-200" href="#">Requested Work</router-link>
       </li>
     </ul>
   </div>   

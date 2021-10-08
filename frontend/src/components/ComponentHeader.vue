@@ -1,5 +1,5 @@
 <template>
-    <div class="ct-flex ct-items-center ct-pl-3 ct-py-2 ct-bg-brand-green-dark ct-text-white ct-w-full ct-space-x-3">
+    <div class="ct-flex ct-items-center ct-pl-3 ct-py-2 ct-mb-8 ct-bg-brand-green-dark ct-text-white ct-w-full ct-space-x-3">
         <div><img src="../assets/hash.png"></div>
         <div class="ct-font-bold ct-text-lg ct-leading-8"><router-link to="/">Contribution tracker</router-link></div>
     </div>
