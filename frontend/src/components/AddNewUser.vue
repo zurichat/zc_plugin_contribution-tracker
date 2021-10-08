@@ -3,7 +3,7 @@
         <div class="ct-modal-overlay ct-absolute ct-w-screen ct-h-screen ct-bg-gray-800 ct-opacity-50"></div>
         <div class="ct-card ct-bg-white ct-flex ct-flex-col ct-p-4 ct-z-50 ct-rounded ct-shadow-lg z-50">
             <div class=" ct-px-2 ct-flex ct-flex-row ct-justify-between ct-align-items ct-mt-2">
-               <p class="ct-flex ct-justify-start ct-text-2xl ct-font-bold">Add User</p>
+               <p class="ct-flex ct-justify-start ct-text-2xl ct-font-bold">Add Voter</p>
                <div class="ct-cursor-pointer ct-flex" @click="modalControl">
                    <img src="@/assets/closeicon.svg" alt="" class="ct-w-4 ct-h-4 ct-mt-2"/>
                </div>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="ct-cursor-pointer ct-flex ct-justify-end ct-mt-4">
-                    <button type="submit" class="ct-w-36  ct-bg-green-500 ct-p-3 ct-px-4 hover:ct-bg-green-400 ct-rounded ct-text-white">Add User</button>
+                    <button type="submit" class="ct-w-36  ct-bg-green-500 ct-p-3 ct-px-4 hover:ct-bg-green-400 ct-rounded ct-text-white">Add Voter</button>
                 </div>
             </form>
         </div>
