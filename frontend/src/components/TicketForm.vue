@@ -45,11 +45,11 @@
         props: ['TogglePopup'],
          data(){
             return{
-                 postTicket:{
-                     ticketName:null,
-                     ticketDes:null,
-                     commitLink:null,
-                     textLink:null
+                postTicket:{
+                    ticketName:null,
+                    ticketDes:null,
+                    commitLink:null,
+                    textLink:null
                 }
             }
         },
