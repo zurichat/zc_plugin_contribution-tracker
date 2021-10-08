@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Admin from '../views/Admin.vue'
 import RequestFeature from '../views/RequestFeature.vue'
 import OngoingVoting from '../views/OngoingVoting.vue'
+import RequestWork from '../views/RequestWork.vue'
 
 const routes = [
   {
@@ -26,7 +27,7 @@ const routes = [
     component: OngoingVoting
   },
   {
-    path: '/request-work',
+    path: '/equest-work',
     name: 'RequestWork',
     component: RequestWork
   },

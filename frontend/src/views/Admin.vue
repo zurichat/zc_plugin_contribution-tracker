@@ -20,15 +20,16 @@ import VotersTable from '@/components/VotersTable.vue';
 import AddNewUser from '@/components/AddNewUser.vue';
 
 export default {
-  name: 'Home',
-  components: {
-    ComponentHeader,
-    AddUser,
-    ContributionNavbar,
-    AdminTab,
-    VotersTable,
-    AddNewUser,
-  },
+    name: 'Home',
+    components: {
+        ComponentHeader,
+        AddUser,
+        ContributionNavbar,
+        AdminTab,
+        VotersTable,
+        AddNewUser,
+    },
+
 }
 </script>
 

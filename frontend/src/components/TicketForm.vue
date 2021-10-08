@@ -12,7 +12,7 @@
             <form class="ct-w-full ct-px-2 ct-pt-10 ct-flex ct-flex-col" @submit="AddTicket" method="post">
                 <div class=" text1 ct-mb-50">
                     <div class="ct-mt-3 ct-ml-1 ">
-                <p class="tet4 ct-text-sm ct-font-bold">Ticket Name</p>
+                <p class="tet4 ct-text-sm ct-font-bold ct-font-bold">Ticket Name</p>
                 <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="ticketName" v-model="postTicket.ticketName">
             </div>
             <div class="ct-mt-3 ct-ml-1">

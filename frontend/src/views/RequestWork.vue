@@ -3,7 +3,7 @@
     <AddNewUser @click="toggleModal"/>
     <div class="ct-flex-grow">
       <ComponentHeader />
-      <addUser />
+      <AddUser />
       <ContributionNavbar />
       <AdminTab />
       <div>
@@ -12,8 +12,8 @@
             <p class="ct-text-brand-gray-light-1">#001 request added by Mark Essien at 10:00AM</p>
         </div>
         <p class="ct-p-3 ct-font-bold ct-text-brand-black">Comment: John Doe at 10:10am</p>  
+        <VotersTable />
       </div>
-      <VotersTable />
     </div>
   </div>
 </template>
