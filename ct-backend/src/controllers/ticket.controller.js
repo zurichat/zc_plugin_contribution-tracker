@@ -40,7 +40,7 @@ const ticketController = {
 			const { org_id } = req.query
 			let data = await Ticket.findAll(org_id)
 			if (!data) {
-				return Response.send(res, 404, data, 'Tickets not found', false)
+				return Response.send(res, 404, null, 'Tickets not found', false)
 			}
 			return Response.send(
 				res,
@@ -62,7 +62,7 @@ const ticketController = {
 		try {
 			const data = await Ticket.findById(ticket_id, org_id)
 			if (!data) {
-				return Response.send(res, 404, data, 'Ticket not found', false)
+				return Response.send(res, 404, null, 'Ticket not found', false)
 			}
 			return Response.send(
 				res,
@@ -77,15 +77,23 @@ const ticketController = {
 
 	findByParameter: catchAsync(async (req, res, next) => {
 		try {
-			const { org_id } = req.query;
-			const { ticket_id } = req.query;
-			const data = await Ticket.findByParameter({ ticket: ticket_id }, org_id)
-
+			const { org_id, status } = req.params;
+			console.log(org_id, status);
+			if (!status && !(status == 'ongoing' || 'archived')) {
+				return Response.send(res, 403, null, 'status is invalid', false)
+			}
+			if (!org_id) {
+				return Response.send(res, 403, 'add org_id as param', false)
+			}
+			const data = await Ticket.findByParameter({ status }, org_id)
+			if (!data) {
+				return Response.send(res, 404, null, 'Ticket with this status does not exist', false)
+			}
 			return Response.send(
 				res,
 				200,
 				data,
-				'Ticket retrieved successfully',
+				'successfully retrieved by status',
 				true
 			)
 		} catch (err) {

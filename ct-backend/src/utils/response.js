@@ -19,11 +19,11 @@ export default class Response {
    * @memberOf Response
    * @returns {Object} response returned to client
    */
-  static send(res, code = StatusCodes.OK, data, message, success = true) {
+  static send(res, code = StatusCodes.OK, data = null, message, success = true) {
     res.status(code).json({
-      success: success == null ? true : success,
+      success,
       message: formatMesaage(message),
-      data: data || null,
+      data,
     })
   }
 }

@@ -22,7 +22,7 @@ const AdminController = {
         user_name,
         voting_weight,
       }).catch((e) => {
-        Response.send(
+        return Response.send(
           res,
           422,
           e,
@@ -32,7 +32,6 @@ const AdminController = {
 
       // Save the voter to the database
       const newVoterDBData = await Voter.create(voter, org_id);
-
 
       return Response.send(
         res,
@@ -60,12 +59,11 @@ const AdminController = {
       // Save the voter to the database
       const newVoterDBData = await Voter.update(voter_id, voter, org_id);
 
-
       return Response.send(
         res,
-        200,
+        201,
         newVoterDBData,
-        "Voter added successfully"
+        "Voter updated successfully"
       )
     } catch (error) {
       next(error)
@@ -81,7 +79,7 @@ const AdminController = {
       if (!voters) {
         return Response.send(res, 404, voters, 'voters not found', false)
       }
-      Response.send(
+      return Response.send(
         res,
         200,
         voters,
@@ -106,7 +104,7 @@ const AdminController = {
       if (!voter) {
         return Response.send(res, 404, voter, 'voter not found', false)
       }
-      Response.send(
+      return Response.send(
         res,
         200,
         voter,
@@ -120,10 +118,9 @@ const AdminController = {
   //remove a voter
   removeVoter: catchAsync(async (req, res, next) => {
     try {
-      const { org_id } = req.query;
-      const { email } = req.query;
+      const { org_id, email } = req.query;
       const response = await Voter.delete({ email: email }, org_id,);
-      Response.send(
+      return Response.send(
         res,
         200,
         response,

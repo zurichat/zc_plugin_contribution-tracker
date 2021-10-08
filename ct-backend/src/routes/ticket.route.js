@@ -1,14 +1,18 @@
 import express from 'express';
 import ticketController from '../controllers/ticket.controller'
+import { userOrg } from '../middlewares/check_org.middleware'
 const ticketRouter = express.Router();
 
-//create ticket. requires orgId and userId from req.query
-ticketRouter.post('/', ticketController.create)
-//get all tickets
-ticketRouter.get('/', ticketController.findAll)
-// get a single ticket
-ticketRouter.get('/:ticket_id', ticketController.findById)
-// update ticket
-ticketRouter.put("/", ticketController.update)
+//create ticket, get all tickets, update ticket
+ticketRouter.route('/')
+  .post(userOrg, ticketController.create)
+  .get(userOrg, ticketController.findAll)
+  .put(userOrg, ticketController.update)
 
-export default ticketRouter;
+// get a ticket by id
+ticketRouter.get('/:ticket_id', userOrg, ticketController.findById)
+
+// get a ticket by parameter
+ticketRouter.get('/:org_id/:status', ticketController.findByParameter)
+
+export default ticketRouter
