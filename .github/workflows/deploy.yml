@@ -22,6 +22,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd /var/www/contribution-tracker
+            git stash
             git pull
             cd ct-backend/
             yarn holoInstall
