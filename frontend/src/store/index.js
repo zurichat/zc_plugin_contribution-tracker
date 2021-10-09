@@ -8,6 +8,7 @@ export default createStore({
     selectedTicket: [],
     description: false,
     addUserModalActive: true,
+    features: []
   },
   mutations: {
     selectTicket: (state, index) => {
@@ -28,12 +29,21 @@ export default createStore({
     },
     getTicket(state, payload) {
       state.tickets = payload
+    },
+    setFeatures(state, payload){
+      state.features = payload
     }
   },
   actions: {
     async getAllUsers({commit}) {
       await ContributionServices.getAllUsers().then(response => {
         commit("setUsers", response.data)
+        console.log(response.data)
+      })
+    },
+    async getAllFeatures() {
+      await ContributionServices.getAllFeatures().then(response => {
+        // commit("setFeatures", response.data)
         console.log(response.data)
       })
     },
@@ -64,6 +74,9 @@ export default createStore({
     },
     tickets(state) {
       return state.tickets
+    },
+    features(state){
+      return state.features
     }
   },
   modules: {

@@ -3,7 +3,7 @@
       <div class="ct-text-black  ">
         <button class="ct-py-3 ct-px-4 hover:ct-bg-green-200 ct-rounded ct-text-white ct-bg-brand-green-dark" @click="clicked = true">Request Feature</button>
         <div v-if="clicked" class="ct-fixed ct-w-screen ct-h-screen ct-backdrop-opacity-50 ct-inset-0 ct-bg-brand-backdrop ct-z-50">
-            <div class="ct-relative ct-container ct-mx-auto ct-my-20 ct-w-1/3 ct-h-4/6 ct-bg-white ct-h-100 ct-p-5 ct-border ct-border-gray-300 ct-shadow-md ct-z-50 ct-text-black">
+            <div class="ct-relative ct-container ct-mx-auto ct-my-20 ct-w-1/2 md:ct-w-1/3 ct-h-4/6 ct-bg-white ct-h-100 ct-p-5 ct-border ct-border-gray-300 ct-shadow-md ct-z-50 ct-text-black">
             <div class="ct-flex ct-z-20 ct-w-100 ct-justify-between">
             <h4 class="ct-text-xl ct-text-black ct-font-bold" >Request Feature</h4>
             <button @click="clicked = false" class="ct-text-2xl ct-font-light ct-bg-white ct-p-2"> x
@@ -11,13 +11,13 @@
             </div>
             <div v-if="showError" class="ct-text-red-600 ct-text-xs ct-my-4">*Kindly Fill Both Fields</div>
             <div class="ct-my-6">
-                <span class="ct-text-xs ct-font-bold">Name of Request</span>
+                <span class="ct-text-sm ct-font-bold">Name of Request</span>
                 <div class="ct-w-full ct-h-10">
                     <input type='text' v-model="input1" class="ct-w-full ct-border ct-h-full ct-border-gray-300 ct-p-2"/>
                 </div>
             </div>
             <div class="ct-my-6">
-                <span class="ct-text-xs ct-font-bold" >Allocated time for voting <span class="ct-text-gray-500 ct-font-medium">(in minutes)</span></span>
+                <span class="ct-text-sm ct-font-bold" >Allocated time for voting <span class="ct-text-gray-500 ct-font-medium">(in minutes)</span></span>
                 <div class="ct-w-full ct-h-10">
                     <input v-model="input2" type='text' class="ct-w-full ct-h-full ct-border ct-border-gray-300 ct-p-2"/>
                 </div>
