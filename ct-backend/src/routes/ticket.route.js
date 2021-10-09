@@ -14,5 +14,7 @@ ticketRouter.get('/:ticket_id', userOrg, ticketController.findById)
 
 // get a ticket by parameter
 ticketRouter.get('/:org_id/:status', ticketController.findByParameter)
+// vote
+ticketRouter.put("/vote", userOrg, ticketController.vote)
 
 export default ticketRouter
