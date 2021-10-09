@@ -25,5 +25,6 @@ jobs:
             git stash
             git pull
             cd ct-backend/
+            yarn build
             yarn holoInstall
             pm2 restart 0
