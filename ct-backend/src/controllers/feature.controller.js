@@ -2,6 +2,7 @@
 import ZuriDb from '../zuricore/db';
 import Response from '../utils/response'
 import feature_schema from '../models/features.model'
+import catchAsync from '../utils/catchAsync'
 
 const Feature = new ZuriDb('ct_feature');
 
@@ -32,22 +33,30 @@ const featureController = {
 		}
 	},
 
-	findAll: async (req, res, next) => {
+	findAll: catchAsync(async (req, res, next) => {
 		try {
-			const { org_id } = req.query
-			let data = await Feature.findAll(org_id)
+			const { org_id } = req.query;
+			const features = await Feature.findAll(org_id);
+			if (!features) {
+			  return Response.send(res, 404, features, 'features not found', false)
+			}
 
 			return Response.send(
 				res,
 				200,
-				data,
+				features,
 				'Features retrieved successfully',
-				true
 			)
-		} catch (err) {
-			return next(err)
+		}catch (error) {
+			Response.send(
+			  res,
+			  422,
+			  error,
+			  error.message
+			)
 		}
-	},
+	}),
+
 	findByParameter: async (req, res, next) => {
 		try {
 			const { org_id } = req.query;
