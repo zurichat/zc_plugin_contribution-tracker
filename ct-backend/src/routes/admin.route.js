@@ -5,21 +5,15 @@ import { userOrg } from "../middlewares/check_org.middleware"
 
 
 
-// retrieve voters
-adminRouter.get("/voters", userOrg, AdminController.getVoters);
+// retrieve voters, add voter, update voter, remove voter
+adminRouter.route("/voters", userOrg)
+  .get(AdminController.getVoters)
+  .post(AdminController.addVoter)
+  .patch(AdminController.updateVoter)
+  .delete(AdminController.removeVoter)
 
 //get single voter
-adminRouter.get('/voter/:id', userOrg, AdminController.getVoter)
-
-// add voter
-adminRouter.post("/voters", userOrg, AdminController.addVoter);
-
-//update voter
-adminRouter.patch("/voters", userOrg, AdminController.updateVoter);
-
-//remove voter
-adminRouter.delete("/voters", userOrg, AdminController.removeVoter);
-
+adminRouter.get('/voter', userOrg, AdminController.getVoter)
 
 // Export module
 export default adminRouter
