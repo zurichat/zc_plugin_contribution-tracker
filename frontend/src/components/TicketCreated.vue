@@ -15,7 +15,7 @@
 
 <script>
 import {mapGetters, mapActions} from "vuex"
-export default {
+export default {   
     computed: {
         tickets() {
             return this.$store.state.tickets;
