@@ -7,9 +7,6 @@ class ContributionServices {
     getUsers() {
         return http.get("/voters")
     }
-    getAllUsers() {
-        return http.get("/users") // This simply serves as an example.
-    }
     addUser(data) {
         return http.post("/voters", data)
     }
@@ -20,16 +17,6 @@ class ContributionServices {
         console.log(data)
         return http.post("/ticket", data)
     }
-
-    // Request feature endpoint not yet available
-
-    // addFeature(data) {
-    //     return http.post("/", data)
-    // }
-
-    // getAllFeatures() {
-    //     return http.get("/")
-    // }
 }
 
 export default new ContributionServices();
