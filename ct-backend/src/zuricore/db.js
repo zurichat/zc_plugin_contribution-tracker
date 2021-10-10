@@ -107,7 +107,6 @@ export default class ZuriDb {
           payload,
         },
       })
-      console.log(res);
       return res.data.data
     } catch (error) {
       throw new CustomError(

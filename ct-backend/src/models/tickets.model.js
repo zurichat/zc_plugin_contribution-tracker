@@ -23,6 +23,11 @@ const ticket_schema = Joi.object({
   total_upvotes: Joi.number().default(0).label('total_upvotes'),
   total_downvotes: Joi.number().default(0).label('total_downvotes'),
 
+   // negative vote percentage
+   neg_votes: Joi.number().default(0).label('neg_votes'),
+   // positive vote percentage
+  pos_votes: Joi.number().default(0).label('pos_votes'),
+
   //time created
   created_at: Joi.date().default(Date.now).label('created_at'),
   updated_at: Joi.date().allow(null).label('updated_at'),
