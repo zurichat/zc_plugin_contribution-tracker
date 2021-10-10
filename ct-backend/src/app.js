@@ -45,9 +45,14 @@ app.use((req, res, next) => {
 //   })
 // )
 
-//serve public/index.html
+//serve static
 app.get('/', (req, res) => {
   res.sendFile(publicPath, 'index.html');
+});
+
+//serve static
+app.get('/zuri-zuri-plugin-contribution-tracker.js', (req, res) => {
+  res.sendFile(publicPath, 'js/app.js');
 });
 
 app.use('/api/v1', indexRouter)
