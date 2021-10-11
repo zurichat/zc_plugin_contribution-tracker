@@ -7,7 +7,8 @@ export default createStore({
     tickets: [],
     selectedTicket: [],
     description: false,
-    addUserModalActive: true,
+    addUserModalActive: false,
+    addTicketModal: false,
     features: []
   },
   mutations: {
@@ -22,6 +23,9 @@ export default createStore({
     },
     toggleUserModal: state => {
       state.addUserModalActive =! state.addUserModalActive
+    },
+    toggleTicketModal: state => {
+      state.addTicketModal = !state.addTicketModal
     },
     setUsers(state, payload) { state.users = payload },
     appendUser: (state, payload) => {
@@ -62,11 +66,15 @@ export default createStore({
       })
     },
     async addTicket({ commit }, payload) {
-      commit('addTicket', payload)
+      commit('toggleTicketModal')
       await ContributionServices.addUser(payload).then(response => {
         console.log(response.data)
       })
     },
+    selectTicket({commit}, payload){
+      commit('openDescription')
+      commit('selectTicket', payload)
+    }
   },
   getters: {
     users(state) {
@@ -77,6 +85,9 @@ export default createStore({
     },
     features(state){
       return state.features
+    },
+    addTicketModal(state){
+      return state.addTicketModal
     }
   },
   modules: {

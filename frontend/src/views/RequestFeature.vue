@@ -1,13 +1,13 @@
 <template>
   <div class="ct-flex ct-w-100 ct-h-screen ct-gap-2">
-    <div class="ct-flex-grow">
+    <div :class="toggleSidebarState ? 'sm:ct-flex-grow sm:ct-block ct-hidden' : 'ct-flex-grow' ">
       <ComponentHeader />
       <RequestFeatureButton />
       <ContributionNavbar />
       <RequestedFeatures @click="toggleSidebar" />
       <div><Comments /></div>     
     </div>
-    <div :class="toggleSidebarState ? 'ct-w-96' : 'ct-hidden' ">
+    <div :class="toggleSidebarState ? 'sm:ct-w-96 ct-w-full' : 'ct-hidden' ">
       <TicketDescriptionSidebar/>
     </div>
   </div>
