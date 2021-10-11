@@ -6,10 +6,8 @@ export default createStore({
     users: [],
     tickets: [],
     selectedTicket: [],
-    requestedFeatures: [],
     description: false,
     addUserModalActive: true,
-    addRequestFeatureActive: true,
   },
   mutations: {
     selectTicket: (state, index) => {
@@ -30,14 +28,7 @@ export default createStore({
     },
     getTicket(state, payload) {
       state.tickets = payload
-    },
-    toggleRequestModal: state => {
-      state.addRequestFeatureActive =! state.addRequestFeatureActive
-    },
-    setRequests(state, payload) { state.requestedFeatures = payload },
-    appendRequests: (state, payload) => {
-      console.log(payload)
-    },
+    }
   },
   actions: {
     async getAllUsers({commit}) {
@@ -66,12 +57,6 @@ export default createStore({
         console.log(response.data)
       })
     },
-    async addRequestedFeatures({ commit }, payload) {
-      commit('appendRequests', payload)
-      await ContributionServices.addFeature(payload).then(response => {
-        console.log(response.data)
-      })
-    },
   },
   getters: {
     users(state) {
@@ -79,9 +64,6 @@ export default createStore({
     },
     tickets(state) {
       return state.tickets
-    },
-    requestedFeatures(state) {
-      return state.requestedFeatures
     }
   },
   modules: {
