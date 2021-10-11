@@ -6,13 +6,13 @@
                <h1 class=" hello1 ">Add New Ticket</h1>
                <!--on click function to close the add new task form-->
                <div class="ct-cursor-pointer ">
-                    <button class=" hello2 ct-mr-3 ct-mt-2" @click="toggleTicketModal">&#x2715;</button>
+                    <button class=" hello2 ct-mr-3 ct-mt-2" @click="TogglePopup">&#x2715;</button>
                </div>
             </div>
-            <form class="ct-w-full ct-px-2 ct-pt-10 ct-flex ct-flex-col" @submit.prevent="addTicket">
+            <form class="ct-w-full ct-px-2 ct-pt-10 ct-flex ct-flex-col">
                 <div class=" text1 ct-mb-50">
                     <div class="ct-mt-3 ct-ml-1 ">
-                <p class="tet4 ct-text-sm ct-font-bold">Ticket Name</p>
+                <p class="tet4 ct-text-sm ct-font-bold ct-font-bold">Ticket Name</p>
                 <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="ticketName" v-model="postTicket.ticketName">
             </div>
             <div class="ct-mt-3 ct-ml-1">
@@ -25,13 +25,13 @@
             </div>
             <div class="ct-mt-3 ct-ml-1">
                 <p class="tet4 ct-text-sm ct-font-bold">Text Link</p>
-                <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="testLink" v-model="postTicket.testLink">
+                <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="textLink" v-model="postTicket.textLink">
 
             </div>
                     
                 </div>
                 <div class="ct-cursor-pointer ct-flex ct-justify-end ct-mt-4">
-                    <button type="submit" class="ct-w-36  ct-bg-green-500 ct-p-3 ct-px-4 hover:ct-bg-green-400 ct-rounded ct-text-white" @click.prevent="addTicket">Add New Ticket</button>
+                    <button type="submit" class="ct-w-36  ct-bg-green-500 ct-p-3 ct-px-4 hover:ct-bg-green-400 ct-rounded ct-text-white" @click.prevent="AddTicketMethod">Add New Ticket</button>
                 </div>
             </form>
         </div>
@@ -40,27 +40,26 @@
 <script>
 // using vuex to post the data from the form to the url
 // script code for the onclick function to close the add new task form
-import { useStore } from 'vuex'
+import {mapActions} from "vuex"
     export default {
         name: 'FormTicket',
-        setup() {
-        const timeStamp = new Date().toLocaleTimeString()
-        const postTicket = {
-            ticketName: "",
-            ticketDescription: "",
-            commitLink: "",
-            testLink: "",
-            timeStamp,
+        props: ['TogglePopup'],
+         data(){
+             return{
+                 postTicket:{
+                     ticketName:"",
+                     ticketDes:"",
+                     commitLink:"",
+                     textLink:""
+                 }
+             }
+        },
+        methods:{
+            ...mapActions(["addTicket"]),
+            AddTicketMethod(){
+                this.addTicket(this. postTicket)
+            }
         }
-        
-        const store = useStore()
-        
-        return {
-            postTicket,
-            addTicket: () => store.dispatch("addTicket", postTicket),
-            toggleTicketModal: () => store.commit('toggleTicketModal')
-        }
-    },
     }
 </script>
 <style scoped>

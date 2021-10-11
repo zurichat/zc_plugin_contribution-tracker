@@ -17,12 +17,6 @@ class ContributionServices {
         console.log(data)
         return http.post("/ticket", data)
     }
-    getAllFeatures(){
-        return http.get("/feature/all_features")
-    }
-    addFeature(){
-        return http.post(`your endpoint`)
-    }
 }
 
 export default new ContributionServices();
