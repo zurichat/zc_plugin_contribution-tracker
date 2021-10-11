@@ -16,7 +16,7 @@
         <div class="ct-px-4 ct-py-7">
             <div>
                 <div class="ct-flex ct-text-base">
-                    <h4 class="ct-font-semibold ct-mr-2.5">{{ selectedTicket.name }}</h4>
+                    <h4 class="ct-font-semibold ct-mr-2.5">{{ selectedTicket.ticketName }}</h4>
                     <span class="ct-text-gray-400">#200</span>
                 </div>
                 <div class="ct-text-gray-400 ct-text-sm ct-flex">
@@ -27,18 +27,18 @@
             </div>
             <div class="ct-mt-5 ct-text-justify">
                 <h4 class="ct-font-semibold">Description</h4>
-                <p class="ct-mt-3">{{ selectedTicket.description }}</p>
+                <p class="ct-mt-3">{{ selectedTicket.ticketDescription }}</p>
             </div>
             <div class="ct-flex ct-flex-col ct-mt-8">
                 <div>
                     <p class="ct-text-left">Commit Link: </p>
                     <div class="ct-text-brand-green-dark ct-text-justify ct-overflow-scroll">
-                        <a :href="selectedTicket.commit" target="_blank">{{ selectedTicket.commit }}</a>
+                        <a :href="selectedTicket.commitLink" target="_blank">{{ selectedTicket.commitLink }}</a>
                     </div>
                 </div>
                 <div class="ct-mt-4 testdiv">
                     <p>Test Link: </p>
-                    <a class="ct-text-green-500 test" :href="selectedTicket.test" target="_blank">{{ selectedTicket.test }}</a>
+                    <a class="ct-text-green-500 test" :href="selectedTicket.testLink" target="_blank">{{ selectedTicket.testLink }}</a>
                 </div>
             </div>
         </div>
@@ -47,19 +47,17 @@
 </template>
 
 <script>
-
+import { computed } from '@vue/reactivity'
+import { useStore } from 'vuex'
 export default {
-    computed: {
-        selectedTicket() {
-            return this.$store.state.selectedTicket;
-        },
-        description() {
-            return this.$store.state.description;
-        }
-    },
-    methods: {
-        closeDescription: function() {
-            this.$store.commit('closeDescription');
+    
+    setup(){
+        const store = useStore();
+        
+        return {
+            selectedTicket: computed(() => store.state.selectedTicket),
+            description: computed(() => store.state.description),
+            closeDescription: () => store.commit('closeDescription')
         }
     }
 }

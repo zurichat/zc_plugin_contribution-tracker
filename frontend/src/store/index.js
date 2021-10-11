@@ -7,7 +7,9 @@ export default createStore({
     tickets: [],
     selectedTicket: [],
     description: false,
-    addUserModalActive: true,
+    addUserModalActive: false,
+    addTicketModal: false,
+    features: []
   },
   mutations: {
     selectTicket: (state, index) => {
@@ -22,18 +24,30 @@ export default createStore({
     toggleUserModal: state => {
       state.addUserModalActive =! state.addUserModalActive
     },
+    toggleTicketModal: state => {
+      state.addTicketModal = !state.addTicketModal
+    },
     setUsers(state, payload) { state.users = payload },
     appendUser: (state, payload) => {
       console.log(payload)
     },
     getTicket(state, payload) {
       state.tickets = payload
+    },
+    setFeatures(state, payload){
+      state.features = payload
     }
   },
   actions: {
     async getAllUsers({commit}) {
       await ContributionServices.getAllUsers().then(response => {
         commit("setUsers", response.data)
+        console.log(response.data)
+      })
+    },
+    async getAllFeatures() {
+      await ContributionServices.getAllFeatures().then(response => {
+        // commit("setFeatures", response.data)
         console.log(response.data)
       })
     },
@@ -52,11 +66,15 @@ export default createStore({
       })
     },
     async addTicket({ commit }, payload) {
-      commit('addTicket', payload)
+      commit('toggleTicketModal')
       await ContributionServices.addUser(payload).then(response => {
         console.log(response.data)
       })
     },
+    selectTicket({commit}, payload){
+      commit('openDescription')
+      commit('selectTicket', payload)
+    }
   },
   getters: {
     users(state) {
@@ -64,6 +82,12 @@ export default createStore({
     },
     tickets(state) {
       return state.tickets
+    },
+    features(state){
+      return state.features
+    },
+    addTicketModal(state){
+      return state.addTicketModal
     }
   },
   modules: {
