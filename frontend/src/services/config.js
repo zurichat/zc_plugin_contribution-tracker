@@ -17,6 +17,14 @@ class ContributionServices {
         console.log(data)
         return http.post("/ticket", data)
     }
+    addFeature(data) {
+        console.log(data)
+        return http.post("/feature", data)
+    }
+    getFeatures() {
+        return http.get("/feature")
+    }
+    
 }
 
 export default new ContributionServices();
