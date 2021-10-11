@@ -2,7 +2,7 @@
     <div>
         <div v-for='(ticket, index) in tickets' @click="selectTicket(index)" :key="index" class="ct-flex ct-justify-between ct-items-center ct-p-4 ct-border-b ct-border-brand-gray-light-2">
             <div>
-                <div class="ct-font-bold">{{ ticket.ticketName }}</div>
+                <div class="ct-font-bold">{{ ticket.name }}</div>
                 <div class="ct-text-brand-gray-light-1 ct-text-sm">{{ ticket.contributor }}</div>
             </div>
             <div class="ct-flex ct-items-center ct-h-5 ct-px-2 ct-bg-brand-gray-light-2 ct-space-x-1 ct-rounded-xl">
@@ -14,20 +14,24 @@
 </template>
 
 <script>
-import { computed } from '@vue/reactivity'
-import { useStore } from 'vuex'
-import { onMounted } from '@vue/runtime-core'
+import {mapGetters, mapActions} from "vuex"
 export default {   
-    setup(){
-        const store = useStore()
-        const getTickets = store.dispatch('getTickets')
-        onMounted(() => {
-            getTickets();
-        })
-        return{
-            tickets: computed(() => store.getters.tickets),
-            selectTicket: (index) => store.dispatch('selectTicket',index)
-        }
+    computed: {
+        tickets() {
+            return this.$store.state.tickets;
+        },
+        ...mapGetters(["tickets"])
+    },
+    methods: {
+        ...mapActions(["getTicket"]),
+
+       selectTicket: function(index) {
+           this.$store.commit('selectTicket', index);
+           this.$store.commit('openDescription');
+       }
+    },
+    mounted() {
+        this.getTicket()
     }
 }
 </script>

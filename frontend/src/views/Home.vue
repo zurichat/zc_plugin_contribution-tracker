@@ -4,9 +4,9 @@
       <div >
         <ComponentHeader />
         <!--onclick function to open the add new task form-->
-        <AddNewTicket @click="toggleTicketModal">
+        <AddNewTicket @click="() => TogglePopup('buttonTrigger')">
         </AddNewTicket>
-        <FormTicket v-if="addTicketModal"> </FormTicket>
+        <FormTicket v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')"> </FormTicket>
         <ContributionNavbar />
         <TicketList />
         <TicketCreated />
@@ -20,8 +20,7 @@
 
 <script>
 // imported ref and ticket form for the onclick function to work
-import { useStore } from 'vuex'
-import { computed } from '@vue/reactivity'
+import {ref} from 'vue'
 import FormTicket from '@/components/TicketForm.vue'
 import ComponentHeader from '@/components/ComponentHeader'
 import AddNewTicket from '@/components/AddNewTicket'
@@ -43,11 +42,16 @@ export default {
   },
   // created a function to show the add new ticket form when clicked 
   setup(){
-    const store = useStore()
+    const popupTriggers = ref({
+      buttonTrigger: false
+    });
+    const TogglePopup = (trigger) => {
+       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    }
     return{
       FormTicket,
-      addTicketModal: computed(() => store.getters.addTicketModal),
-      toggleTicketModal: () => store.commit('toggleTicketModal')
+      popupTriggers,
+      TogglePopup 
     } 
   }
 }

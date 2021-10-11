@@ -216,10 +216,13 @@ export default {
         userImage: "user3",
       },
     ]);
+    const messageCount = computed(() => {
+      return messages.length
+    })
     const toggleSidebar = inject('toggleSidebar')
     return {
       messages,
-      messageCount: computed(() => messages.length),
+      messageCount,
       toggleSidebar
     };
   },
