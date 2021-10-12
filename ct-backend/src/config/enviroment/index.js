@@ -16,7 +16,7 @@ const env = {
     production: process.env.NODE_ENV === 'production',
   },
   PLUGIN_ID: '',
-  ORG_ID: '',
+  ORG_ID: '614679ee1a5607b13c00bcb7',
   SOCKET_URL: '',
   SOCKER_KEY: '',
   getBaseUrl() {
@@ -28,7 +28,7 @@ const env = {
       self.API_URL = `http://localhost:${self.PORT}/api/v1`
       self.BASE_URL = 'https://api.zuri.chat'
       self.PLUGIN_ID = '6156c5e6d56dd3c4d8a962b5'
-      self.ORG_ID = '61581aa887540d8d01ffc3e6"'
+      self.ORG_ID = '614679ee1a5607b13c00bcb7'
     } else {
       self.API_URL = `https://ct.zuri.chat/`
       self.BASE_URL = 'https://api.zuri.chat'
