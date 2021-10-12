@@ -2,7 +2,7 @@ import CustomError from "../utils/custom-error"
 import catchAsync from "../utils/catchAsync";
 import env from "../config/enviroment";
 
-const { getBaseUrl } = env
+const { getBaseUrl, ORG_ID } = env
 
 const { plugin_id } = getBaseUrl()
 
@@ -15,7 +15,7 @@ const sidebarController = {
         name: "Contribution Tracker",
         description: "Track people's contributions to open source projects on Zuri Chat",
         plugin_id,
-        organisation_id: org_id,
+        organisation_id: org_id || ORG_ID,
         user_id,
         group_name: "",
         show_group: true,
@@ -23,7 +23,7 @@ const sidebarController = {
           {
             room_name: "Contribution Room",
             room_image: "https://www.svgrepo.com/show/12072/image.svg",
-            room_url: `/${user_id}/${org_id}`,
+            room_url: `?${org_id}`,
           },
         ],
       };
@@ -32,8 +32,7 @@ const sidebarController = {
       return res.status(200).json(payload);
     } catch (error) {
       throw new CustomError(
-        `Could not fetch sidebar information: ${error}`,
-        "500"
+        `Could not fetch sidebar information: ${error}`
       );
     }
   }),
