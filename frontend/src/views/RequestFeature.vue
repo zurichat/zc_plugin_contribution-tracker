@@ -1,23 +1,22 @@
 <template>
-  <div class="ct-flex ct-w-100 ct-h-screen ct-gap-2">
+  <div class="ct-flex ct-h-screen ct-gap-2">
     <RequestFeatureModal/>
     <div class="ct-flex-grow">
-      <ComponentHeader />
+      <Header />
       <RequestFeatureButton/>
       <ContributionNavbar />
       <RequestedFeatures @click="toggleSidebar" />
-      <div><Comments /></div>     
+      <Comments />    
     </div>
     <div :class="toggleSidebarState ? 'ct-w-96' : 'ct-hidden' ">
       <TicketDescriptionSidebar/>
     </div>
-  </div>
-  
+  </div> 
 </template>
 
 <script>
 import RequestFeatureModal from '@/components/RequestFeatureModal'
-import ComponentHeader from '@/components/ComponentHeader'
+import Header from '@/components/Header'
 import RequestedFeatures from '@/components/RequestedFeatures'
 import RequestFeatureButton from '@/components/RequestFeatureButton'
 import ContributionNavbar from '@/components/ContributionNavbar.vue'
@@ -27,7 +26,7 @@ import { provide, ref } from '@vue/runtime-core'
 
 export default {
   name: 'RequestFeature',
-  components: {RequestFeatureModal, ComponentHeader, RequestedFeatures, RequestFeatureButton, ContributionNavbar, TicketDescriptionSidebar, Comments},
+  components: {RequestFeatureModal, Header, RequestedFeatures, RequestFeatureButton, ContributionNavbar, TicketDescriptionSidebar, Comments},
   setup(){
     const toggleSidebarState = ref(false);
     const toggleSidebar = () => {

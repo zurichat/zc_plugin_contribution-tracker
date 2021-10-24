@@ -12,24 +12,22 @@
             <form class="ct-w-full ct-px-2 ct-pt-10 ct-flex ct-flex-col">
                 <div class=" text1 ct-mb-50">
                     <div class="ct-mt-3 ct-ml-1 ">
-                <p class="tet4 ct-text-sm ct-font-bold ct-font-bold">Ticket Name</p>
-                <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="ticketName" v-model="postTicket.ticketName">
-            </div>
-            <div class="ct-mt-3 ct-ml-1">
-                <p class="tet4 ct-text-sm ct-font-bold">Description</p>
-                <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="ticketDes" v-model="postTicket.ticketDes">
-            </div>
-            <div class="ct-mt-3 ct-ml-1">
-                <p class="tet4 ct-text-sm ct-font-bold">Commit Link</p>
-                <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="commitLink" v-model="postTicket.commitLink">
-            </div>
-            <div class="ct-mt-3 ct-ml-1">
-                <p class="tet4 ct-text-sm ct-font-bold">Text Link</p>
-                <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="textLink" v-model="postTicket.textLink">
-
-            </div>
-                    
+                        <p class="tet4 ct-text-sm  ct-font-bold">Ticket Name</p>
+                        <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="ticketName" v-model="postTicket.ticketName">
+                    </div>
                 </div>
+                <div class="ct-mt-3 ct-ml-1">
+                    <p class="tet4 ct-text-sm ct-font-bold">Description</p>
+                    <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="ticketDes" v-model="postTicket.ticketDes">
+                </div>
+                <div class="ct-mt-3 ct-ml-1">
+                    <p class="tet4 ct-text-sm ct-font-bold">Commit Link</p>
+                    <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="commitLink" v-model="postTicket.commitLink">
+                </div>
+                <div class="ct-mt-3 ct-ml-1">
+                    <p class="tet4 ct-text-sm ct-font-bold">Text Link</p>
+                    <input type="text" class="tet3 ct-min-w-full ct-h-9 ct-mt-3 ct-border-2 ct-border-light-6 ct-rounded-md" name="textLink" v-model="postTicket.textLink">
+                </div>                    
                 <div class="ct-cursor-pointer ct-flex ct-justify-end ct-mt-4">
                     <button type="submit" class="ct-w-36  ct-bg-green-500 ct-p-3 ct-px-4 hover:ct-bg-green-400 ct-rounded ct-text-white" @click.prevent="AddTicketMethod">Add New Ticket</button>
                 </div>
@@ -38,21 +36,19 @@
     </div>
 </template>
 <script>
-// using vuex to post the data from the form to the url
-// script code for the onclick function to close the add new task form
 import {mapActions} from "vuex"
     export default {
-        name: 'FormTicket',
+        name: 'AddNewTicket',
         props: ['TogglePopup'],
          data(){
-             return{
-                 postTicket:{
-                     ticketName:"",
-                     ticketDes:"",
-                     commitLink:"",
-                     textLink:""
-                 }
-             }
+            return{
+            postTicket:{
+            ticketName:"",
+            ticketDes:"",
+            commitLink:"",
+            textLink:""
+                }
+            }
         },
         methods:{
             ...mapActions(["addTicket"]),

@@ -32,7 +32,7 @@
 <script>
 import { mapActions } from 'vuex'
     export default {
-        name: 'AddNewUser',
+        name: 'AddNewVoter',
         data() {
           return {
             data: {
