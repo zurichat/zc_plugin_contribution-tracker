@@ -1,8 +1,6 @@
-# zc_plugin_contribution-tracker
-A plugin that allows you track peoples contribution to open source projects, and highlight most pressing issues
-
-# contribution_tracker_plugin
-
+# Contribution Tracker (Zuri chat plugin)
+A plugin that allows you to track people's contribution to open source projects, and highlight the most pressing issues.
+# Getting started
 ## Project setup
 
 Fork The Repo And Clone Your Fork
@@ -23,6 +21,10 @@ git pull upstream dev
 ```
 yarn serve:standalone
 ```
+
+## Built with
+- Vuejs (Frontend)
+- React (Backend)
 
 # For every styling include the prefix
 ```
@@ -49,6 +51,23 @@ Make sure you push to develop branch -- Create a develop branch in your local
 git push origin dev
 ```
 Then Create Your Pull Request
-### Customize configuration
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Endpoint documentation
+The API endpoints documentation can be found [here](https://github.com/zurichat/Documentation/tree/main/docs/Plugins/comtribution-tracker.md)
+
+## Contribution
+
+Please make sure to read the [Contributing Guide](https://github.com/zurichat/zc_plugin_contribution-tracker/CONTRIBUTING.md) before making a pull request.
+
+
+## Credits and Acknowledgement
+Thank you to all the people who already contributed to Contribution Tracker!
+<br>
+<br>
+<a href="https://github.com/zurichat/zc_plugin_contribution-tracker/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=zurichat/zc_plugin_contribution-tracker" />
+</a>
+
+## File Manifest
+
+## Licensing
